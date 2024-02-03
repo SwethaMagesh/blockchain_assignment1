@@ -1,4 +1,5 @@
 import argparse
+from blockchain import generate_random_graph
 
 parser = argparse.ArgumentParser(description="command line argument parser")
 
@@ -20,8 +21,12 @@ z1_low = args.low
 I_txn = args.txninterval
 I_block = args.blockinterval
 
+# local printing
 print("peers in network        = ", n_peers)
 print("fraction slow peers     = ", z0_slow)
 print("fraction low CPU peers  = ", z1_low)
 print("transaction interval    = ", I_txn)
 print("block interval          = ", I_block)
+
+# generate random graph
+generate_random_graph(n_peers, z0_slow, z1_low)

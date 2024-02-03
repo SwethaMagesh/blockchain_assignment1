@@ -13,3 +13,9 @@ class Transaction:
         
     def receive_transaction(self, transaction):
         pass
+
+    def generate_qdelay(self, link):
+        cij = link.cij
+        mean = 96 / (cij * 1024) # 96 kb and cij Mbps gives mean in seconds
+        dij = [random.expovariate(1 / mean) for _ in range(1)]
+        return dij[0]
