@@ -27,3 +27,7 @@ an event in which one node ”sends a block” to connected peers will create fu
 visualisation 
     - 12 marks
     - insight - 8 marks
+
+---
+Command line
+n, z, Ttx, Tk, edges,  invalid_txn_prob, invalid_block_prob, zeta, adv, alpha
