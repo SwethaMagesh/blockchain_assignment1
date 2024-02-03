@@ -48,15 +48,17 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
         peers.append(Peer(peer, slow=slow, lowcpu=lowcpu, hashpower=hashpower))
 
     # populate links with their parameters
-    links = []  
+    links = {} 
     for i, j in G.edges():
+        ro = random.randrange(10, 500)
         if peers[i].slow  or peers[j].slow:
-            ro = random.randrange(10, 500)
-            link = Link(i, j, 5, ro)
+            speed = 5
         else:
-            ro = random.randrange(1, 10)
-            link = Link(i, j, 100, ro)
-        links.append(link)
+            speed = 100
+        if i in links:
+            links[i][j] = Link(i, j, speed, ro)
+        else:
+            links[i] = {j: Link(i, j, speed, ro)}
 
     # local printing
     print("Edges : ")
@@ -74,13 +76,16 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     for i in peers:
         print(i)
     print("Links : ")
-    for i in links:
-        print(i)
+    for _, neighbor_link in links.items():
+        for _, link_obj in neighbor_link.items():
+            print(link_obj)
     # visualize graph
     # pos = nx.spring_layout(G)  
     # nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8, font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
     # plt.show()
     b1 = Block()
-    dij = b1.generate_qdelay(links[1])
-    print("Queueing Delay of Peer \"", links[1], "\" = ", dij)
+    # sample links[1].values()[0] to generate queueing delay
+    sample_link = list(links[1].values())[0]
+    dij = b1.generate_qdelay(sample_link)
+    print("Queueing Delay of Peer \"", sample_link, "\" = ", dij)
     return peers, links

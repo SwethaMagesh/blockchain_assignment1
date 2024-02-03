@@ -31,3 +31,9 @@ visualisation
 ---
 Command line
 n, z, Ttx, Tk, edges,  invalid_txn_prob, invalid_block_prob, zeta, adv, alpha
+
+---
+- event handler
+- exponential  - latency
+- Tk
+- tree maintain
