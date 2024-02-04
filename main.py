@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 from peer import *
 from block import *
 from transaction import *
-
+import simpy
+import time
 
 
 
@@ -120,7 +121,15 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     # plt.show()
     return peers, links
 
-
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 
+RANDOM_SEED = int(time.time())
+SIM_TIME = 20
+
+random.seed(RANDOM_SEED)
+env = simpy.Environment()
+
+txn = Transaction(sender=peers[2], receiver=peers[8], coins=0)
+
+env.process(forward_transaction(peers[2], txn, peers[2], env))
