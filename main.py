@@ -136,8 +136,8 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 
 
-def receive_transaction(peer, transaction, env):
-    # print(f"Peer {peer.id} received transaction {transaction.txnid} at time {env.now}")
+def receive_transaction(peer, hears_from, transaction, env):
+    print(f"Peer {peer.id} hears from {hears_from.id} received transaction {transaction.txnid} at time {env.now}")
     if transaction.txnid not in [txn.txnid for txn in peer.transactions_queue]:
         peer.transactions_queue.append(transaction)
 
@@ -146,6 +146,10 @@ def forward_transaction_to_peers(peer, transaction, sender, env):
     to_forward = list(links[peer.id].keys())
     if sender.id in to_forward:
         to_forward.remove(sender.id)
+        if transaction.txnid in peer.sent_ids:
+            peer.sent_ids[transaction.txnid].append(sender.id)
+        else:
+            peer.sent_ids[transaction.txnid] = [sender.id]
     print(f"Peer {peer.id} sends to {to_forward}")
     for neighbor_id in to_forward:  
         if transaction.txnid in peer.sent_ids and neighbor_id in peer.sent_ids[transaction.txnid]:
@@ -158,9 +162,9 @@ def forward_transaction_to_peers(peer, transaction, sender, env):
             peer.sent_ids[transaction.txnid].append(neighbor_id)
         else:
             peer.sent_ids[transaction.txnid] = [neighbor_id]
-        yield env.timeout(qdelay)
         print(f"Peer {peer.id} to peer {neighbor_id}  T{transaction.txnid} at time {env.now}")
-        receive_transaction(peers[neighbor_id], transaction, env)
+        yield env.timeout(qdelay)
+        receive_transaction(peers[neighbor_id], peer, transaction, env)
         env.process(forward_transaction_to_peers(peers[neighbor_id], transaction, peer, env))
 
 
@@ -172,7 +176,7 @@ env = simpy.Environment()
 
 for i in range(1):
     txn = Transaction(peers[i], peers[8], coins=0)
-    receive_transaction(peers[i], txn, env)
+    receive_transaction(peers[i],peers[i], txn, env)
     env.process(forward_transaction_to_peers(peers[i], txn, peers[i], env))
 
 
