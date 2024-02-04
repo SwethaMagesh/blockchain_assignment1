@@ -1,18 +1,20 @@
 import random
 
 class Transaction:
-    # id
-    # sender
-    # receiver
+    txn_id = 0
+    def __init__(self, sender, receiver, coins): 
+        txn_id += 1
+        self.txnid = txn_id
+        self.sender = sender
+        self.receiver = receiver
+        self.coins = coins
 
-    def create_transaction(self, time, size, transaction_id):
-        pass
-    
-    def forward_transaction(self, peer1, peer2):
-        pass
-        
-    def receive_transaction(self, transaction):
-        pass
+    def __init__(self, miner):
+        txn_id += 1
+        self.txnid = txn_id
+        self.sender = None
+        self.coins = 50
+        self.receiver = miner
 
     def generate_qdelay(self, link):
         cij = link.cij
