@@ -35,5 +35,6 @@ def forward_transaction(peer, transaction, sender_peer, env):
             if adj != sender_peer.id:
                 # send transaction to adj peer
                 peers[adj].forward_transaction(transaction, peer, env)
+                print(f"Transaction {transaction.id} forwarded from {peer.id} to {adj}")
                 yield env.timeout(transaction.generate_qdelay(links[peer.id][adj]))
                 pass
