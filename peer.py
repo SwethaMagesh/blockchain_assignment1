@@ -1,5 +1,3 @@
-
-
 class Peer:
     def __init__(self, peer, slow, lowcpu, hashpower):
         self.id = peer
@@ -28,12 +26,3 @@ class Link:
         return str(self.i) + " " + str(self.j) + " " + str(self.cij) + " " + str(self.roij)
     
 
-def forward_transaction(peer, transaction, sender_peer, env):
-        # all adjacent peers except sender
-        for adj in G.adj[peer.id]:
-            if adj != sender_peer.id:
-                # send transaction to adj peer
-                peers[adj].forward_transaction(transaction, peer, env)
-                print(f"Transaction {transaction.id} forwarded from {peer.id} to {adj}")
-                yield env.timeout(transaction.generate_qdelay(links[peer.id][adj]))
-                pass

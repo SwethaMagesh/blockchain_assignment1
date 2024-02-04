@@ -95,6 +95,10 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
             links[i][j] = Link(i, j, speed, ro)
         else:
             links[i] = {j: Link(i, j, speed, ro)}
+        if j in links:
+            links[j][i] = Link(j, i, speed, ro)
+        else:
+            links[j] ={i: Link(j,i, speed, ro)}
 
     # local printing
     print("Edges : ")
@@ -116,20 +120,34 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
         for _, link_obj in neighbor_link.items():
             print(link_obj)
     # visualize graph
-    # pos = nx.spring_layout(G)  
-    # nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8, font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
-    # plt.show()
+    pos = nx.spring_layout(G)  
+    nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8, font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
+    plt.show()
     return peers, links
 
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 
+def forward_transaction(peer, transaction, sender_peer, env):
+        # all adjacent peers except sender
+        for adj in G.adj[peer.id]:
+            #print(G.adj[peer.id])
+            #print(links[peer.id].keys())
+            if adj != sender_peer.id:
+                # send transaction to adj peer
+                env.process(forward_transaction(peers[adj], transaction, peer, env))
+                print(f"Transaction {transaction.txnid} forwarded from {peer.id} to {adj} at {env.now}")
+                yield env.timeout(transaction.generate_qdelay(links[peer.id][adj]))
+                pass
+
 RANDOM_SEED = int(time.time())
-SIM_TIME = 20
+SIM_TIME = 200
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
 
-txn = Transaction(sender=peers[2], receiver=peers[8], coins=0)
+txn = Transaction(peers[2], peers[8], coins=0)
 
 env.process(forward_transaction(peers[2], txn, peers[2], env))
+
+env.run(until=120)
