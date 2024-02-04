@@ -125,9 +125,9 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
         for _, link_obj in neighbor_link.items():
             print(link_obj)
     # visualize graph
-    pos = nx.spring_layout(G)
-    nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
-            font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
+    # pos = nx.spring_layout(G)
+    # nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
+    #         font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
     # plt.show()
     return peers, links
 
@@ -135,49 +135,58 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 
-
+# receive transaction from peers
 def receive_transaction(peer, hears_from, transaction, env):
-    print(f"Peer {peer.id} hears from {hears_from.id} received transaction {transaction.txnid} at time {env.now}")
+    print(f"Peer {peer.id} recvs from {hears_from.id} T{transaction.txnid} at time {env.now}")
     if transaction.txnid not in [txn.txnid for txn in peer.transactions_queue]:
         peer.transactions_queue.append(transaction)
 
 
-def forward_transaction_to_peers(peer, transaction, sender, env):
-    to_forward = list(links[peer.id].keys())
-    if sender.id in to_forward:
-        to_forward.remove(sender.id)
-        if transaction.txnid in peer.sent_ids:
-            peer.sent_ids[transaction.txnid].append(sender.id)
-        else:
-            peer.sent_ids[transaction.txnid] = [sender.id]
-    print(f"Peer {peer.id} sends to {to_forward}")
-    for neighbor_id in to_forward:  
-        if transaction.txnid in peer.sent_ids and neighbor_id in peer.sent_ids[transaction.txnid]:
-            to_forward.remove(neighbor_id)
-            print(peer.id, " already sent to ", neighbor_id)
-            continue
-        link = links[peer.id][neighbor_id]
-        qdelay = transaction.generate_qdelay(link)
-        if transaction.txnid in peer.sent_ids:
-            peer.sent_ids[transaction.txnid].append(neighbor_id)
-        else:
-            peer.sent_ids[transaction.txnid] = [neighbor_id]
-        print(f"Peer {peer.id} to peer {neighbor_id}  T{transaction.txnid} at time {env.now}")
-        yield env.timeout(qdelay)
-        receive_transaction(peers[neighbor_id], peer, transaction, env)
-        env.process(forward_transaction_to_peers(peers[neighbor_id], transaction, peer, env))
+def forward_transaction(transaction, curr_peer, prev_peer, env):
+    transaction.reached_peers.add(curr_peer.id)
+    print(transaction.reached_peers)
+    neighbours = list(links[curr_peer.id].keys())
+    print(neighbours)
+    for neighbour in neighbours:
+        if (neighbour != prev_peer.id) and (neighbour not in transaction.reached_peers):
+            print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.txnid} at time {env.now}")
+            link = links[curr_peer.id][neighbour]
+            yield env.timeout(transaction.generate_qdelay(link))
+            receive_transaction(peers[neighbour], curr_peer, transaction, env)
+            env.process(forward_transaction(transaction, peers[neighbour], curr_peer, env))
+    # if prev_peer.id in neighbours:
+    #     neighbours.remove(prev_peer.id)
+    #     if transaction.txnid in curr_peer.sent_ids:
+    #         curr_peer.sent_ids[transaction.txnid].append(prev_peer.id)
+    #     else:
+    #         curr_peer.sent_ids[transaction.txnid] = [prev_peer.id]
+    # print(f"Peer {curr_peer.id} sends to {neighbours}")
+    # for neighbour in neighbours:  
+    #     if transaction.txnid in curr_peer.sent_ids and neighbour in curr_peer.sent_ids[transaction.txnid]:
+    #         neighbours.remove(neighbour)
+    #         print(curr_peer.id, " already sent to ", neighbour)
+    #         continue
+    #     link = links[curr_peer.id][neighbour]
+    #     qdelay = transaction.generate_qdelay(link)
+    #     if transaction.txnid in curr_peer.sent_ids:
+    #         curr_peer.sent_ids[transaction.txnid].append(neighbour)
+    #     else:
+    #         curr_peer.sent_ids[transaction.txnid] = [neighbour]
+    #     print(f"Peer {curr_peer.id} to peer {neighbour}  T{transaction.txnid} at time {env.now}")
+    #     yield env.timeout(qdelay)
+    #     receive_transaction(peers[neighbour], curr_peer, transaction, env)
+    #     env.process(forward_transaction(peers[neighbour], transaction, curr_peer, env))
 
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 100
+SIM_TIME = 1000
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
 
-for i in range(1):
-    txn = Transaction(peers[i], peers[8], coins=0)
+for i in range(3):
+    txn = Transaction(sender=peers[i], receiver=peers[8], coins=0)
     receive_transaction(peers[i],peers[i], txn, env)
-    env.process(forward_transaction_to_peers(peers[i], txn, peers[i], env))
-
+    env.process(forward_transaction(txn, peers[i], peers[i], env))
 
 env.run(until=SIM_TIME)

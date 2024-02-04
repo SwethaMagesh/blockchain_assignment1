@@ -1,0 +1,279 @@
+peers in network        =  10
+fraction slow peers     =  0.3
+fraction low CPU peers  =  0.4
+transaction interval    =  10.0
+block interval          =  10.0
+Edges : 
+[(0, 9), (0, 2), (0, 8), (0, 5), (0, 1), (0, 6), (1, 3), (1, 5), (1, 2), (1, 4), (1, 9), (2, 8), (2, 4), (2, 5), (2, 7), (3, 6), (3, 4), (3, 7), (3, 5), (4, 6), (4, 7), (4, 8), (5, 8), (5, 9), (6, 8), (6, 7), (7, 8)]
+Nodes : 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Degree : 
+6 6 6 5 6 6 5 5 6 3 
+Slow Peers : 
+[2, 0, 1]
+Low CPU Peers : 
+[5, 7, 2, 3]
+Peers : 
+0 True False 1.5625
+1 True False 1.5625
+2 True True 0.15625
+3 False True 0.15625
+4 False False 1.5625
+5 False True 0.15625
+6 False False 1.5625
+7 False True 0.15625
+8 False False 1.5625
+9 False False 1.5625
+Links : 
+0 9 5 149
+0 2 5 487
+0 8 5 204
+0 5 5 85
+0 1 5 421
+0 6 5 38
+9 0 5 149
+9 1 5 364
+9 5 100 97
+2 0 5 487
+2 1 5 40
+2 8 5 235
+2 4 5 207
+2 5 5 12
+2 7 5 294
+8 0 5 204
+8 2 5 235
+8 4 100 431
+8 5 100 303
+8 6 100 383
+8 7 100 333
+5 0 5 85
+5 1 5 439
+5 2 5 12
+5 3 100 229
+5 8 100 303
+5 9 100 97
+1 0 5 421
+1 3 5 152
+1 5 5 439
+1 2 5 40
+1 4 5 354
+1 9 5 364
+6 0 5 38
+6 3 100 247
+6 4 100 276
+6 8 100 383
+6 7 100 58
+3 1 5 152
+3 6 100 247
+3 4 100 245
+3 7 100 164
+3 5 100 229
+4 1 5 354
+4 2 5 207
+4 3 100 245
+4 6 100 276
+4 7 100 293
+4 8 100 431
+7 2 5 294
+7 3 100 164
+7 4 100 293
+7 6 100 58
+7 8 100 333
+Peer 0 hears from 0 received transaction 1 at time 0
+Peer 0 sends to [9, 2, 8, 5, 1, 6]
+Peer 0 to peer 9  T1 at time 0
+Peer 9 hears from 0 received transaction 1 at time 0.15320164546370993
+Peer 0 to peer 2  T1 at time 0.15320164546370993
+Peer 9 sends to [1, 5]
+Peer 9 to peer 1  T1 at time 0.15320164546370993
+Peer 1 hears from 9 received transaction 1 at time 0.5357547917066209
+Peer 9 to peer 5  T1 at time 0.5357547917066209
+Peer 1 sends to [0, 3, 5, 2, 4]
+Peer 1 to peer 0  T1 at time 0.5357547917066209
+Peer 5 hears from 9 received transaction 1 at time 0.6346593545506981
+Peer 5 sends to [0, 1, 2, 3, 8]
+Peer 5 to peer 0  T1 at time 0.6346593545506981
+Peer 2 hears from 0 received transaction 1 at time 0.6629715775464156
+Peer 0 to peer 8  T1 at time 0.6629715775464156
+Peer 2 sends to [1, 8, 4, 5, 7]
+Peer 2 to peer 1  T1 at time 0.6629715775464156
+Peer 0 hears from 5 received transaction 1 at time 0.7259576005352215
+Peer 5 to peer 1  T1 at time 0.7259576005352215
+Peer 0 sends to [9, 2, 8, 1, 6]
+0  already sent to  9
+0  already sent to  8
+Peer 0 to peer 6  T1 at time 0.7259576005352215
+Peer 1 hears from 2 received transaction 1 at time 0.7333024465567418
+Peer 2 to peer 8  T1 at time 0.7333024465567418
+Peer 1 sends to [0, 3, 5, 4, 9]
+1  already sent to  0
+Peer 1 to peer 5  T1 at time 0.7333024465567418
+Peer 6 hears from 0 received transaction 1 at time 0.7681111929919139
+Peer 6 sends to [3, 4, 8, 7]
+Peer 6 to peer 3  T1 at time 0.7681111929919139
+Peer 8 hears from 0 received transaction 1 at time 0.8743281842446456
+0  already sent to  5
+0  already sent to  6
+Peer 8 sends to [2, 4, 5, 6, 7]
+Peer 8 to peer 2  T1 at time 0.8743281842446456
+Peer 0 hears from 1 received transaction 1 at time 0.9769634969278435
+Peer 1 to peer 3  T1 at time 0.9769634969278435
+Peer 0 sends to [9, 2, 8, 5, 6]
+0  already sent to  9
+0  already sent to  8
+0  already sent to  6
+Peer 8 hears from 2 received transaction 1 at time 0.9773541354172253
+Peer 2 to peer 4  T1 at time 0.9773541354172253
+Peer 8 sends to [0, 4, 5, 6, 7]
+8  already sent to  0
+Peer 8 to peer 5  T1 at time 0.9773541354172253
+Peer 3 hears from 6 received transaction 1 at time 1.0177876418416827
+Peer 6 to peer 4  T1 at time 1.0177876418416827
+Peer 3 sends to [1, 4, 7, 5]
+Peer 3 to peer 1  T1 at time 1.0177876418416827
+Peer 3 hears from 1 received transaction 1 at time 1.1324953426078572
+1  already sent to  5
+Peer 1 to peer 4  T1 at time 1.1324953426078572
+Peer 3 sends to [6, 4, 7, 5]
+3  already sent to  6
+Peer 3 to peer 7  T1 at time 1.1324953426078572
+Peer 2 hears from 8 received transaction 1 at time 1.1328685269056313
+Peer 8 to peer 4  T1 at time 1.1328685269056313
+Peer 2 sends to [0, 1, 4, 5, 7]
+2  already sent to  0
+2  already sent to  4
+Peer 2 to peer 7  T1 at time 1.1328685269056313
+Peer 1 hears from 3 received transaction 1 at time 1.1739812928110187
+Peer 3 to peer 4  T1 at time 1.1739812928110187
+Peer 1 sends to [0, 5, 2, 4, 9]
+1  already sent to  0
+1  already sent to  2
+1  already sent to  9
+Peer 1 hears from 5 received transaction 1 at time 1.17826188569184
+Peer 5 to peer 2  T1 at time 1.17826188569184
+Peer 1 sends to [0, 3, 2, 4, 9]
+1  already sent to  0
+1  already sent to  2
+1  already sent to  9
+Peer 2 hears from 5 received transaction 1 at time 1.1925987265214193
+Peer 5 to peer 3  T1 at time 1.1925987265214193
+Peer 2 sends to [0, 1, 8, 4, 7]
+2  already sent to  0
+2  already sent to  8
+2  already sent to  7
+Peer 4 hears from 2 received transaction 1 at time 1.196848506271271
+2  already sent to  5
+Peer 4 sends to [1, 3, 6, 7, 8]
+Peer 4 to peer 1  T1 at time 1.196848506271271
+Peer 5 hears from 1 received transaction 1 at time 1.2458496923562128
+1  already sent to  4
+Peer 5 sends to [0, 2, 3, 8, 9]
+5  already sent to  0
+5  already sent to  3
+5  already sent to  9
+Peer 5 hears from 8 received transaction 1 at time 1.2806879810245821
+Peer 8 to peer 6  T1 at time 1.2806879810245821
+Peer 5 sends to [0, 1, 2, 3, 9]
+5  already sent to  0
+5  already sent to  2
+5  already sent to  9
+Peer 4 hears from 6 received transaction 1 at time 1.2939298153805752
+Peer 6 to peer 8  T1 at time 1.2939298153805752
+Peer 4 sends to [1, 2, 3, 7, 8]
+4  already sent to  1
+Peer 4 to peer 3  T1 at time 1.2939298153805752
+Peer 7 hears from 3 received transaction 1 at time 1.2968193707988025
+Peer 3 to peer 5  T1 at time 1.2968193707988025
+Peer 7 sends to [2, 4, 6, 8]
+Peer 7 to peer 2  T1 at time 1.2968193707988025
+Peer 4 hears from 3 received transaction 1 at time 1.419138501112979
+3  already sent to  7
+Peer 4 sends to [1, 2, 6, 7, 8]
+4  already sent to  1
+4  already sent to  6
+Peer 4 to peer 8  T1 at time 1.419138501112979
+Peer 3 hears from 5 received transaction 1 at time 1.4218697134604878
+5  already sent to  8
+Peer 3 sends to [1, 6, 4, 7]
+3  already sent to  1
+3  already sent to  4
+Peer 7 hears from 2 received transaction 1 at time 1.4364964915786385
+Peer 7 sends to [3, 4, 6, 8]
+7  already sent to  3
+Peer 7 to peer 6  T1 at time 1.4364964915786385
+Peer 6 hears from 7 received transaction 1 at time 1.4945990158160376
+Peer 7 to peer 8  T1 at time 1.4945990158160376
+Peer 6 sends to [0, 3, 4, 8]
+6  already sent to  0
+6  already sent to  4
+Peer 5 hears from 3 received transaction 1 at time 1.5266247251183995
+Peer 5 sends to [0, 1, 2, 8, 9]
+5  already sent to  0
+5  already sent to  2
+5  already sent to  9
+Peer 4 hears from 1 received transaction 1 at time 1.5371334818376883
+Peer 4 sends to [2, 3, 6, 7, 8]
+4  already sent to  2
+4  already sent to  6
+4  already sent to  8
+Peer 3 hears from 4 received transaction 1 at time 1.5418662509524712
+Peer 4 to peer 7  T1 at time 1.5418662509524712
+Peer 3 sends to [1, 6, 7, 5]
+3  already sent to  1
+3  already sent to  7
+Peer 1 hears from 4 received transaction 1 at time 1.5608486689553631
+4  already sent to  3
+4  already sent to  7
+Peer 1 sends to [0, 3, 5, 2, 9]
+1  already sent to  0
+1  already sent to  5
+1  already sent to  9
+Peer 4 hears from 8 received transaction 1 at time 1.5640244315318697
+8  already sent to  5
+Peer 8 to peer 7  T1 at time 1.5640244315318697
+Peer 4 sends to [1, 2, 3, 6, 7]
+4  already sent to  1
+4  already sent to  3
+4  already sent to  7
+Peer 2 hears from 7 received transaction 1 at time 1.6059600817235091
+Peer 7 to peer 4  T1 at time 1.6059600817235091
+Peer 2 sends to [0, 1, 8, 4, 5]
+2  already sent to  0
+2  already sent to  8
+2  already sent to  5
+Peer 6 hears from 8 received transaction 1 at time 1.6640905267642774
+8  already sent to  7
+Peer 6 sends to [0, 3, 4, 7]
+6  already sent to  0
+6  already sent to  4
+Peer 8 hears from 6 received transaction 1 at time 1.6773060029820346
+6  already sent to  7
+Peer 8 sends to [0, 2, 4, 5, 7]
+8  already sent to  0
+8  already sent to  4
+8  already sent to  7
+Peer 8 hears from 7 received transaction 1 at time 1.8279299635094997
+Peer 8 sends to [0, 2, 4, 5, 6]
+8  already sent to  0
+8  already sent to  4
+8  already sent to  6
+Peer 7 hears from 4 received transaction 1 at time 1.8355547729508894
+4  already sent to  8
+Peer 7 sends to [2, 3, 6, 8]
+7  already sent to  2
+7  already sent to  6
+Peer 8 hears from 4 received transaction 1 at time 1.8511512576294442
+Peer 8 sends to [0, 2, 5, 6, 7]
+8  already sent to  0
+8  already sent to  5
+8  already sent to  7
+Peer 7 hears from 8 received transaction 1 at time 1.8973983155244594
+Peer 7 sends to [2, 3, 4, 6]
+7  already sent to  2
+7  already sent to  4
+Peer 4 hears from 7 received transaction 1 at time 1.9003593926094207
+7  already sent to  6
+Peer 4 sends to [1, 2, 3, 6, 8]
+4  already sent to  1
+4  already sent to  3
+4  already sent to  8
