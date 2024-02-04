@@ -7,8 +7,15 @@ class Block:
     # coinbase
     # parenthash
     # timestamp
-    def __init__(self):
-        pass
+
+    def __init__(self, transactions, blockid, coinbase, parenthash, timestamp):
+        self.transactions = transactions   
+        self.blockid = blockid
+        self.coinbase = coinbase
+        self.parenthash = parenthash
+        self.timestamp = timestamp
+
+        
     def mine_block(self, transactions):
         pass
     def forward_block(self, block, peer):

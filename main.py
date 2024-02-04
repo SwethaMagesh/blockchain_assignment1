@@ -29,4 +29,4 @@ print("transaction interval    = ", I_txn)
 print("block interval          = ", I_block)
 
 # generate random graph
-generate_random_graph(n_peers, z0_slow, z1_low)
+peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
