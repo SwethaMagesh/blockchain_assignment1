@@ -1,6 +1,5 @@
 import random
-from peer import Peer
-from peer import Link
+
 class Block:
     # transactions: list of transactions
     # blockid

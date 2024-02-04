@@ -1,5 +1,4 @@
-from blockchain import *
-from main import *
+
 
 class Peer:
     def __init__(self, peer, slow, lowcpu, hashpower):

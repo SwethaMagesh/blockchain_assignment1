@@ -1,10 +1,7 @@
 import simpy
 import random
 import time
-from block import *
-from transaction import *
-from peer import *
-from main import *
+
 
 RANDOM_SEED = int(time.time())
 SIM_TIME = 20
