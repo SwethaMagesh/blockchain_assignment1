@@ -14,6 +14,5 @@ class Transaction:
         roij = link.roij/1000
         mean = 96 / (link.cij * 1024) # 96 kb and cij Mbps gives mean in seconds
         dij = random.expovariate(1 / mean)
-        print(f"mean {mean} cij {m_by_cij} dij {dij}")
-        print(roij +  dij + m_by_cij)
+        # print(roij +  dij + m_by_cij)
         return (roij +  dij + m_by_cij)

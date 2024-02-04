@@ -10,19 +10,23 @@ import simpy
 import time
 
 
-
 parser = argparse.ArgumentParser(description="command line argument parser")
 
 # number of peers in the network
-parser.add_argument("--peers", "-n", type=int, default=10, required=True, help="enter the number of peers in the network")
+parser.add_argument("--peers", "-n", type=int, default=10,
+                    required=True, help="enter the number of peers in the network")
 # number of slow peers in the network
-parser.add_argument("--slow", "-z0", type=float, default=0.3, required=True, help="enter the number of slow peers in the network")
+parser.add_argument("--slow", "-z0", type=float, default=0.3,
+                    required=True, help="enter the number of slow peers in the network")
 # number of lowCPU peers in the network
-parser.add_argument("--low", "-z1", type=float, default=0.3, required=True, help="enter the number of lowCPU peers in the network")
+parser.add_argument("--low", "-z1", type=float, default=0.3, required=True,
+                    help="enter the number of lowCPU peers in the network")
 #  inter arrival time of transactions
-parser.add_argument("--txninterval", "-Ttx", type=float, default=5, required=True, help="enter the inter arrival time of transactions")
+parser.add_argument("--txninterval", "-Ttx", type=float, default=5,
+                    required=True, help="enter the inter arrival time of transactions")
 #  inter arrival time of blocks
-parser.add_argument("--blockinterval", "-I", type=float, default=10, required=True, help="enter the inter arrival time of blocks")
+parser.add_argument("--blockinterval", "-I", type=float, default=10,
+                    required=True, help="enter the inter arrival time of blocks")
 
 args = parser.parse_args()
 n_peers = args.peers
@@ -39,22 +43,23 @@ print("transaction interval    = ", I_txn)
 print("block interval          = ", I_block)
 
 
-
 # Constants
-TRANSACTION_SIZE = 1 # in KB
-MAX_BLOCK_SIZE = 1024 # in KB
+TRANSACTION_SIZE = 1  # in KB
+MAX_BLOCK_SIZE = 1024  # in KB
 START_TIME = 0
 
 # generate a random graph with n peers and parameters
 G = nx.Graph()
 
+
 def generate_random_graph(n_peers, z0_slow, z1_low):
     for peer in range(n_peers):
         G.add_node(peer)
     for node in G.nodes():
-        degree = random.randint(3,6)
+        degree = random.randint(3, 6)
         while G.degree(node) < degree:
-            possible_nodes = [other_node for other_node in G.nodes() if other_node != node and G.degree(other_node) < 6]
+            possible_nodes = [other_node for other_node in G.nodes(
+            ) if other_node != node and G.degree(other_node) < 6]
             if len(possible_nodes) == 0:
                 break
             other_node = random.choice(possible_nodes)
@@ -84,10 +89,10 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
         peers.append(Peer(peer, slow=slow, lowcpu=lowcpu, hashpower=hashpower))
 
     # populate links with their parameters
-    links = {} 
+    links = {}
     for i, j in G.edges():
         ro = random.randrange(10, 500)
-        if peers[i].slow  or peers[j].slow:
+        if peers[i].slow or peers[j].slow:
             speed = 5
         else:
             speed = 100
@@ -98,7 +103,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
         if j in links:
             links[j][i] = Link(j, i, speed, ro)
         else:
-            links[j] ={i: Link(j,i, speed, ro)}
+            links[j] = {i: Link(j, i, speed, ro)}
 
     # local printing
     print("Edges : ")
@@ -120,34 +125,55 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
         for _, link_obj in neighbor_link.items():
             print(link_obj)
     # visualize graph
-    pos = nx.spring_layout(G)  
-    nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8, font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
-    plt.show()
+    pos = nx.spring_layout(G)
+    nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
+            font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
+    # plt.show()
     return peers, links
+
 
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 
-def forward_transaction(peer, transaction, sender_peer, env):
-        # all adjacent peers except sender
-        for adj in G.adj[peer.id]:
-            #print(G.adj[peer.id])
-            #print(links[peer.id].keys())
-            if adj != sender_peer.id:
-                # send transaction to adj peer
-                env.process(forward_transaction(peers[adj], transaction, peer, env))
-                print(f"Transaction {transaction.txnid} forwarded from {peer.id} to {adj} at {env.now}")
-                yield env.timeout(transaction.generate_qdelay(links[peer.id][adj]))
-                pass
+
+def receive_transaction(peer, transaction, env):
+    # print(f"Peer {peer.id} received transaction {transaction.txnid} at time {env.now}")
+    if transaction.txnid not in [txn.txnid for txn in peer.transactions_queue]:
+        peer.transactions_queue.append(transaction)
+
+
+def forward_transaction_to_peers(peer, transaction, sender, env):
+    to_forward = list(links[peer.id].keys())
+    if sender.id in to_forward:
+        to_forward.remove(sender.id)
+    print(f"Peer {peer.id} sends to {to_forward}")
+    for neighbor_id in to_forward:  
+        if transaction.txnid in peer.sent_ids and neighbor_id in peer.sent_ids[transaction.txnid]:
+            to_forward.remove(neighbor_id)
+            print(peer.id, " already sent to ", neighbor_id)
+            continue
+        link = links[peer.id][neighbor_id]
+        qdelay = transaction.generate_qdelay(link)
+        if transaction.txnid in peer.sent_ids:
+            peer.sent_ids[transaction.txnid].append(neighbor_id)
+        else:
+            peer.sent_ids[transaction.txnid] = [neighbor_id]
+        yield env.timeout(qdelay)
+        print(f"Peer {peer.id} to peer {neighbor_id}  T{transaction.txnid} at time {env.now}")
+        receive_transaction(peers[neighbor_id], transaction, env)
+        env.process(forward_transaction_to_peers(peers[neighbor_id], transaction, peer, env))
+
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 200
+SIM_TIME = 100
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
 
-txn = Transaction(peers[2], peers[8], coins=0)
+for i in range(1):
+    txn = Transaction(peers[i], peers[8], coins=0)
+    receive_transaction(peers[i], txn, env)
+    env.process(forward_transaction_to_peers(peers[i], txn, peers[i], env))
 
-env.process(forward_transaction(peers[2], txn, peers[2], env))
 
-env.run(until=120)
+env.run(until=SIM_TIME)

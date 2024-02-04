@@ -5,15 +5,14 @@ class Peer:
         self.slowcpu = lowcpu
         self.hashpower = hashpower
         self.transactions_queue = []
+        self.sent_ids = {}
     
     def __str__(self):
         return str(self.id) + " " + str(self.slow) + " " + str(self.slowcpu)+ " " + str(self.hashpower)
     
 
-    def receive_transaction(self, transaction):
-        trans_ids = [x.id for x in self.transactions_queue]
-        if transaction not in trans_ids:
-            self.transactions_queue.append(transaction)
+    
+        
 
 class Link:
     def __init__(self, i, j, cij, roij):
