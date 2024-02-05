@@ -135,6 +135,18 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 
+
+
+def handle_transaction(env):
+    yield env.timeout(exponential_sample(I_txn))
+    s, r, c = create_random_transaction(n_peers, initial_state=True)
+    txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
+    print(f"Created T{txn.txnid} at time {env.now}")
+    payer = peers[s]
+    receive_transaction(payer,payer, txn, env)
+    env.process(forward_transaction(txn, payer, payer, env))
+
+
 # receive transaction from peers
 def receive_transaction(peer, hears_from, transaction, env):
     print(f"Peer {peer.id} recvs from {hears_from.id} T{transaction.txnid} at time {env.now}")
@@ -143,14 +155,15 @@ def receive_transaction(peer, hears_from, transaction, env):
 
 
 def forward_transaction(transaction, curr_peer, prev_peer, env):
-    transaction.reached_peers.add(curr_peer.id)
-    print(transaction.reached_peers)
+    print(transaction.will_reach_peers)
+    transaction.will_reach_peers.add(curr_peer.id)
     neighbours = list(links[curr_peer.id].keys())
     print(neighbours)
     for neighbour in neighbours:
-        if (neighbour != prev_peer.id) and (neighbour not in transaction.reached_peers):
+        if (neighbour != prev_peer.id) and (neighbour not in transaction.will_reach_peers):
             print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.txnid} at time {env.now}")
             link = links[curr_peer.id][neighbour]
+            transaction.will_reach_peers.add(neighbour)
             yield env.timeout(transaction.generate_qdelay(link))
             receive_transaction(peers[neighbour], curr_peer, transaction, env)
             env.process(forward_transaction(transaction, peers[neighbour], curr_peer, env))
@@ -179,14 +192,13 @@ def forward_transaction(transaction, curr_peer, prev_peer, env):
 
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 1000
+SIM_TIME = 10
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
 
-for i in range(3):
-    txn = Transaction(sender=peers[i], receiver=peers[8], coins=0)
-    receive_transaction(peers[i],peers[i], txn, env)
-    env.process(forward_transaction(txn, peers[i], peers[i], env))
+for i in range(100):
+    env.process(handle_transaction(env))
+    
 
 env.run(until=SIM_TIME)
