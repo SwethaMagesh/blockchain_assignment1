@@ -15,6 +15,17 @@ class Peer:
     
     def __str__(self):
         return str(self.id) + " " + str(self.slow) + " " + str(self.slowcpu)+ " " + str(self.hashpower)
+    
+    def add_block_to_tail(self, block):
+        node = TreeNode(block, self.tree)
+        print("DEBUG IN PEER ADD BLOCK TO TAIL", node.block.id, node, end="@@ ")
+        self.tree = node
+        node.print_tree()
+        print(end="@@ ")
+        self.tree.print_tree()
+        self.blockids.append(block.id)
+        # self.taillist[node] = 
+    
 
 class Link:
     def __init__(self, i, j, cij, roij):
@@ -76,3 +87,17 @@ class TreeNode:
     def __init__(self, block, prev):
         self.block = block
         self.prevNode = prev
+    
+    
+    
+    def __str__(self):
+        return str(self.block.id)
+    
+    def print_tree(self):
+        node = self
+        while node.prevNode != None:
+            print(node.block.id, end=" <- ")
+            node = node.prevNode
+        print(node.block.id)
+    
+

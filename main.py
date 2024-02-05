@@ -190,15 +190,34 @@ def forward_transaction(transaction, curr_peer, prev_peer, env):
     #     receive_transaction(peers[neighbour], curr_peer, transaction, env)
     #     env.process(forward_transaction(peers[neighbour], transaction, curr_peer, env))
 
+def mine_block(peer, env):
+    block = Block()
+    block.form_block(peer)
+    print(f"Peer {peer.id} forms B{block.id} at time {env.now}")
+    yield env.timeout(generate_Tk(peer, 10))
+    peer.add_block_to_tail(block)
+    print(f"{peer.id} 's Tree =>  {peer.tree.print_tree()}")
+    # env.process(forward_block(peer, block, env))
+    # env.process(validate_block(peer, block, env))
+    # env.process(receive_block(peer, block, env))
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 10
+SIM_TIME = 20
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
+genesis = Block()
+genesis_node = TreeNode(genesis, None)
+for i in range(n_peers):
+    peers[i].tree = genesis_node
+    peers[i].blockids.append(genesis.id)
+    peers[i].taillist[genesis_node] = 0
 
-for i in range(100):
+for i in range(50):
     env.process(handle_transaction(env))
-    
+
+for i in range(10):
+    env.process(mine_block(peers[i], env))
+
 
 env.run(until=SIM_TIME)

@@ -15,7 +15,7 @@ def create_random_transaction(num_of_peers, initial_state = False):
     return payer, payee, coins
 
 
-# def generate_Tk(peer, interval = 600):
-#         mean = interval / peer.hashpower
-#         Tk = random.expovariate(1 / mean)
-#         return Tk
+def generate_Tk(peer, interval = 600):
+        mean = interval / peer.hashpower
+        Tk = random.expovariate(1 / mean)
+        return Tk
