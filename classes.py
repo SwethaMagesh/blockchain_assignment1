@@ -7,7 +7,6 @@ class Peer:
         self.slowcpu = lowcpu
         self.hashpower = hashpower
         self.transactions_queue = []
-        self.sent_ids = {}
         self.tree = None
         self.blockids = []
         self.taillist = {}
@@ -18,11 +17,11 @@ class Peer:
     
     def add_block_to_tail(self, block):
         node = TreeNode(block, self.tree)
-        print("DEBUG IN PEER ADD BLOCK TO TAIL", node.block.id, node, end="@@ ")
+        # print("DEBUG IN PEER ADD BLOCK TO TAIL", node.block.id, node, end="@@ ")
         self.tree = node
-        node.print_tree()
-        print(end="@@ ")
-        self.tree.print_tree()
+        # node.print_tree()
+        # print(end="@@ ")
+        # self.tree.print_tree()
         self.blockids.append(block.id)
         # self.taillist[node] = 
     
@@ -65,14 +64,13 @@ class Block:
     
 class Transaction:
     txn_id = 0
-    reached_peers = set()
-    def __init__(self, sender, receiver, coins): 
+    def __init__(self, payer, payee, coins): 
         Transaction.txn_id += 1
         self.txnid = Transaction.txn_id
-        self.sender = sender
-        self.receiver = receiver
+        self.payer = payer
+        self.payee = payee
         self.coins = coins
-        Transaction.reached_peers = set()
+        self.sent_peers = set()
 
     def generate_qdelay(self, link):
         m_by_cij = 8/(link.cij*1024)

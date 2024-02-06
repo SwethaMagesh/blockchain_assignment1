@@ -1,11 +1,8 @@
 import argparse
-from blockchain import *
 import networkx as nx
 import random
 import matplotlib.pyplot as plt
-from peer import *
-from block import *
-from transaction import *
+from classes import *
 import simpy
 import time
 
@@ -143,7 +140,7 @@ def handle_transaction(env):
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
     print(f"Created T{txn.txnid} at time {env.now}")
     payer = peers[s]
-    receive_transaction(payer,payer, txn, env)
+    receive_transaction(payer, payer, txn, env)
     env.process(forward_transaction(txn, payer, payer, env))
 
 
@@ -155,40 +152,23 @@ def receive_transaction(peer, hears_from, transaction, env):
 
 
 def forward_transaction(transaction, curr_peer, prev_peer, env):
-    print(transaction.will_reach_peers)
-    transaction.will_reach_peers.add(curr_peer.id)
-    neighbours = list(links[curr_peer.id].keys())
-    print(neighbours)
-    for neighbour in neighbours:
-        if (neighbour != prev_peer.id) and (neighbour not in transaction.will_reach_peers):
-            print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.txnid} at time {env.now}")
-            link = links[curr_peer.id][neighbour]
-            transaction.will_reach_peers.add(neighbour)
-            yield env.timeout(transaction.generate_qdelay(link))
-            receive_transaction(peers[neighbour], curr_peer, transaction, env)
-            env.process(forward_transaction(transaction, peers[neighbour], curr_peer, env))
-    # if prev_peer.id in neighbours:
-    #     neighbours.remove(prev_peer.id)
-    #     if transaction.txnid in curr_peer.sent_ids:
-    #         curr_peer.sent_ids[transaction.txnid].append(prev_peer.id)
-    #     else:
-    #         curr_peer.sent_ids[transaction.txnid] = [prev_peer.id]
-    # print(f"Peer {curr_peer.id} sends to {neighbours}")
-    # for neighbour in neighbours:  
-    #     if transaction.txnid in curr_peer.sent_ids and neighbour in curr_peer.sent_ids[transaction.txnid]:
-    #         neighbours.remove(neighbour)
-    #         print(curr_peer.id, " already sent to ", neighbour)
-    #         continue
-    #     link = links[curr_peer.id][neighbour]
-    #     qdelay = transaction.generate_qdelay(link)
-    #     if transaction.txnid in curr_peer.sent_ids:
-    #         curr_peer.sent_ids[transaction.txnid].append(neighbour)
-    #     else:
-    #         curr_peer.sent_ids[transaction.txnid] = [neighbour]
-    #     print(f"Peer {curr_peer.id} to peer {neighbour}  T{transaction.txnid} at time {env.now}")
-    #     yield env.timeout(qdelay)
-    #     receive_transaction(peers[neighbour], curr_peer, transaction, env)
-    #     env.process(forward_transaction(peers[neighbour], transaction, curr_peer, env))
+    print(f"T{transaction.txnid} has already been sent by {transaction.sent_peers}")
+    if curr_peer.id in transaction.sent_peers:
+        print(f"Peer {curr_peer.id} already sent T{transaction.txnid}")
+        return
+    else:
+        transaction.sent_peers.add(curr_peer.id)
+        neighbours = list(links[curr_peer.id].keys())
+        print(f"Peer {curr_peer.id} sends to neighbours {neighbours}")
+
+        for neighbour in neighbours:
+            if (neighbour != prev_peer.id) :
+                print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.txnid} at time {env.now}")
+                link = links[curr_peer.id][neighbour]
+                yield env.timeout(transaction.generate_qdelay(link))
+                receive_transaction(peers[neighbour], curr_peer, transaction, env)
+                env.process(forward_transaction(transaction, peers[neighbour], curr_peer, env))
+   
 
 def mine_block(peer, env):
     block = Block()
