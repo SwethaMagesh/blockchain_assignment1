@@ -184,7 +184,25 @@ def forward_transaction(transaction, curr_peer, prev_peer, env):
                 yield env.timeout(transaction.generate_qdelay(link))
                 receive_transaction(peers[neighbour], curr_peer, transaction, env)
                 env.process(forward_transaction(transaction, peers[neighbour], curr_peer, env))
-   
+
+def forward_block(block, curr_peer, prev_peer, env):
+    print(f"B{block.id} has already been sent by {block.sent_peers}")
+    if curr_peer.id in block.sent_peers:
+        print(f"Peer {curr_peer.id} already sent B{block.id}")
+        return
+    else:
+        block.sent_peers.add(curr_peer.id)
+        neighbours = list(links[curr_peer.id].keys())
+        print(f"Peer {curr_peer.id} sends to neighbours {neighbours}")
+
+        for neighbour in neighbours:
+            if (neighbour != prev_peer.id) :
+                print(f"Peer {curr_peer.id} sends to   {neighbour}  B{block.id} at time {env.now}")
+                link = links[curr_peer.id][neighbour]
+                yield env.timeout(block.generate_qdelay(link))
+                receive_block(peers[neighbour], curr_peer, block, env)
+                env.process(forward_transaction(block, peers[neighbour], curr_peer, env))
+        
 
 def mine_block(peer, env):
     block = Block()

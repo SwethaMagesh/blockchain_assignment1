@@ -42,6 +42,7 @@ class Block:
     def __init__(self): 
         Block.id += 1
         self.id = Block.id
+        self.sent_peers = set()
         
     def form_block(self, peer):
         no_of_txn = random.randint(1, 10)
