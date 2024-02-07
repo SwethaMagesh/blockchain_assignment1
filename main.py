@@ -151,6 +151,15 @@ def handle_transaction(env):
     env.process(forward_transaction(txn, payer, payer, env))
 
 
+def receive_block(peer, hears_from, block, env):
+    print(f"Peer {peer.id} recvs from {hears_from.id} T{block.id} at time {env.now}")
+    isvalid = validate_block(block)
+    if isvalid :
+        if block.prevblockid in peer.blockids:
+            traverse_and_add()
+        else :
+            peer.pending_blocks_queue.append(block)
+
 # receive transaction from peers
 def receive_transaction(peer, hears_from, transaction, env):
     print(f"Peer {peer.id} recvs from {hears_from.id} T{transaction.txnid} at time {env.now}")

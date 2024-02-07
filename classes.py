@@ -11,6 +11,7 @@ class Peer:
         self.blockids = []
         self.taillist = {}
         self.pending_blocks_queue = []
+        self.balance = 0
     
     def __str__(self):
         return str(self.id) + " " + str(self.slow) + " " + str(self.slowcpu)+ " " + str(self.hashpower)
@@ -49,18 +50,13 @@ class Block:
         tail_node = max(peer.taillist, key=peer.taillist.get)
         self.prevblockid = tail_node.block.id
         self.coinbase = Transaction(None, peer, 50)
-    
-    def forward_block(self, block, peer):
-        pass
-    def validate_block(self, block):
-        pass
-    def receive_block(self, block):
-        pass
+
     def generate_qdelay(self, link):
-        cij = link.cij
-        mean = 96 / (cij * 1024) # 96 kb and cij Mbps gives mean in seconds
-        dij = random.expovariate(mean)
-        return dij
+        m_by_cij = 8/(link.cij*1024)
+        roij = link.roij/1000
+        mean = 96 / (link.cij * 1024)
+        dij = exponential_sample(mean)
+        return (roij +  dij + m_by_cij)
     
 class Transaction:
     txn_id = 0
