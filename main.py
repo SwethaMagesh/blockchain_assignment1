@@ -1,7 +1,6 @@
 import argparse
 import networkx as nx
 import random
-import matplotlib.pyplot as plt
 from classes import *
 import simpy
 import time
@@ -48,7 +47,6 @@ START_TIME = 0
 # generate a random graph with n peers and parameters
 G = nx.Graph()
 
-
 def generate_random_graph(n_peers, z0_slow, z1_low):
     for peer in range(n_peers):
         G.add_node(peer)
@@ -61,6 +59,19 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
                 break
             other_node = random.choice(possible_nodes)
             G.add_edge(node, other_node)
+    
+    # make the graph connected
+    clusters = connectedComponents(G,n_peers)
+    print(f"Clusters in the graph are {len(clusters)}")
+    visualize_graph(G)
+    if len(clusters) != 1:
+        for i in range(len(clusters)-1):
+            node = random.choice(clusters[i])
+            other_node = random.choice(clusters[i+1])
+            G.add_edge(node, other_node)
+    clusters = connectedComponents(G,n_peers)
+    print(f"Clusters in the graph are {len(clusters)}")
+    visualize_graph(G)
 
     # randomly allocate nodes as slow or lowcpu
     slow_peers = random.sample(range(n_peers), int(z0_slow * n_peers))
@@ -121,11 +132,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     for _, neighbor_link in links.items():
         for _, link_obj in neighbor_link.items():
             print(link_obj)
-    # visualize graph
-    # pos = nx.spring_layout(G)
-    # nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
-    #         font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
-    # plt.show()
+    
     return peers, links
 
 
@@ -193,7 +200,7 @@ for i in range(n_peers):
     peers[i].blockids.append(genesis.id)
     peers[i].taillist[genesis_node] = 0
 
-for i in range(50):
+for i in range(10):
     env.process(handle_transaction(env))
 
 for i in range(10):
