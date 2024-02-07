@@ -48,3 +48,29 @@ def generate_Tk(peer, interval = 600):
         mean = interval / peer.hashpower
         Tk = random.expovariate(1 / mean)
         return Tk
+
+def validate_block(block):
+    # every transaction of block should be valid
+    for txn in block.transactions:
+        if txn.payer.balance < txn.coins:
+            return False
+    return True
+
+def traverse_and_add(peer, block):
+    # if block.prevblockid is that of the taillist add
+    print(f"Traversing and adding block {block.id} to peer {peer.id}")
+    tails_to_check = peer.taillist.copy()
+    for tail in tails_to_check:
+        if tail.block.id == block.prevblockid:
+            should_form = peer.add_block_to_tail(block, tail)
+        else:
+            # if not, traverse the tree and add
+            while tail.prevNode != None :
+                if tail.prevNode.block.id == block.prevblockid:
+                    should_form = peer.add_block_to_tail(block, tail.prevNode)
+                    break
+                tail = tail.prevNode
+    return should_form
+            
+            
+    

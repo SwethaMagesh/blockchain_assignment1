@@ -63,7 +63,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     # make the graph connected
     clusters = connectedComponents(G,n_peers)
     print(f"Clusters in the graph are {len(clusters)}")
-    visualize_graph(G)
+    # visualize_graph(G)
     if len(clusters) != 1:
         for i in range(len(clusters)-1):
             node = random.choice(clusters[i])
@@ -71,7 +71,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
             G.add_edge(node, other_node)
     clusters = connectedComponents(G,n_peers)
     print(f"Clusters in the graph are {len(clusters)}")
-    visualize_graph(G)
+    # visualize_graph(G)
 
     # randomly allocate nodes as slow or lowcpu
     slow_peers = random.sample(range(n_peers), int(z0_slow * n_peers))
@@ -145,41 +145,35 @@ def handle_transaction(env):
     yield env.timeout(exponential_sample(I_txn))
     s, r, c = create_random_transaction(n_peers, initial_state=True)
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
+    peers[s].balance -= c
+    peers[r].balance += c
     print(f"Created T{txn.txnid} at time {env.now}")
     payer = peers[s]
     receive_transaction(payer, payer, txn, env)
     env.process(forward_transaction(txn, payer, payer, env))
 
 
-def receive_block(peer, hears_from, block, env):
-    print(f"Peer {peer.id} recvs from {hears_from.id} T{block.id} at time {env.now}")
-    isvalid = validate_block(block)
-    if isvalid :
-        if block.prevblockid in peer.blockids:
-            traverse_and_add()
-        else :
-            peer.pending_blocks_queue.append(block)
 
 # receive transaction from peers
 def receive_transaction(peer, hears_from, transaction, env):
-    print(f"Peer {peer.id} recvs from {hears_from.id} T{transaction.txnid} at time {env.now}")
+    # print(f"Peer {peer.id} recvs from {hears_from.id} T{transaction.txnid} at time {env.now}")
     if transaction.txnid not in [txn.txnid for txn in peer.transactions_queue]:
         peer.transactions_queue.append(transaction)
 
 
 def forward_transaction(transaction, curr_peer, prev_peer, env):
-    print(f"T{transaction.txnid} has already been sent by {transaction.sent_peers}")
+    # print(f"T{transaction.txnid} has already been sent by {transaction.sent_peers}")
     if curr_peer.id in transaction.sent_peers:
-        print(f"Peer {curr_peer.id} already sent T{transaction.txnid}")
+        # print(f"Peer {curr_peer.id} already sent T{transaction.txnid}")
         return
     else:
         transaction.sent_peers.add(curr_peer.id)
         neighbours = list(links[curr_peer.id].keys())
-        print(f"Peer {curr_peer.id} sends to neighbours {neighbours}")
+        # print(f"Peer {curr_peer.id} sends to neighbours {neighbours}")
 
         for neighbour in neighbours:
             if (neighbour != prev_peer.id) :
-                print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.txnid} at time {env.now}")
+                # print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.txnid} at time {env.now}")
                 link = links[curr_peer.id][neighbour]
                 yield env.timeout(transaction.generate_qdelay(link))
                 receive_transaction(peers[neighbour], curr_peer, transaction, env)
@@ -201,19 +195,35 @@ def forward_block(block, curr_peer, prev_peer, env):
                 link = links[curr_peer.id][neighbour]
                 yield env.timeout(block.generate_qdelay(link))
                 receive_block(peers[neighbour], curr_peer, block, env)
-                env.process(forward_transaction(block, peers[neighbour], curr_peer, env))
+                env.process(forward_block(block, peers[neighbour], curr_peer, env))
         
 
+def receive_block(peer, hears_from, block, env):
+    print(f"Peer {peer.id} recvs from {hears_from.id} B{block.id} at time {env.now}")
+    if block.id not in peer.blockids:
+        isvalid = validate_block(block)
+        should_form = False
+        if isvalid :
+            if block.prevblockid in peer.blockids:
+                should_form = traverse_and_add(peer, block)
+                print(f"Peer {peer.id} adds B{block.id} to tree at time {env.now}")
+            else :
+                print(f"Peer {peer.id} adds B{block.id} to pending queue at time {env.now}")
+                peer.pending_blocks_queue.append(block)
+        if should_form:
+            print(f"Peer {peer.id} starts to mine at time {env.now}")
+            env.process(mine_block(peer, env))
+            # cancel mine of previous
+    
+    
 def mine_block(peer, env):
     block = Block()
     block.form_block(peer)
-    print(f"Peer {peer.id} forms B{block.id} at time {env.now}")
     yield env.timeout(generate_Tk(peer, 10))
-    peer.add_block_to_tail(block)
+    print(f"Peer {peer.id} forms B{block.id} at time {env.now}")
+    peer.add_block_to_tail(block, peer.tree)
     print(f"{peer.id} 's Tree =>  {peer.tree.print_tree()}")
-    # env.process(forward_block(peer, block, env))
-    # env.process(validate_block(peer, block, env))
-    # env.process(receive_block(peer, block, env))
+    env.process(forward_block(block,peer, peer, env))
 
 RANDOM_SEED = int(time.time())
 SIM_TIME = 20
