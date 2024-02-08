@@ -59,17 +59,22 @@ def validate_block(block):
 def traverse_and_add(peer, block):
     # if block.prevblockid is that of the taillist add
     print(f"Traversing and adding block {block.id} to peer {peer.id}")
-    tails_to_check = peer.taillist.copy()
-    for tail in tails_to_check:
+    found = False
+    should_form = False
+    for tail in peer.taillist:
         if tail.block.id == block.prevblockid:
-            should_form = peer.add_block_to_tail(block, tail)
-        else:
-            # if not, traverse the tree and add
-            while tail.prevNode != None :
-                if tail.prevNode.block.id == block.prevblockid:
-                    should_form = peer.add_block_to_tail(block, tail.prevNode)
-                    break
-                tail = tail.prevNode
+            found = True
+            break
+    if found:
+        should_form = peer.add_block_to_tail(block, tail)
+    
+        # else:
+        #     # if not, traverse the tree and add
+        #     while tail.prevNode != None :
+        #         if tail.prevNode.block.id == block.prevblockid:
+        #             should_form = peer.add_block_to_tail(block, tail.prevNode)
+        #             break
+        #         tail = tail.prevNode
     return should_form
             
             

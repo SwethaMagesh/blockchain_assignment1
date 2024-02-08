@@ -221,8 +221,9 @@ def mine_block(peer, env):
     block.form_block(peer)
     yield env.timeout(generate_Tk(peer, 10))
     print(f"Peer {peer.id} forms B{block.id} at time {env.now}")
-    peer.add_block_to_tail(block, peer.tree)
-    print(f"{peer.id} 's Tree =>  {peer.tree.print_tree()}")
+    longest_tail =  max(peer.taillist, key=peer.taillist.get)
+    peer.add_block_to_tail(block, longest_tail)
+    print(f"{peer.id} 's Tree =>  {longest_tail.print_tree()}")
     env.process(forward_block(block,peer, peer, env))
 
 RANDOM_SEED = int(time.time())
