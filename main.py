@@ -47,6 +47,7 @@ START_TIME = 0
 # generate a random graph with n peers and parameters
 G = nx.Graph()
 
+
 def generate_random_graph(n_peers, z0_slow, z1_low):
     for peer in range(n_peers):
         G.add_node(peer)
@@ -254,3 +255,6 @@ env.process(mine_block(peers[5], env))
 
 
 env.run(until=SIM_TIME)
+
+# visualize_graph(peers[5].blockchain)
+# visualize_graph(peers[8].blockchain)

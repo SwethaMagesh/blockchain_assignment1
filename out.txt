@@ -1,0 +1,1060 @@
+peers in network        =  10
+fraction slow peers     =  0.3
+fraction low CPU peers  =  0.4
+transaction interval    =  10.0
+block interval          =  10.0
+Clusters in the graph are 1
+Clusters in the graph are 1
+Edges : 
+[(0, 8), (0, 5), (0, 2), (0, 7), (1, 2), (1, 8), (1, 5), (1, 3), (1, 7), (1, 9), (2, 5), (2, 3), (2, 4), (2, 8), (3, 6), (3, 7), (3, 4), (4, 8), (5, 6), (5, 9), (6, 7), (7, 9), (8, 9)]
+Nodes : 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Degree : 
+4 6 6 5 3 5 3 5 5 4 
+Slow Peers : 
+[0, 1, 6]
+Low CPU Peers : 
+[7, 0, 3, 1]
+Peers : 
+0 True True 0.15625
+1 True True 0.15625
+2 False False 1.5625
+3 False True 0.15625
+4 False False 1.5625
+5 False False 1.5625
+6 True False 1.5625
+7 False True 0.15625
+8 False False 1.5625
+9 False False 1.5625
+Links : 
+0 8 5 224
+0 5 5 225
+0 2 5 403
+0 7 5 287
+8 0 5 224
+8 1 5 372
+8 2 100 228
+8 4 100 67
+8 9 100 67
+5 0 5 225
+5 1 5 377
+5 2 100 183
+5 6 5 257
+5 9 100 98
+2 0 5 403
+2 1 5 55
+2 5 100 183
+2 3 100 295
+2 4 100 374
+2 8 100 228
+7 0 5 287
+7 1 5 174
+7 3 100 438
+7 6 5 56
+7 9 100 110
+1 2 5 55
+1 8 5 372
+1 5 5 377
+1 3 5 443
+1 7 5 174
+1 9 5 102
+3 1 5 443
+3 2 100 295
+3 6 5 165
+3 7 100 438
+3 4 100 218
+9 1 5 102
+9 5 100 98
+9 7 100 110
+9 8 100 67
+4 2 100 374
+4 3 100 218
+4 8 100 67
+6 3 5 165
+6 5 5 257
+6 7 5 56
+Mining block
+will wait for 6.130933817483416 seconds
+Created T1 at time 2.4308849747323955
+Created T2 at time 4.8107884486700865
+Peer 5 Tree =>  2 <- 1
+Peer 5 forms/ mines / adds to tree B2 at time 6.130933817483416
+ISVALID True 2
+Traversing and adding block 2 to peer 0
+Peer 0 adds B2 to tree at time 6.368632061672598
+Peer 0 Whole Tree =>  Peer 0 Tree =>  2 <- 1
+Peer 0 starts to mine at time 6.368632061672598
+Mining block
+will wait for 105.47033516959853 seconds
+ISVALID True 2
+Traversing and adding block 2 to peer 8
+Peer 8 adds B2 to tree at time 6.597894788052453
+Peer 8 Whole Tree =>  Peer 8 Tree =>  2 <- 1
+Peer 8 starts to mine at time 6.597894788052453
+Mining block
+will wait for 0.5223659029090302 seconds
+ISVALID True 2
+Traversing and adding block 2 to peer 1
+Peer 1 adds B2 to tree at time 6.762711611372954
+Peer 1 Whole Tree =>  Peer 1 Tree =>  2 <- 1
+Peer 1 starts to mine at time 6.762711611372954
+Mining block
+will wait for 68.28738703114408 seconds
+ISVALID True 2
+Traversing and adding block 2 to peer 2
+Peer 2 adds B2 to tree at time 6.847487579090326
+Peer 2 Whole Tree =>  Peer 2 Tree =>  2 <- 1
+Peer 2 starts to mine at time 6.847487579090326
+Mining block
+will wait for 0.6749696438258224 seconds
+Created T4 at time 7.22106338464394
+ISVALID True 2
+Traversing and adding block 2 to peer 6
+Peer 6 adds B2 to tree at time 7.229619755107962
+Peer 6 Whole Tree =>  Peer 6 Tree =>  2 <- 1
+Peer 6 starts to mine at time 7.229619755107962
+Mining block
+will wait for 4.523079042961599 seconds
+ISVALID True 2
+Traversing and adding block 2 to peer 4
+Peer 4 adds B2 to tree at time 7.27306287993775
+Peer 4 Whole Tree =>  Peer 4 Tree =>  2 <- 1
+Peer 4 starts to mine at time 7.27306287993775
+Mining block
+will wait for 0.2903651082554535 seconds
+ISVALID True 2
+Traversing and adding block 2 to peer 7
+Peer 7 adds B2 to tree at time 7.301546033050178
+Peer 7 Whole Tree =>  Peer 7 Tree =>  2 <- 1
+Peer 7 starts to mine at time 7.301546033050178
+Mining block
+will wait for 34.06040986565699 seconds
+ISVALID True 2
+Traversing and adding block 2 to peer 9
+Peer 9 adds B2 to tree at time 7.327718503723103
+Peer 9 Whole Tree =>  Peer 9 Tree =>  2 <- 1
+Peer 9 starts to mine at time 7.327718503723103
+Mining block
+will wait for 6.445084982575446 seconds
+ISVALID True 2
+Traversing and adding block 2 to peer 3
+Peer 3 adds B2 to tree at time 7.403444125632275
+Peer 3 Whole Tree =>  Peer 3 Tree =>  2 <- 1
+Peer 3 starts to mine at time 7.403444125632275
+Mining block
+will wait for 50.60234087352628 seconds
+Created T5 at time 7.83222257599182
+Created T6 at time 10.340509837273549
+Peer 6 Tree =>  6 <- 2 <- 1
+Peer 6 forms/ mines / adds to tree B6 at time 11.752698798069561
+ISVALID True 6
+Traversing and adding block 6 to peer 3
+Peer 3 adds B6 to tree at time 11.952280828403627
+Peer 3 Whole Tree =>  Peer 3 Tree =>  6 <- 2 <- 1
+Peer 3 starts to mine at time 11.952280828403627
+Mining block
+will wait for 207.4673866618116 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 5
+Peer 5 adds B6 to tree at time 12.218949434078917
+Peer 5 Whole Tree =>  Peer 5 Tree =>  6 <- 2 <- 1
+Peer 5 starts to mine at time 12.218949434078917
+Mining block
+will wait for 3.5816333910405094 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 7
+Peer 7 adds B6 to tree at time 12.310183280157819
+Peer 7 Whole Tree =>  Peer 7 Tree =>  6 <- 2 <- 1
+Peer 7 starts to mine at time 12.310183280157819
+Mining block
+will wait for 68.38469876122049 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 1
+Peer 1 adds B6 to tree at time 12.401942194803498
+Peer 1 Whole Tree =>  Peer 1 Tree =>  6 <- 2 <- 1
+Peer 1 starts to mine at time 12.401942194803498
+Mining block
+will wait for 7.217034947158692 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 0
+Peer 0 adds B6 to tree at time 12.469512379977852
+Peer 0 Whole Tree =>  Peer 0 Tree =>  6 <- 2 <- 1
+Peer 0 starts to mine at time 12.469512379977852
+Mining block
+will wait for 117.61864927487272 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 2
+Peer 2 adds B6 to tree at time 12.497930830127366
+Peer 2 Whole Tree =>  Peer 2 Tree =>  6 <- 2 <- 1
+Peer 2 starts to mine at time 12.497930830127366
+Mining block
+will wait for 3.267183048798576 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 8
+Peer 8 adds B6 to tree at time 12.695106096772502
+Peer 8 Whole Tree =>  Peer 8 Tree =>  6 <- 2 <- 1
+Peer 8 starts to mine at time 12.695106096772502
+Mining block
+will wait for 3.4211881436663396 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 9
+Peer 9 adds B6 to tree at time 13.139727966597809
+Peer 9 Whole Tree =>  Peer 9 Tree =>  6 <- 2 <- 1
+Peer 9 starts to mine at time 13.139727966597809
+Mining block
+will wait for 8.652797118831247 seconds
+ISVALID True 6
+Traversing and adding block 6 to peer 4
+Peer 4 adds B6 to tree at time 13.35628642342453
+Peer 4 Whole Tree =>  Peer 4 Tree =>  6 <- 2 <- 1
+Peer 4 starts to mine at time 13.35628642342453
+Mining block
+will wait for 4.520066400504012 seconds
+Created T8 at time 14.764027924814336
+Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 forms/ mines / adds to tree B7 at time 15.765113878925941
+Peer 5 Tree =>  8 <- 6 <- 2 <- 1
+Peer 5 forms/ mines / adds to tree B8 at time 15.800582825119427
+ISVALID True 8
+Traversing and adding block 8 to peer 0
+Peer 0 adds B8 to tree at time 16.062805545503856
+Peer 0 Whole Tree =>  Peer 0 Tree =>  8 <- 6 <- 2 <- 1
+Peer 0 starts to mine at time 16.062805545503856
+Mining block
+will wait for 51.153689001196234 seconds
+Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 forms/ mines / adds to tree B9 at time 16.11629424043884
+ISVALID True 7
+Traversing and adding block 7 to peer 0
+Block 7 is not a tail block
+FORKED  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 0 Tree =>  8 <- 6 <- 2 <- 1
+Peer 0 adds B7 to tree at time 16.186855338210485
+Peer 0 Whole Tree =>  Peer 0 Tree =>  8 <- 6 <- 2 <- 1
+Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 1
+Peer 1 adds B7 to tree at time 16.263581530497643
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 starts to mine at time 16.263581530497643
+Mining block
+will wait for 169.23145897033453 seconds
+ISVALID True 8
+Traversing and adding block 8 to peer 8
+Block 8 is not a tail block
+FORKED  Peer 8 Tree =>  8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 adds B8 to tree at time 16.30269943345544
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  8 <- 6 <- 2 <- 1
+ISVALID True 9
+Traversing and adding block 9 to peer 0
+Block 9 is not a tail block
+FORKED  Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 0 Tree =>  8 <- 6 <- 2 <- 1
+Peer 0 adds B9 to tree at time 16.381516176343077
+Peer 0 Whole Tree =>  Peer 0 Tree =>  8 <- 6 <- 2 <- 1
+Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 8
+Block 7 is not a tail block
+FORKED  Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 adds B7 to tree at time 16.425349014038805
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  8 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 5
+Block 7 is not a tail block
+FORKED  Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 5 Tree =>  8 <- 6 <- 2 <- 1
+Peer 5 adds B7 to tree at time 16.447450694429758
+Peer 5 Whole Tree =>  Peer 5 Tree =>  8 <- 6 <- 2 <- 1
+Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+ISVALID True 8
+Traversing and adding block 8 to peer 1
+Block 8 is not a tail block
+FORKED  Peer 1 Tree =>  8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 adds B8 to tree at time 16.472529916025692
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  8 <- 6 <- 2 <- 1
+ISVALID True 8
+Traversing and adding block 8 to peer 2
+Block 8 is not a tail block
+FORKED  Peer 2 Tree =>  8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 adds B8 to tree at time 16.53360437358596
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  8 <- 6 <- 2 <- 1
+ISVALID True 9
+Traversing and adding block 9 to peer 5
+Block 9 is not a tail block
+FORKED  Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 5 Tree =>  8 <- 6 <- 2 <- 1
+Peer 5 adds B9 to tree at time 16.619004323218206
+Peer 5 Whole Tree =>  Peer 5 Tree =>  8 <- 6 <- 2 <- 1
+Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 3
+Peer 3 adds B7 to tree at time 16.742591438213942
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 starts to mine at time 16.742591438213942
+Mining block
+will wait for 20.76254639764858 seconds
+ISVALID True 9
+Traversing and adding block 9 to peer 1
+Block 9 is not a tail block
+FORKED  Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 adds B9 to tree at time 16.77938432668631
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  8 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 9
+Traversing and adding block 9 to peer 2
+Block 9 is not a tail block
+FORKED  Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 adds B9 to tree at time 16.910327181034575
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  8 <- 6 <- 2 <- 1
+Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 7
+Peer 7 adds B7 to tree at time 16.959604369782568
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 starts to mine at time 16.959604369782568
+Mining block
+will wait for 47.60155169753484 seconds
+ISVALID True 8
+Traversing and adding block 8 to peer 6
+Peer 6 adds B8 to tree at time 16.973361417405002
+Peer 6 Whole Tree =>  Peer 6 Tree =>  8 <- 6 <- 2 <- 1
+Peer 6 starts to mine at time 16.973361417405002
+Mining block
+will wait for 0.3281535649111382 seconds
+ISVALID True 8
+Traversing and adding block 8 to peer 4
+Peer 4 adds B8 to tree at time 16.992540829694896
+Peer 4 Whole Tree =>  Peer 4 Tree =>  8 <- 6 <- 2 <- 1
+Peer 4 starts to mine at time 16.992540829694896
+Mining block
+will wait for 3.8954751781684154 seconds
+ISVALID True 8
+Traversing and adding block 8 to peer 7
+Block 8 is not a tail block
+FORKED  Peer 7 Tree =>  8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 adds B8 to tree at time 17.008923878808076
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  8 <- 6 <- 2 <- 1
+ISVALID True 8
+Traversing and adding block 8 to peer 9
+Peer 9 adds B8 to tree at time 17.06019379650879
+Peer 9 Whole Tree =>  Peer 9 Tree =>  8 <- 6 <- 2 <- 1
+Peer 9 starts to mine at time 17.06019379650879
+Mining block
+will wait for 6.8563188634931524 seconds
+ISVALID True 9
+Traversing and adding block 9 to peer 4
+Block 9 is not a tail block
+FORKED  Peer 4 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 4 Tree =>  8 <- 6 <- 2 <- 1
+Peer 4 adds B9 to tree at time 17.074663352704807
+Peer 4 Whole Tree =>  Peer 4 Tree =>  8 <- 6 <- 2 <- 1
+Peer 4 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 4
+Block 7 is not a tail block
+FORKED  Peer 4 Tree =>  7 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 4 Tree =>  8 <- 6 <- 2 <- 1
+Peer 4 adds B7 to tree at time 17.116781993340968
+Peer 4 Whole Tree =>  Peer 4 Tree =>  8 <- 6 <- 2 <- 1
+Peer 4 Tree =>  9 <- 6 <- 2 <- 1
+Peer 4 Tree =>  7 <- 6 <- 2 <- 1
+ISVALID True 9
+Traversing and adding block 9 to peer 9
+Block 9 is not a tail block
+FORKED  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 9 Tree =>  8 <- 6 <- 2 <- 1
+Peer 9 adds B9 to tree at time 17.142625962576748
+Peer 9 Whole Tree =>  Peer 9 Tree =>  8 <- 6 <- 2 <- 1
+Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 8
+Traversing and adding block 8 to peer 3
+Block 8 is not a tail block
+FORKED  Peer 3 Tree =>  8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 adds B8 to tree at time 17.142790763336148
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  8 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 9
+Block 7 is not a tail block
+FORKED  Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 9 Tree =>  8 <- 6 <- 2 <- 1
+Peer 9 adds B7 to tree at time 17.186907187601722
+Peer 9 Whole Tree =>  Peer 9 Tree =>  8 <- 6 <- 2 <- 1
+Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+ISVALID True 9
+Traversing and adding block 9 to peer 7
+Block 9 is not a tail block
+FORKED  Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 adds B9 to tree at time 17.332895903099683
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  8 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 7
+Traversing and adding block 7 to peer 6
+Block 7 is not a tail block
+FORKED  Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 6 Tree =>  8 <- 6 <- 2 <- 1
+Peer 6 adds B7 to tree at time 17.352996563527935
+Peer 6 Whole Tree =>  Peer 6 Tree =>  8 <- 6 <- 2 <- 1
+Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+ISVALID True 9
+Traversing and adding block 9 to peer 6
+Block 9 is not a tail block
+FORKED  Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 6 Tree =>  8 <- 6 <- 2 <- 1
+Peer 6 adds B9 to tree at time 17.500766393062154
+Peer 6 Whole Tree =>  Peer 6 Tree =>  8 <- 6 <- 2 <- 1
+Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+ISVALID True 9
+Traversing and adding block 9 to peer 3
+Block 9 is not a tail block
+FORKED  Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 adds B9 to tree at time 17.66773069678551
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  8 <- 6 <- 2 <- 1
+Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+Created T12 at time 17.66943777211607
+Created T13 at time 20.211949116836085
+Peer 4 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 4 forms/ mines / adds to tree B11 at time 20.88801600786331
+ISVALID True 11
+Traversing and adding block 11 to peer 2
+Peer 2 adds B11 to tree at time 21.265117269113833
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+Peer 2 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 2 starts to mine at time 21.265117269113833
+Mining block
+will wait for 2.7319946002547164 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 3
+Peer 3 adds B11 to tree at time 21.486408300759827
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+Peer 3 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 3 starts to mine at time 21.486408300759827
+Mining block
+will wait for 63.52293314595095 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 8
+Peer 8 adds B11 to tree at time 21.555174578148662
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+Peer 8 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 8 starts to mine at time 21.555174578148662
+Mining block
+will wait for 2.8399745301548807 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 0
+Peer 0 adds B11 to tree at time 21.695169613038814
+Peer 0 Whole Tree =>  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+Peer 0 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 0 starts to mine at time 21.695169613038814
+Mining block
+will wait for 30.866726681922064 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 1
+Peer 1 adds B11 to tree at time 21.792114450323737
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+Peer 1 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 1 starts to mine at time 21.792114450323737
+Mining block
+will wait for 100.03100777568734 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 5
+Peer 5 adds B11 to tree at time 21.975346002259247
+Peer 5 Whole Tree =>  Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+Peer 5 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 5 starts to mine at time 21.975346002259247
+Mining block
+will wait for 0.852569492631339 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 6
+Peer 6 adds B11 to tree at time 22.42827389306372
+Peer 6 Whole Tree =>  Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+Peer 6 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 6 starts to mine at time 22.42827389306372
+Mining block
+will wait for 7.257495355979681 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 9
+Peer 9 adds B11 to tree at time 22.467621263768407
+Peer 9 Whole Tree =>  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+Peer 9 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 9 starts to mine at time 22.467621263768407
+Mining block
+will wait for 6.819198684707041 seconds
+ISVALID True 11
+Traversing and adding block 11 to peer 7
+Peer 7 adds B11 to tree at time 22.51738253861259
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+Peer 7 Tree =>  11 <- 8 <- 6 <- 2 <- 1
+Peer 7 starts to mine at time 22.51738253861259
+Mining block
+will wait for 63.075545917407226 seconds
+Peer 5 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 forms/ mines / adds to tree B12 at time 22.827915494890586
+ISVALID True 12
+Traversing and adding block 12 to peer 0
+Peer 0 adds B12 to tree at time 23.062496916980674
+Peer 0 Whole Tree =>  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+Peer 0 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 starts to mine at time 23.062496916980674
+Mining block
+will wait for 72.26256835662964 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 8
+Peer 8 adds B12 to tree at time 23.307270091210718
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+Peer 8 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 starts to mine at time 23.307270091210718
+Mining block
+will wait for 0.9301199208837131 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 1
+Peer 1 adds B12 to tree at time 23.445391449538743
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+Peer 1 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 starts to mine at time 23.445391449538743
+Mining block
+will wait for 13.079278191410737 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 2
+Peer 2 adds B12 to tree at time 23.502154834627483
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+Peer 2 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 starts to mine at time 23.502154834627483
+Mining block
+will wait for 6.1221888893344545 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 6
+Peer 6 adds B12 to tree at time 23.889654025010486
+Peer 6 Whole Tree =>  Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+Peer 6 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 starts to mine at time 23.889654025010486
+Mining block
+will wait for 1.6444326092822936 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 4
+Peer 4 adds B12 to tree at time 23.980427230559805
+Peer 4 Whole Tree =>  Peer 4 Tree =>  9 <- 6 <- 2 <- 1
+Peer 4 Tree =>  7 <- 6 <- 2 <- 1
+Peer 4 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 starts to mine at time 23.980427230559805
+Mining block
+will wait for 1.6308441445753428 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 9
+Peer 9 adds B12 to tree at time 23.990565158651187
+Peer 9 Whole Tree =>  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+Peer 9 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 starts to mine at time 23.990565158651187
+Mining block
+will wait for 11.964063682455532 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 7
+Peer 7 adds B12 to tree at time 24.039223750119664
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+Peer 7 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 starts to mine at time 24.039223750119664
+Mining block
+will wait for 16.525628163870767 seconds
+ISVALID True 12
+Traversing and adding block 12 to peer 3
+Peer 3 adds B12 to tree at time 24.070315167128406
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+Peer 3 Tree =>  12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 starts to mine at time 24.070315167128406
+Mining block
+will wait for 23.94044590106665 seconds
+Created T16 at time 24.338061433999023
+Peer 6 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 forms/ mines / adds to tree B14 at time 25.53408663429278
+Peer 4 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 forms/ mines / adds to tree B15 at time 25.611271375135146
+ISVALID True 14
+Traversing and adding block 14 to peer 3
+Peer 3 adds B14 to tree at time 25.70858166434906
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+Peer 3 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 starts to mine at time 25.70858166434906
+Mining block
+will wait for 329.9355393477723 seconds
+ISVALID True 15
+Traversing and adding block 15 to peer 2
+Peer 2 adds B15 to tree at time 25.985575663638013
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+Peer 2 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 starts to mine at time 25.985575663638013
+Mining block
+will wait for 1.1711015765151482 seconds
+ISVALID True 14
+Traversing and adding block 14 to peer 5
+Peer 5 adds B14 to tree at time 25.999066766473618
+Peer 5 Whole Tree =>  Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+Peer 5 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 starts to mine at time 25.999066766473618
+Mining block
+will wait for 17.735380280196374 seconds
+ISVALID True 14
+Traversing and adding block 14 to peer 7
+Peer 7 adds B14 to tree at time 26.05773480199068
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+Peer 7 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 starts to mine at time 26.05773480199068
+Mining block
+will wait for 164.92710495328333 seconds
+ISVALID True 14
+Traversing and adding block 14 to peer 1
+Peer 1 adds B14 to tree at time 26.162048075589855
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+Peer 1 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 starts to mine at time 26.162048075589855
+Mining block
+will wait for 13.155100294335327 seconds
+ISVALID True 15
+Traversing and adding block 15 to peer 3
+Block 15 is not a tail block
+FORKED  Peer 3 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 3 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 adds B15 to tree at time 26.204509386040606
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+Peer 3 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 14
+Traversing and adding block 14 to peer 2
+Block 14 is not a tail block
+FORKED  Peer 2 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 2 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 adds B14 to tree at time 26.234218432465102
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+Peer 2 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 14
+Traversing and adding block 14 to peer 0
+Peer 0 adds B14 to tree at time 26.270456355128427
+Peer 0 Whole Tree =>  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+Peer 0 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 starts to mine at time 26.270456355128427
+Mining block
+will wait for 30.67197261190263 seconds
+ISVALID True 15
+Traversing and adding block 15 to peer 8
+Peer 8 adds B15 to tree at time 26.27274130176928
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+Peer 8 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 starts to mine at time 26.27274130176928
+Mining block
+will wait for 3.07227504851543 seconds
+ISVALID True 15
+Traversing and adding block 15 to peer 0
+Block 15 is not a tail block
+FORKED  Peer 0 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 0 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 adds B15 to tree at time 26.40178579978857
+Peer 0 Whole Tree =>  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+Peer 0 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 15
+Traversing and adding block 15 to peer 1
+Block 15 is not a tail block
+FORKED  Peer 1 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 1 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 adds B15 to tree at time 26.460198183006444
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+Peer 1 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 14
+Traversing and adding block 14 to peer 8
+Block 14 is not a tail block
+FORKED  Peer 8 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 8 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 adds B14 to tree at time 26.498268399879937
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+Peer 8 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 15
+Traversing and adding block 15 to peer 5
+Block 15 is not a tail block
+FORKED  Peer 5 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 5 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 adds B15 to tree at time 26.64344922565042
+Peer 5 Whole Tree =>  Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+Peer 5 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 14
+Traversing and adding block 14 to peer 9
+Peer 9 adds B14 to tree at time 26.949421623850377
+Peer 9 Whole Tree =>  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+Peer 9 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 starts to mine at time 26.949421623850377
+Mining block
+will wait for 10.470527640542535 seconds
+ISVALID True 14
+Traversing and adding block 14 to peer 4
+Block 14 is not a tail block
+FORKED  Peer 4 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 4 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 adds B14 to tree at time 27.12051241595556
+Peer 4 Whole Tree =>  Peer 4 Tree =>  9 <- 6 <- 2 <- 1
+Peer 4 Tree =>  7 <- 6 <- 2 <- 1
+Peer 4 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 15
+Traversing and adding block 15 to peer 6
+Block 15 is not a tail block
+FORKED  Peer 6 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 6 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 adds B15 to tree at time 27.12347329025983
+Peer 6 Whole Tree =>  Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+Peer 6 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 forms/ mines / adds to tree B16 at time 27.15667724015316
+ISVALID True 15
+Traversing and adding block 15 to peer 7
+Block 15 is not a tail block
+FORKED  Peer 7 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 7 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 adds B15 to tree at time 27.19017719935451
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+Peer 7 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 15
+Traversing and adding block 15 to peer 9
+Block 15 is not a tail block
+FORKED  Peer 9 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+LONGEST TAIL  Peer 9 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 adds B15 to tree at time 27.20046947548393
+Peer 9 Whole Tree =>  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+Peer 9 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 Tree =>  15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+ISVALID True 16
+Traversing and adding block 16 to peer 0
+Peer 0 adds B16 to tree at time 27.56656389063154
+Peer 0 Whole Tree =>  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+Peer 0 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 starts to mine at time 27.56656389063154
+Mining block
+will wait for 52.875348196707264 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 1
+Peer 1 adds B16 to tree at time 27.65276981730493
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+Peer 1 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 starts to mine at time 27.65276981730493
+Mining block
+will wait for 146.3714571301394 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 8
+Peer 8 adds B16 to tree at time 27.804644015932826
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+Peer 8 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 starts to mine at time 27.804644015932826
+Mining block
+will wait for 1.8041156342753495 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 5
+Peer 5 adds B16 to tree at time 27.835954609145098
+Peer 5 Whole Tree =>  Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+Peer 5 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 starts to mine at time 27.835954609145098
+Mining block
+will wait for 0.4201367074675547 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 3
+Peer 3 adds B16 to tree at time 28.132647848961994
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+Peer 3 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 starts to mine at time 28.132647848961994
+Mining block
+will wait for 102.47913784894828 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 7
+Peer 7 adds B16 to tree at time 28.338131697106395
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+Peer 7 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 starts to mine at time 28.338131697106395
+Mining block
+will wait for 64.54007783099276 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 4
+Peer 4 adds B16 to tree at time 28.508310405706307
+Peer 4 Whole Tree =>  Peer 4 Tree =>  9 <- 6 <- 2 <- 1
+Peer 4 Tree =>  7 <- 6 <- 2 <- 1
+Peer 4 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 starts to mine at time 28.508310405706307
+Mining block
+will wait for 9.455905112617305 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 9
+Peer 9 adds B16 to tree at time 28.58221609489134
+Peer 9 Whole Tree =>  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+Peer 9 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 starts to mine at time 28.58221609489134
+Mining block
+will wait for 1.9757760307673564 seconds
+ISVALID True 16
+Traversing and adding block 16 to peer 6
+Peer 6 adds B16 to tree at time 28.71994927160386
+Peer 6 Whole Tree =>  Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+Peer 6 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 Tree =>  16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 starts to mine at time 28.71994927160386
+Mining block
+will wait for 0.32010305820780494 seconds
+Created T20 at time 30.86490009976261
+Peer 4 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 forms/ mines / adds to tree B21 at time 37.96421551832361
+ISVALID True 21
+Traversing and adding block 21 to peer 2
+Peer 2 adds B21 to tree at time 38.33831349116305
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+Peer 2 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 starts to mine at time 38.33831349116305
+Mining block
+will wait for 19.25915877149759 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 3
+Peer 3 adds B21 to tree at time 38.557222510522536
+Peer 3 Whole Tree =>  Peer 3 Tree =>  7 <- 6 <- 2 <- 1
+Peer 3 Tree =>  9 <- 6 <- 2 <- 1
+Peer 3 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 starts to mine at time 38.557222510522536
+Mining block
+will wait for 44.78846645988068 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 8
+Peer 8 adds B21 to tree at time 38.625127704837944
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+Peer 8 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 starts to mine at time 38.625127704837944
+Mining block
+will wait for 10.951811485430508 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 0
+Peer 0 adds B21 to tree at time 38.757364289121846
+Peer 0 Whole Tree =>  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+Peer 0 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 starts to mine at time 38.757364289121846
+Mining block
+will wait for 103.05447592206139 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 1
+Peer 1 adds B21 to tree at time 38.82626866117598
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+Peer 1 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 starts to mine at time 38.82626866117598
+Mining block
+will wait for 84.61629981393912 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 5
+Peer 5 adds B21 to tree at time 39.00956576476161
+Peer 5 Whole Tree =>  Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+Peer 5 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 starts to mine at time 39.00956576476161
+Mining block
+will wait for 6.1774292607933114 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 6
+Peer 6 adds B21 to tree at time 39.472133091533465
+Peer 6 Whole Tree =>  Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+Peer 6 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 starts to mine at time 39.472133091533465
+Mining block
+will wait for 1.6648993352382917 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 7
+Peer 7 adds B21 to tree at time 39.51525853459128
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+Peer 7 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 starts to mine at time 39.51525853459128
+Mining block
+will wait for 25.668993968766856 seconds
+ISVALID True 21
+Traversing and adding block 21 to peer 9
+Peer 9 adds B21 to tree at time 39.58242211754996
+Peer 9 Whole Tree =>  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+Peer 9 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 Tree =>  21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 starts to mine at time 39.58242211754996
+Mining block
+will wait for 0.4795290361485047 seconds
+Peer 3 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 3 forms/ mines / adds to tree B28 at time 83.34568897040322
+ISVALID True 28
+Traversing and adding block 28 to peer 1
+Peer 1 adds B28 to tree at time 83.81351525723463
+Peer 1 Whole Tree =>  Peer 1 Tree =>  7 <- 6 <- 2 <- 1
+Peer 1 Tree =>  9 <- 6 <- 2 <- 1
+Peer 1 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 1 starts to mine at time 83.81351525723463
+Mining block
+will wait for 6.194306674640276 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 2
+Peer 2 adds B28 to tree at time 83.8805158080198
+Peer 2 Whole Tree =>  Peer 2 Tree =>  7 <- 6 <- 2 <- 1
+Peer 2 Tree =>  9 <- 6 <- 2 <- 1
+Peer 2 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 2 starts to mine at time 83.8805158080198
+Mining block
+will wait for 6.420008456406437 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 8
+Peer 8 adds B28 to tree at time 84.26230327494248
+Peer 8 Whole Tree =>  Peer 8 Tree =>  9 <- 6 <- 2 <- 1
+Peer 8 Tree =>  7 <- 6 <- 2 <- 1
+Peer 8 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 8 starts to mine at time 84.26230327494248
+Mining block
+will wait for 8.146922125969928 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 6
+Peer 6 adds B28 to tree at time 84.2797814086772
+Peer 6 Whole Tree =>  Peer 6 Tree =>  7 <- 6 <- 2 <- 1
+Peer 6 Tree =>  9 <- 6 <- 2 <- 1
+Peer 6 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 6 starts to mine at time 84.2797814086772
+Mining block
+will wait for 0.9782401423806817 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 0
+Peer 0 adds B28 to tree at time 84.35083358280433
+Peer 0 Whole Tree =>  Peer 0 Tree =>  7 <- 6 <- 2 <- 1
+Peer 0 Tree =>  9 <- 6 <- 2 <- 1
+Peer 0 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 0 starts to mine at time 84.35083358280433
+Mining block
+will wait for 23.21538971073595 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 5
+Peer 5 adds B28 to tree at time 84.53565361905959
+Peer 5 Whole Tree =>  Peer 5 Tree =>  7 <- 6 <- 2 <- 1
+Peer 5 Tree =>  9 <- 6 <- 2 <- 1
+Peer 5 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 5 starts to mine at time 84.53565361905959
+Mining block
+will wait for 1.6778116840879995 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 7
+Peer 7 adds B28 to tree at time 84.63392846278958
+Peer 7 Whole Tree =>  Peer 7 Tree =>  7 <- 6 <- 2 <- 1
+Peer 7 Tree =>  9 <- 6 <- 2 <- 1
+Peer 7 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 7 starts to mine at time 84.63392846278958
+Mining block
+will wait for 6.320038876854809 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 4
+Peer 4 adds B28 to tree at time 84.8136484108017
+Peer 4 Whole Tree =>  Peer 4 Tree =>  9 <- 6 <- 2 <- 1
+Peer 4 Tree =>  7 <- 6 <- 2 <- 1
+Peer 4 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 4 starts to mine at time 84.8136484108017
+Mining block
+will wait for 8.715413783756027 seconds
+ISVALID True 28
+Traversing and adding block 28 to peer 9
+Peer 9 adds B28 to tree at time 84.88251505201143
+Peer 9 Whole Tree =>  Peer 9 Tree =>  9 <- 6 <- 2 <- 1
+Peer 9 Tree =>  7 <- 6 <- 2 <- 1
+Peer 9 Tree =>  14 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 Tree =>  28 <- 21 <- 16 <- 15 <- 12 <- 11 <- 8 <- 6 <- 2 <- 1
+Peer 9 starts to mine at time 84.88251505201143
+Mining block
+will wait for 7.699540834728313 seconds

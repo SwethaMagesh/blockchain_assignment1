@@ -1,5 +1,8 @@
 import random
 from helper import *
+
+
+
 class Peer:
     def __init__(self, peer, slow, lowcpu, hashpower):
         self.id = peer
@@ -11,11 +14,14 @@ class Peer:
         self.taillist = {}
         self.pending_blocks_queue = []
         self.balance = 0
+        self.blockchain = nx.Graph()
     
     def __str__(self):
         return str(self.id) + " " + str(self.slow) + " " + str(self.slowcpu)+ " " + str(self.hashpower)
     
     def add_block_to_tail(self, block, tail_node):
+        self.blockchain.add_node(block.id)
+        self.blockchain.add_edge(block.id, tail_node.block.id)
         self.blockids.append(block.id)
         node = TreeNode(block, tail_node)
         self.taillist[node] = self.taillist[tail_node] + 1
@@ -30,6 +36,8 @@ class Peer:
             return False
     
     def add_block_to_nontail(self, block, prev_node):
+        self.blockchain.add_node(block.id)
+        self.blockchain.add_edge(block.id, prev_node.block.id)
         self.blockids.append(block.id)
         node = TreeNode(block, prev_node)
         self.taillist[node] = prev_node.count_tree() + 1
