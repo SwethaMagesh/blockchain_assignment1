@@ -16,16 +16,17 @@ class Peer:
     def __str__(self):
         return str(self.id) + " " + str(self.slow) + " " + str(self.slowcpu)+ " " + str(self.hashpower)
     
-    def add_block_to_tail(self, block):
-        node = TreeNode(block, self.tree)
-        # print("DEBUG IN PEER ADD BLOCK TO TAIL", node.block.id, node, end="@@ ")
-        self.tree = node
-        # node.print_tree()
-        # print(end="@@ ")
-        # self.tree.print_tree()
+    def add_block_to_tail(self, block, tail_node):
         self.blockids.append(block.id)
-        # self.taillist[node] = 
-    
+        node = TreeNode(block, tail_node)
+        self.taillist[node] = self.taillist[tail_node] + 1
+        del self.taillist[tail_node]
+        longest_tail =  max(self.taillist, key=self.taillist.get)
+        if longest_tail == node:
+            return True
+        else:
+            return False
+
 
 class Link:
     def __init__(self, i, j, cij, roij):
