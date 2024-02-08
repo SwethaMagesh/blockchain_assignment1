@@ -2,796 +2,835 @@ peers in network        =  10
 fraction slow peers     =  0.1
 fraction low CPU peers  =  0.5
 transaction interval    =  60.0
-block interval          =  600.0
+block interval          =  60.0
+Clusters in the graph are 1
+Clusters in the graph are 1
 Edges : 
-[(0, 5), (0, 1), (0, 9), (0, 2), (0, 7), (0, 8), (1, 2), (1, 7), (1, 8), (1, 3), (1, 5), (2, 4), (2, 5), (3, 9), (3, 6), (3, 8), (3, 4), (4, 5), (4, 6), (4, 9), (5, 6), (6, 7), (6, 9), (6, 8), (7, 8), (8, 9)]
+[(0, 8), (0, 3), (0, 5), (0, 1), (0, 7), (0, 9), (1, 9), (1, 3), (1, 6), (1, 2), (1, 5), (2, 6), (2, 5), (2, 3), (2, 4), (2, 9), (3, 7), (3, 4), (3, 5), (4, 8), (4, 6), (4, 7), (4, 9), (5, 6), (5, 8), (6, 9), (8, 9)]
 Nodes : 
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 Degree : 
-6 6 4 5 5 5 6 4 6 5 
+6 6 6 6 6 6 5 3 4 6 
 Slow Peers : 
-[8]
+[6]
 Low CPU Peers : 
-[0, 5, 8, 3, 1]
+[5, 3, 4, 1, 6]
 Peers : 
-0 False True 0.18181818181818182
+0 False False 1.8181818181818183
 1 False True 0.18181818181818182
 2 False False 1.8181818181818183
 3 False True 0.18181818181818182
-4 False False 1.8181818181818183
+4 False True 0.18181818181818182
 5 False True 0.18181818181818182
-6 False False 1.8181818181818183
+6 True True 0.18181818181818182
 7 False False 1.8181818181818183
-8 True True 0.18181818181818182
+8 False False 1.8181818181818183
 9 False False 1.8181818181818183
 Links : 
-0 5 100 252
-0 1 100 171
-0 9 100 177
-0 2 100 350
-0 7 100 393
-0 8 5 462
-5 0 100 252
-5 1 100 25
-5 2 100 68
-5 4 100 226
-5 6 100 47
-1 0 100 171
-1 2 100 66
-1 7 100 275
-1 8 5 207
-1 3 100 215
-1 5 100 25
-9 0 100 177
-9 3 100 126
-9 4 100 206
-9 6 100 277
-9 8 5 374
-2 0 100 350
-2 1 100 66
-2 4 100 491
-2 5 100 68
-7 0 100 393
-7 1 100 275
-7 6 100 41
-7 8 5 190
-8 0 5 462
-8 1 5 207
-8 3 5 67
-8 6 5 157
-8 7 5 190
-8 9 5 374
-3 1 100 215
-3 9 100 126
-3 6 100 457
-3 8 5 67
-3 4 100 367
-4 2 100 491
-4 3 100 367
-4 5 100 226
-4 6 100 160
-4 9 100 206
-6 3 100 457
-6 4 100 160
-6 5 100 47
-6 7 100 41
-6 9 100 277
-6 8 5 157
-Peer 0 forms B2 at time 0
-Peer 1 forms B3 at time 0
-Peer 2 forms B4 at time 0
-Peer 3 forms B5 at time 0
-Peer 4 forms B6 at time 0
-Peer 5 forms B7 at time 0
-Peer 6 forms B8 at time 0
-Peer 7 forms B9 at time 0
-Peer 8 forms B10 at time 0
-Peer 9 forms B11 at time 0
-DEBUG IN PEER ADD BLOCK TO TAIL 11 11@@ 11 <- 1
-@@ 11 <- 1
-11 <- 1
-9 's Tree =>  None
-DEBUG IN PEER ADD BLOCK TO TAIL 8 8@@ 8 <- 1
-@@ 8 <- 1
-8 <- 1
-6 's Tree =>  None
-DEBUG IN PEER ADD BLOCK TO TAIL 6 6@@ 6 <- 1
-@@ 6 <- 1
-6 <- 1
-4 's Tree =>  None
-DEBUG IN PEER ADD BLOCK TO TAIL 4 4@@ 4 <- 1
-@@ 4 <- 1
-4 <- 1
-2 's Tree =>  None
-DEBUG IN PEER ADD BLOCK TO TAIL 9 9@@ 9 <- 1
-@@ 9 <- 1
-9 <- 1
-7 's Tree =>  None
-Created T1 at time 2.7679664870401686
-Peer 3 recvs from 3 T1 at time 2.7679664870401686
-set()
-[1, 9, 6, 8, 4]
-Peer 3 sends to   1  T1 at time 2.7679664870401686
-Created T2 at time 2.7897731048795102
-Peer 8 recvs from 8 T2 at time 2.7897731048795102
-set()
-[0, 1, 3, 6, 7, 9]
-Peer 8 sends to   0  T2 at time 2.7897731048795102
-Peer 1 recvs from 3 T1 at time 2.98366730443227
-Peer 3 sends to   9  T1 at time 2.98366730443227
-{1, 3, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   0  T1 at time 2.98366730443227
-Peer 9 recvs from 3 T1 at time 3.110807533980993
-Peer 3 sends to   6  T1 at time 3.110807533980993
-{0, 1, 3, 6, 9}
-[0, 3, 4, 6, 8]
-Peer 9 sends to   4  T1 at time 3.110807533980993
-Peer 0 recvs from 1 T1 at time 3.155067760830961
-Peer 1 sends to   2  T1 at time 3.155067760830961
-{0, 1, 2, 3, 4, 6, 9}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T1 at time 3.155067760830961
-Peer 2 recvs from 1 T1 at time 3.221395421297194
-Peer 1 sends to   7  T1 at time 3.221395421297194
-{0, 1, 2, 3, 4, 5, 6, 7, 9}
-[0, 1, 4, 5]
-Peer 0 recvs from 8 T2 at time 3.270749638257435
-Peer 8 sends to   1  T2 at time 3.270749638257435
-{8, 0, 1}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T2 at time 3.270749638257435
-Peer 4 recvs from 9 T1 at time 3.3171450023689952
-Peer 9 sends to   8  T1 at time 3.3171450023689952
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 5 recvs from 0 T1 at time 3.4085307953288173
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 2, 4, 6]
-Peer 7 recvs from 1 T1 at time 3.5001706145227103
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 1 recvs from 8 T2 at time 3.5018073630827358
-Peer 8 sends to   3  T2 at time 3.5018073630827358
-{0, 1, 3, 5, 8}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   2  T2 at time 3.5018073630827358
-Peer 5 recvs from 0 T2 at time 3.52328627772286
-Peer 0 sends to   9  T2 at time 3.52328627772286
-{0, 1, 2, 3, 5, 8, 9}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   4  T2 at time 3.52328627772286
-Peer 2 recvs from 1 T2 at time 3.567924266926595
-Peer 1 sends to   7  T2 at time 3.567924266926595
-{0, 1, 2, 3, 4, 5, 7, 8, 9}
-[0, 1, 4, 5]
-Peer 6 recvs from 3 T1 at time 3.568602980753597
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 3 recvs from 8 T2 at time 3.624948892003381
-Peer 8 sends to   6  T2 at time 3.624948892003381
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 9 recvs from 0 T2 at time 3.7010471688190894
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 8 recvs from 9 T1 at time 3.720530480763403
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 4 recvs from 5 T2 at time 3.753365612085081
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 6 recvs from 8 T2 at time 3.8126195366868805
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 7 recvs from 1 T2 at time 3.844518353171417
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Created T3 at time 4.25680450674255
-Peer 6 recvs from 6 T3 at time 4.25680450674255
-set()
-[3, 4, 5, 7, 9, 8]
-Peer 6 sends to   3  T3 at time 4.25680450674255
-Peer 3 recvs from 6 T3 at time 4.714396453092782
-Peer 6 sends to   4  T3 at time 4.714396453092782
-{3, 4, 6}
-[1, 9, 6, 8, 4]
-Peer 3 sends to   1  T3 at time 4.714396453092782
-Created T4 at time 4.756762564529278
-Peer 4 recvs from 4 T4 at time 4.756762564529278
-set()
-[2, 3, 5, 6, 9]
-Peer 4 sends to   2  T4 at time 4.756762564529278
-Created T5 at time 4.827158303401481
-Peer 8 recvs from 8 T5 at time 4.827158303401481
-set()
-[0, 1, 3, 6, 7, 9]
-Peer 8 sends to   0  T5 at time 4.827158303401481
-Peer 4 recvs from 6 T3 at time 4.875901860725026
-Peer 6 sends to   5  T3 at time 4.875901860725026
-{1, 3, 4, 5, 6}
-[2, 3, 5, 6, 9]
-Peer 4 sends to   2  T3 at time 4.875901860725026
-Peer 5 recvs from 6 T3 at time 4.924021507230054
-Peer 6 sends to   7  T3 at time 4.924021507230054
-{1, 2, 3, 4, 5, 6, 7}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   0  T3 at time 4.924021507230054
-Peer 1 recvs from 3 T3 at time 4.9327195989362265
-Peer 3 sends to   9  T3 at time 4.9327195989362265
-{0, 1, 2, 3, 4, 5, 6, 7, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   8  T3 at time 4.9327195989362265
-Peer 7 recvs from 6 T3 at time 4.966669479551514
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 9 recvs from 3 T3 at time 5.059347833864128
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 8 recvs from 1 T3 at time 5.148962523355125
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 0 recvs from 5 T3 at time 5.176583547788855
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[5, 1, 9, 2, 7, 8]
-Peer 2 recvs from 4 T4 at time 5.249379130458462
-Peer 4 sends to   3  T4 at time 5.249379130458462
-{2, 3, 4}
-[0, 1, 4, 5]
-Peer 2 sends to   0  T4 at time 5.249379130458462
-Peer 0 recvs from 8 T5 at time 5.301135048913568
-Peer 8 sends to   1  T5 at time 5.301135048913568
-{8, 0, 1}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T5 at time 5.301135048913568
-Peer 2 recvs from 4 T3 at time 5.367429132939537
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 4, 5]
-Peer 1 recvs from 8 T5 at time 5.518655506116342
-Peer 8 sends to   3  T5 at time 5.518655506116342
-{0, 1, 3, 5, 8}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   2  T5 at time 5.518655506116342
-Peer 5 recvs from 0 T5 at time 5.55338023449898
-Peer 0 sends to   9  T5 at time 5.55338023449898
-{0, 1, 2, 3, 5, 8, 9}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   4  T5 at time 5.55338023449898
-Peer 2 recvs from 1 T5 at time 5.585286127407833
-Peer 1 sends to   7  T5 at time 5.585286127407833
-{0, 1, 2, 3, 4, 5, 7, 8, 9}
-[0, 1, 4, 5]
-Peer 3 recvs from 8 T5 at time 5.593802373579184
-Peer 8 sends to   6  T5 at time 5.593802373579184
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 0 recvs from 2 T4 at time 5.5996676369604295
-Peer 2 sends to   1  T4 at time 5.5996676369604295
-{0, 1, 2, 3, 4}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T4 at time 5.5996676369604295
-Peer 3 recvs from 4 T4 at time 5.617366342920333
-Peer 4 sends to   6  T4 at time 5.617366342920333
-{0, 1, 2, 3, 4, 5, 6}
-[1, 9, 6, 8, 4]
-Peer 3 sends to   9  T4 at time 5.617366342920333
-Peer 1 recvs from 2 T4 at time 5.66604863475501
-{0, 1, 2, 3, 4, 5, 6, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   7  T4 at time 5.66604863475501
-Peer 9 recvs from 0 T5 at time 5.73139297872225
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 9 recvs from 3 T4 at time 5.743844246977494
-Peer 3 sends to   8  T4 at time 5.743844246977494
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 6 recvs from 8 T5 at time 5.7607351959941635
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 6 recvs from 4 T4 at time 5.779372296619816
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 4 recvs from 5 T5 at time 5.779561145490809
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 8 recvs from 3 T4 at time 5.843243720689402
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 5 recvs from 0 T4 at time 5.8517649989564315
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 2, 4, 6]
-Peer 7 recvs from 1 T5 at time 5.860401926271341
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 7 recvs from 1 T4 at time 5.942803503327531
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Created T6 at time 5.976044585602912
-Peer 1 recvs from 1 T6 at time 5.976044585602912
-set()
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   0  T6 at time 5.976044585602912
-Peer 0 recvs from 1 T6 at time 6.147484630533391
-Peer 1 sends to   2  T6 at time 6.147484630533391
-{0, 1, 2}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T6 at time 6.147484630533391
-Peer 2 recvs from 1 T6 at time 6.213654182069134
-Peer 1 sends to   7  T6 at time 6.213654182069134
-{0, 1, 2, 5, 7}
-[0, 1, 4, 5]
-Peer 2 sends to   4  T6 at time 6.213654182069134
-Created T7 at time 6.242814358764674
-Peer 3 recvs from 3 T7 at time 6.242814358764674
-set()
-[1, 9, 6, 8, 4]
-Peer 3 sends to   1  T7 at time 6.242814358764674
-Peer 5 recvs from 0 T6 at time 6.399876533500405
-Peer 0 sends to   9  T6 at time 6.399876533500405
-{0, 1, 2, 4, 5, 7, 9}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   6  T6 at time 6.399876533500405
-Peer 6 recvs from 5 T6 at time 6.447215430947695
-{0, 1, 2, 4, 5, 6, 7, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 6 sends to   3  T6 at time 6.447215430947695
-Peer 1 recvs from 3 T7 at time 6.458973663324455
-Peer 3 sends to   9  T7 at time 6.458973663324455
-{1, 3, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   0  T7 at time 6.458973663324455
-Peer 7 recvs from 1 T6 at time 6.488838368164127
-Peer 1 sends to   8  T6 at time 6.488838368164127
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 9 recvs from 0 T6 at time 6.578783561909048
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 9 recvs from 3 T7 at time 6.5859193092076005
-Peer 3 sends to   6  T7 at time 6.5859193092076005
-{0, 1, 3, 6, 9}
-[0, 3, 4, 6, 8]
-Peer 9 sends to   4  T7 at time 6.5859193092076005
-Created T8 at time 6.629589634187259
-Peer 9 recvs from 9 T8 at time 6.629589634187259
-set()
-[0, 3, 4, 6, 8]
-Peer 9 sends to   0  T8 at time 6.629589634187259
-Peer 0 recvs from 1 T7 at time 6.630727743026176
-Peer 1 sends to   2  T7 at time 6.630727743026176
-{0, 1, 2, 3, 4, 6, 9}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T7 at time 6.630727743026176
-Peer 2 recvs from 1 T7 at time 6.6987354274917275
-Peer 1 sends to   7  T7 at time 6.6987354274917275
-{0, 1, 2, 3, 4, 5, 6, 7, 9}
-[0, 1, 4, 5]
-Peer 4 recvs from 2 T6 at time 6.707222626916514
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 8 recvs from 1 T6 at time 6.7123787763497935
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 4 recvs from 9 T7 at time 6.7929295105506
-Peer 9 sends to   8  T7 at time 6.7929295105506
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 0 recvs from 9 T8 at time 6.807531669398614
-Peer 9 sends to   3  T8 at time 6.807531669398614
-{0, 9, 3}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T8 at time 6.807531669398614
-Peer 5 recvs from 0 T7 at time 6.883434134080687
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 2, 4, 6]
-Peer 3 recvs from 6 T6 at time 6.904724379857277
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 3 recvs from 9 T8 at time 6.933780955636118
-Peer 9 sends to   4  T8 at time 6.933780955636118
-{0, 3, 4, 5, 9}
-[1, 9, 6, 8, 4]
-Peer 3 sends to   1  T8 at time 6.933780955636118
-Peer 7 recvs from 1 T7 at time 6.9747762865586935
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 6 recvs from 3 T7 at time 7.043233408915346
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 5 recvs from 0 T8 at time 7.061752986614085
-Peer 0 sends to   2  T8 at time 7.061752986614085
-{0, 1, 2, 3, 4, 5, 9}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   6  T8 at time 7.061752986614085
-Created T9 at time 7.0935822183564765
-Peer 5 recvs from 5 T9 at time 7.0935822183564765
-set()
-[0, 1, 2, 4, 6]
-Peer 5 sends to   0  T9 at time 7.0935822183564765
-Peer 6 recvs from 5 T8 at time 7.109039483820448
-{0, 1, 2, 3, 4, 5, 6, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 6 sends to   7  T8 at time 7.109039483820448
-Peer 4 recvs from 9 T8 at time 7.140159515842616
-Peer 9 sends to   8  T8 at time 7.140159515842616
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 7 recvs from 6 T8 at time 7.150217129475048
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 1 recvs from 3 T8 at time 7.151588828391106
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 8 recvs from 9 T7 at time 7.2045024944244425
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 0 recvs from 5 T9 at time 7.3477595109266725
-Peer 5 sends to   1  T9 at time 7.3477595109266725
-{0, 1, 5}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   9  T9 at time 7.3477595109266725
-Peer 1 recvs from 5 T9 at time 7.373126171535096
-Peer 5 sends to   2  T9 at time 7.373126171535096
-{0, 1, 2, 5, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   7  T9 at time 7.373126171535096
-Peer 2 recvs from 0 T8 at time 7.412829947460641
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 4, 5]
-Peer 2 recvs from 5 T9 at time 7.44165206839368
-Peer 5 sends to   4  T9 at time 7.44165206839368
-{0, 1, 2, 4, 5, 7, 9}
-[0, 1, 4, 5]
-Peer 8 recvs from 9 T8 at time 7.519549371671169
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 9 recvs from 0 T9 at time 7.526666050957885
-Peer 0 sends to   8  T9 at time 7.526666050957885
-{0, 1, 2, 4, 5, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 9 sends to   3  T9 at time 7.526666050957885
-Peer 7 recvs from 1 T9 at time 7.648527572762792
-{0, 1, 2, 3, 4, 5, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 7 sends to   6  T9 at time 7.648527572762792
-Peer 3 recvs from 9 T9 at time 7.6536707059571505
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 4 recvs from 5 T9 at time 7.668672668734783
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 6 recvs from 7 T9 at time 7.692387074927197
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 8 recvs from 0 T9 at time 8.002601512867127
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Created T10 at time 9.040724965243179
-Peer 7 recvs from 7 T10 at time 9.040724965243179
-set()
-[0, 1, 6, 8]
-Peer 7 sends to   0  T10 at time 9.040724965243179
-Created T11 at time 9.245677649683795
-Peer 7 recvs from 7 T11 at time 9.245677649683795
-set()
-[0, 1, 6, 8]
-Peer 7 sends to   0  T11 at time 9.245677649683795
-Peer 0 recvs from 7 T10 at time 9.43473191790977
-Peer 7 sends to   1  T10 at time 9.43473191790977
-{0, 1, 7}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T10 at time 9.43473191790977
-Peer 0 recvs from 7 T11 at time 9.639615194373379
-Peer 7 sends to   1  T11 at time 9.639615194373379
-{0, 1, 7}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T11 at time 9.639615194373379
-Peer 5 recvs from 0 T10 at time 9.687697550362524
-Peer 0 sends to   9  T10 at time 9.687697550362524
-{0, 1, 5, 7, 9}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   2  T10 at time 9.687697550362524
-Peer 1 recvs from 7 T10 at time 9.710191455206221
-Peer 7 sends to   6  T10 at time 9.710191455206221
-{0, 1, 2, 5, 6, 7, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   8  T10 at time 9.710191455206221
-Peer 6 recvs from 7 T10 at time 9.752027869531933
-{0, 1, 2, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 6 sends to   3  T10 at time 9.752027869531933
-Peer 2 recvs from 5 T10 at time 9.755844758101704
-Peer 5 sends to   4  T10 at time 9.755844758101704
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 4, 5]
-Peer 9 recvs from 0 T10 at time 9.864834389325827
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 5 recvs from 0 T11 at time 9.89183888679609
-Peer 0 sends to   9  T11 at time 9.89183888679609
-{0, 1, 5, 7, 9}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   2  T11 at time 9.89183888679609
-Peer 1 recvs from 7 T11 at time 9.91613067208098
-Peer 7 sends to   6  T11 at time 9.91613067208098
-{0, 1, 2, 5, 6, 7, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   8  T11 at time 9.91613067208098
-Peer 8 recvs from 1 T10 at time 9.941386284500469
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 6 recvs from 7 T11 at time 9.957678113995794
-{0, 1, 2, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 6 sends to   3  T11 at time 9.957678113995794
-Peer 2 recvs from 5 T11 at time 9.961558804281248
-Peer 5 sends to   4  T11 at time 9.961558804281248
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 4, 5]
-Peer 4 recvs from 5 T10 at time 9.982607145092805
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 9 recvs from 0 T11 at time 10.069255085355408
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 8 recvs from 1 T11 at time 10.139556751792126
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 4 recvs from 5 T11 at time 10.1883159641206
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Created T12 at time 10.191171900724314
-Peer 6 recvs from 6 T12 at time 10.191171900724314
-set()
-[3, 4, 5, 7, 9, 8]
-Peer 6 sends to   3  T12 at time 10.191171900724314
-Peer 3 recvs from 6 T10 at time 10.209686832767193
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 3 recvs from 6 T11 at time 10.415455363536122
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 3 recvs from 6 T12 at time 10.649729636920046
-Peer 6 sends to   4  T12 at time 10.649729636920046
-{3, 4, 6}
-[1, 9, 6, 8, 4]
-Peer 3 sends to   1  T12 at time 10.649729636920046
-Created T13 at time 10.810567089723948
-Peer 5 recvs from 5 T13 at time 10.810567089723948
-set()
-[0, 1, 2, 4, 6]
-Peer 5 sends to   0  T13 at time 10.810567089723948
-Peer 4 recvs from 6 T12 at time 10.810811005960622
-Peer 6 sends to   5  T12 at time 10.810811005960622
-{1, 3, 4, 5, 6}
-[2, 3, 5, 6, 9]
-Peer 4 sends to   2  T12 at time 10.810811005960622
-Peer 5 recvs from 6 T12 at time 10.862099199023161
-Peer 6 sends to   7  T12 at time 10.862099199023161
-{1, 2, 3, 4, 5, 6, 7}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   0  T12 at time 10.862099199023161
-Peer 1 recvs from 3 T12 at time 10.864981013773388
-Peer 3 sends to   9  T12 at time 10.864981013773388
-{0, 1, 2, 3, 4, 5, 6, 7, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   8  T12 at time 10.864981013773388
-Peer 7 recvs from 6 T12 at time 10.903770718643242
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 9 recvs from 3 T12 at time 10.991219446509184
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 0 recvs from 5 T13 at time 11.062789333965279
-Peer 5 sends to   1  T13 at time 11.062789333965279
-{0, 1, 5}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   9  T13 at time 11.062789333965279
-Peer 8 recvs from 1 T12 at time 11.077772860928636
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 1 recvs from 5 T13 at time 11.088100778320152
-Peer 5 sends to   2  T13 at time 11.088100778320152
-{0, 1, 2, 5, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   7  T13 at time 11.088100778320152
-Peer 0 recvs from 5 T12 at time 11.116556550625448
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[5, 1, 9, 2, 7, 8]
-Peer 2 recvs from 5 T13 at time 11.157466035296308
-Peer 5 sends to   4  T13 at time 11.157466035296308
-{0, 1, 2, 4, 5, 7, 9}
-[0, 1, 4, 5]
-Peer 9 recvs from 0 T13 at time 11.240280530071093
-Peer 0 sends to   8  T13 at time 11.240280530071093
-{0, 1, 2, 4, 5, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 9 sends to   3  T13 at time 11.240280530071093
-Peer 2 recvs from 4 T12 at time 11.302550719373416
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 4, 5]
-Peer 7 recvs from 1 T13 at time 11.366451116016394
-{0, 1, 2, 3, 4, 5, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 7 sends to   6  T13 at time 11.366451116016394
-Peer 3 recvs from 9 T13 at time 11.367080013773808
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 4 recvs from 5 T13 at time 11.38375626576407
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Created T14 at time 11.393341164060534
-Peer 4 recvs from 4 T14 at time 11.393341164060534
-set()
-[2, 3, 5, 6, 9]
-Peer 4 sends to   2  T14 at time 11.393341164060534
-Peer 6 recvs from 7 T13 at time 11.408206940576402
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-DEBUG IN PEER ADD BLOCK TO TAIL 5 5@@ 5 <- 1
-@@ 5 <- 1
-5 <- 1
-3 's Tree =>  None
-Peer 8 recvs from 0 T13 at time 11.737041891256288
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 2 recvs from 4 T14 at time 11.885230134075849
-Peer 4 sends to   3  T14 at time 11.885230134075849
-{2, 3, 4}
-[0, 1, 4, 5]
-Peer 2 sends to   0  T14 at time 11.885230134075849
-Peer 0 recvs from 2 T14 at time 12.235689450997295
-Peer 2 sends to   1  T14 at time 12.235689450997295
-{0, 1, 2, 3, 4}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T14 at time 12.235689450997295
-Peer 3 recvs from 4 T14 at time 12.253813783773825
-Peer 4 sends to   6  T14 at time 12.253813783773825
-{0, 1, 2, 3, 4, 5, 6}
-[1, 9, 6, 8, 4]
-Peer 3 sends to   9  T14 at time 12.253813783773825
-Peer 1 recvs from 2 T14 at time 12.302426391186081
-{0, 1, 2, 3, 4, 5, 6, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   7  T14 at time 12.302426391186081
-Peer 9 recvs from 3 T14 at time 12.38021840716709
-Peer 3 sends to   8  T14 at time 12.38021840716709
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 6 recvs from 4 T14 at time 12.414526779449183
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 8 recvs from 3 T14 at time 12.449418381144271
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 5 recvs from 0 T14 at time 12.488049339814866
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 2, 4, 6]
-Peer 7 recvs from 1 T14 at time 12.577733752418048
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Created T15 at time 14.175784645176721
-Peer 5 recvs from 5 T15 at time 14.175784645176721
-set()
-[0, 1, 2, 4, 6]
-Peer 5 sends to   0  T15 at time 14.175784645176721
-Peer 0 recvs from 5 T15 at time 14.428217916099907
-Peer 5 sends to   1  T15 at time 14.428217916099907
-{0, 1, 5}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   9  T15 at time 14.428217916099907
-Peer 1 recvs from 5 T15 at time 14.453862518787794
-Peer 5 sends to   2  T15 at time 14.453862518787794
-{0, 1, 2, 5, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   7  T15 at time 14.453862518787794
-Peer 2 recvs from 5 T15 at time 14.522545924802422
-Peer 5 sends to   4  T15 at time 14.522545924802422
-{0, 1, 2, 4, 5, 7, 9}
-[0, 1, 4, 5]
-Peer 9 recvs from 0 T15 at time 14.605694662777392
-Peer 0 sends to   8  T15 at time 14.605694662777392
-{0, 1, 2, 4, 5, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 9 sends to   3  T15 at time 14.605694662777392
-Peer 7 recvs from 1 T15 at time 14.729659678375016
-{0, 1, 2, 3, 4, 5, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 7 sends to   6  T15 at time 14.729659678375016
-Peer 3 recvs from 9 T15 at time 14.731881306480963
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-Peer 4 recvs from 5 T15 at time 14.749190313455989
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 6 recvs from 7 T15 at time 14.770843974385784
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 8 recvs from 0 T15 at time 15.07114642307218
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Created T16 at time 15.21849748207182
-Peer 3 recvs from 3 T16 at time 15.21849748207182
-set()
-[1, 9, 6, 8, 4]
-Peer 3 sends to   1  T16 at time 15.21849748207182
-Peer 1 recvs from 3 T16 at time 15.43467056488735
-Peer 3 sends to   9  T16 at time 15.43467056488735
-{1, 3, 9}
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   0  T16 at time 15.43467056488735
-Peer 9 recvs from 3 T16 at time 15.560831425415564
-Peer 3 sends to   6  T16 at time 15.560831425415564
-{0, 1, 3, 6, 9}
-[0, 3, 4, 6, 8]
-Peer 9 sends to   4  T16 at time 15.560831425415564
-Peer 0 recvs from 1 T16 at time 15.606457308607395
-Peer 1 sends to   2  T16 at time 15.606457308607395
-{0, 1, 2, 3, 4, 6, 9}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T16 at time 15.606457308607395
-Peer 2 recvs from 1 T16 at time 15.675158961560847
-Peer 1 sends to   7  T16 at time 15.675158961560847
-{0, 1, 2, 3, 4, 5, 6, 7, 9}
-[0, 1, 4, 5]
-Peer 4 recvs from 9 T16 at time 15.767475129220363
-Peer 9 sends to   8  T16 at time 15.767475129220363
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 5 recvs from 0 T16 at time 15.859324151751759
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 2, 4, 6]
-Peer 7 recvs from 1 T16 at time 15.950294713097742
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 6 recvs from 3 T16 at time 16.01833893035232
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 8 recvs from 9 T16 at time 16.155045140584267
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Created T17 at time 17.392002502146937
-Peer 1 recvs from 1 T17 at time 17.392002502146937
-set()
-[0, 2, 7, 8, 3, 5]
-Peer 1 sends to   0  T17 at time 17.392002502146937
-Peer 0 recvs from 1 T17 at time 17.563799819257795
-Peer 1 sends to   2  T17 at time 17.563799819257795
-{0, 1, 2}
-[5, 1, 9, 2, 7, 8]
-Peer 0 sends to   5  T17 at time 17.563799819257795
-Peer 2 recvs from 1 T17 at time 17.63054601818224
-Peer 1 sends to   7  T17 at time 17.63054601818224
-{0, 1, 2, 5, 7}
-[0, 1, 4, 5]
-Peer 2 sends to   4  T17 at time 17.63054601818224
-Peer 5 recvs from 0 T17 at time 17.816140459372114
-Peer 0 sends to   9  T17 at time 17.816140459372114
-{0, 1, 2, 4, 5, 7, 9}
-[0, 1, 2, 4, 6]
-Peer 5 sends to   6  T17 at time 17.816140459372114
-Peer 6 recvs from 5 T17 at time 17.86328871259031
-{0, 1, 2, 4, 5, 6, 7, 9}
-[3, 4, 5, 7, 9, 8]
-Peer 6 sends to   3  T17 at time 17.86328871259031
-Peer 7 recvs from 1 T17 at time 17.90600951332832
-Peer 1 sends to   8  T17 at time 17.90600951332832
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 6, 8]
-Peer 9 recvs from 0 T17 at time 17.9939329033746
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 3, 4, 6, 8]
-Peer 4 recvs from 2 T17 at time 18.12222497402047
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[2, 3, 5, 6, 9]
-Peer 8 recvs from 1 T17 at time 18.13721287717245
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[0, 1, 3, 6, 7, 9]
-Peer 3 recvs from 6 T17 at time 18.32042535923161
-{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-[1, 9, 6, 8, 4]
-DEBUG IN PEER ADD BLOCK TO TAIL 2 2@@ 2 <- 1
-@@ 2 <- 1
-2 <- 1
-0 's Tree =>  None
+0 8 100 465
+0 3 100 459
+0 5 100 172
+0 1 100 311
+0 7 100 119
+0 9 100 185
+8 0 100 465
+8 4 100 291
+8 5 100 161
+8 9 100 408
+3 0 100 459
+3 1 100 430
+3 2 100 229
+3 7 100 311
+3 4 100 452
+3 5 100 58
+5 0 100 172
+5 1 100 413
+5 2 100 371
+5 3 100 58
+5 6 5 306
+5 8 100 161
+1 0 100 311
+1 9 100 471
+1 3 100 430
+1 6 5 406
+1 2 100 494
+1 5 100 413
+7 0 100 119
+7 3 100 311
+7 4 100 82
+9 0 100 185
+9 1 100 471
+9 2 100 295
+9 4 100 404
+9 6 5 418
+9 8 100 408
+6 1 5 406
+6 2 5 179
+6 4 5 286
+6 5 5 306
+6 9 5 418
+2 1 100 494
+2 6 5 179
+2 5 100 371
+2 3 100 229
+2 4 100 376
+2 9 100 295
+4 2 100 376
+4 3 100 452
+4 8 100 291
+4 6 5 286
+4 7 100 82
+4 9 100 404
+Mining block
+will wait for 211.27165019983366 seconds
+Created T1 at time 0.7886212699752475
+Created T2 at time 3.432431694134753
+Created T3 at time 24.91540293996667
+Created T4 at time 27.12549608984072
+Created T5 at time 34.698717192124676
+Created T6 at time 47.9746120462526
+Created T7 at time 62.237161780259726
+Created T8 at time 73.13649141445104
+Created T9 at time 75.54270656226815
+Created T10 at time 75.80599395370237
+Peer 5 Tree =>  2 <- 1
+Peer 5 forms/ mines / adds to tree B2 at time 211.27165019983366
+B2 has already been sent by set()
+Peer 5 sends to neighbours [0, 1, 2, 3, 6, 8]
+Peer 5 sends to   0  B2 at time 211.27165019983366
+Peer 0 recvs from 5 B2 at time 211.4443217668105
+ISVALID True 2
+Traversing and adding block 2 to peer 0
+Peer 0 adds B2 to tree at time 211.4443217668105
+Peer 0 Whole Tree =>  Peer 0 Tree =>  2 <- 1
+Peer 0 starts to mine at time 211.4443217668105
+Peer 5 sends to   1  B2 at time 211.4443217668105
+Mining block
+will wait for 39.43853851739694 seconds
+B2 has already been sent by {5}
+Peer 0 sends to neighbours [8, 3, 5, 1, 7, 9]
+Peer 0 sends to   8  B2 at time 211.4443217668105
+Peer 1 recvs from 5 B2 at time 211.85896211907834
+ISVALID True 2
+Traversing and adding block 2 to peer 1
+Peer 1 adds B2 to tree at time 211.85896211907834
+Peer 1 Whole Tree =>  Peer 1 Tree =>  2 <- 1
+Peer 1 starts to mine at time 211.85896211907834
+Peer 5 sends to   2  B2 at time 211.85896211907834
+Mining block
+will wait for 173.82035074411095 seconds
+B2 has already been sent by {0, 5}
+Peer 1 sends to neighbours [0, 9, 3, 6, 2, 5]
+Peer 1 sends to   0  B2 at time 211.85896211907834
+Peer 8 recvs from 0 B2 at time 211.90980160111803
+ISVALID True 2
+Traversing and adding block 2 to peer 8
+Peer 8 adds B2 to tree at time 211.90980160111803
+Peer 8 Whole Tree =>  Peer 8 Tree =>  2 <- 1
+Peer 8 starts to mine at time 211.90980160111803
+Peer 0 sends to   3  B2 at time 211.90980160111803
+Mining block
+will wait for 27.76953478230233 seconds
+B2 has already been sent by {0, 1, 5}
+Peer 8 sends to neighbours [0, 4, 5, 9]
+Peer 8 sends to   4  B2 at time 211.90980160111803
+Peer 0 recvs from 1 B2 at time 212.17110448683883
+Peer 1 sends to   9  B2 at time 212.17110448683883
+B2 has already been sent by {0, 1, 5, 8}
+Peer 0 already sent B2
+Peer 4 recvs from 8 B2 at time 212.20239761106015
+ISVALID True 2
+Traversing and adding block 2 to peer 4
+Peer 4 adds B2 to tree at time 212.20239761106015
+Peer 4 Whole Tree =>  Peer 4 Tree =>  2 <- 1
+Peer 4 starts to mine at time 212.20239761106015
+Peer 8 sends to   5  B2 at time 212.20239761106015
+Mining block
+will wait for 575.9801127044199 seconds
+B2 has already been sent by {0, 1, 5, 8}
+Peer 4 sends to neighbours [2, 3, 8, 6, 7, 9]
+Peer 4 sends to   2  B2 at time 212.20239761106015
+Peer 2 recvs from 5 B2 at time 212.2310827835409
+ISVALID True 2
+Traversing and adding block 2 to peer 2
+Peer 2 adds B2 to tree at time 212.2310827835409
+Peer 2 Whole Tree =>  Peer 2 Tree =>  2 <- 1
+Peer 2 starts to mine at time 212.2310827835409
+Peer 5 sends to   3  B2 at time 212.2310827835409
+Mining block
+will wait for 35.36305351428805 seconds
+B2 has already been sent by {0, 1, 4, 5, 8}
+Peer 2 sends to neighbours [1, 6, 5, 3, 4, 9]
+Peer 2 sends to   1  B2 at time 212.2310827835409
+Peer 3 recvs from 5 B2 at time 212.28951230443067
+ISVALID True 2
+Traversing and adding block 2 to peer 3
+Peer 3 adds B2 to tree at time 212.28951230443067
+Peer 3 Whole Tree =>  Peer 3 Tree =>  2 <- 1
+Peer 3 starts to mine at time 212.28951230443067
+Peer 5 sends to   6  B2 at time 212.28951230443067
+Mining block
+will wait for 16.954458363690602 seconds
+B2 has already been sent by {0, 1, 2, 4, 5, 8}
+Peer 3 sends to neighbours [0, 1, 2, 7, 4, 5]
+Peer 3 sends to   0  B2 at time 212.28951230443067
+Peer 5 recvs from 8 B2 at time 212.3638422994713
+Peer 8 sends to   9  B2 at time 212.3638422994713
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 8}
+Peer 5 already sent B2
+Peer 3 recvs from 0 B2 at time 212.37060184503272
+Peer 0 sends to   1  B2 at time 212.37060184503272
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 8}
+Peer 3 already sent B2
+Peer 2 recvs from 4 B2 at time 212.57926693290204
+Peer 4 sends to   3  B2 at time 212.57926693290204
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 8}
+Peer 2 already sent B2
+Peer 6 recvs from 5 B2 at time 212.61390724215326
+ISVALID True 2
+Traversing and adding block 2 to peer 6
+Peer 6 adds B2 to tree at time 212.61390724215326
+Peer 6 Whole Tree =>  Peer 6 Tree =>  2 <- 1
+Peer 6 starts to mine at time 212.61390724215326
+Peer 5 sends to   8  B2 at time 212.61390724215326
+Mining block
+will wait for 5.47006660292017 seconds
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 8}
+Peer 6 sends to neighbours [1, 2, 4, 5, 9]
+Peer 6 sends to   1  B2 at time 212.61390724215326
+Peer 9 recvs from 1 B2 at time 212.6425687822845
+ISVALID True 2
+Traversing and adding block 2 to peer 9
+Peer 9 adds B2 to tree at time 212.6425687822845
+Peer 9 Whole Tree =>  Peer 9 Tree =>  2 <- 1
+Peer 9 starts to mine at time 212.6425687822845
+Peer 1 sends to   3  B2 at time 212.6425687822845
+Mining block
+will wait for 54.05682914614346 seconds
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8}
+Peer 9 sends to neighbours [0, 1, 2, 4, 6, 8]
+Peer 9 sends to   0  B2 at time 212.6425687822845
+Peer 1 recvs from 0 B2 at time 212.68199981875864
+Peer 0 sends to   7  B2 at time 212.68199981875864
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 1 already sent B2
+Peer 1 recvs from 2 B2 at time 212.72749849178885
+Peer 2 sends to   6  B2 at time 212.72749849178885
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 1 already sent B2
+Peer 0 recvs from 3 B2 at time 212.74886154669866
+Peer 3 sends to   1  B2 at time 212.74886154669866
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 0 already sent B2
+Peer 9 recvs from 8 B2 at time 212.77219166347925
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 9 already sent B2
+Peer 8 recvs from 5 B2 at time 212.77688804485427
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 8 already sent B2
+Peer 7 recvs from 0 B2 at time 212.80131723648228
+ISVALID True 2
+Traversing and adding block 2 to peer 7
+Peer 7 adds B2 to tree at time 212.80131723648228
+Peer 7 Whole Tree =>  Peer 7 Tree =>  2 <- 1
+Peer 7 starts to mine at time 212.80131723648228
+Peer 0 sends to   9  B2 at time 212.80131723648228
+Mining block
+will wait for 14.449470847620043 seconds
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 7 sends to neighbours [0, 3, 4]
+Peer 7 sends to   3  B2 at time 212.80131723648228
+Peer 0 recvs from 9 B2 at time 212.82834484519577
+Peer 9 sends to   2  B2 at time 212.82834484519577
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 0 already sent B2
+Peer 6 recvs from 2 B2 at time 212.92166621165896
+Peer 2 sends to   3  B2 at time 212.92166621165896
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B2
+Peer 9 recvs from 0 B2 at time 212.98704114862628
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B2
+Peer 3 recvs from 4 B2 at time 213.03153209777764
+Peer 4 sends to   6  B2 at time 213.03153209777764
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B2
+Peer 1 recvs from 6 B2 at time 213.032719706972
+Peer 6 sends to   2  B2 at time 213.032719706972
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 1 already sent B2
+Peer 3 recvs from 1 B2 at time 213.07415775258062
+Peer 1 sends to   6  B2 at time 213.07415775258062
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B2
+Peer 3 recvs from 7 B2 at time 213.11382447843783
+Peer 7 sends to   4  B2 at time 213.11382447843783
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B2
+Peer 2 recvs from 9 B2 at time 213.12394571118776
+Peer 9 sends to   4  B2 at time 213.12394571118776
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B2
+Peer 3 recvs from 2 B2 at time 213.15185971672622
+Peer 2 sends to   4  B2 at time 213.15185971672622
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B2
+Peer 1 recvs from 3 B2 at time 213.1793323395147
+Peer 3 sends to   2  B2 at time 213.1793323395147
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 1 already sent B2
+Peer 4 recvs from 7 B2 at time 213.19627296936775
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B2
+Peer 2 recvs from 6 B2 at time 213.23496935080644
+Peer 6 sends to   4  B2 at time 213.23496935080644
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B2
+Peer 6 recvs from 4 B2 at time 213.3277328394305
+Peer 4 sends to   7  B2 at time 213.3277328394305
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B2
+Peer 7 recvs from 4 B2 at time 213.41015188261414
+Peer 4 sends to   9  B2 at time 213.41015188261414
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent B2
+Peer 2 recvs from 3 B2 at time 213.41143962982605
+Peer 3 sends to   7  B2 at time 213.41143962982605
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B2
+Peer 4 recvs from 9 B2 at time 213.52853556910702
+Peer 9 sends to   6  B2 at time 213.52853556910702
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B2
+Peer 4 recvs from 2 B2 at time 213.53116183958812
+Peer 2 sends to   9  B2 at time 213.53116183958812
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B2
+Peer 6 recvs from 1 B2 at time 213.53209092050653
+Peer 1 sends to   2  B2 at time 213.53209092050653
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B2
+Peer 4 recvs from 6 B2 at time 213.5364720628606
+Peer 6 sends to   9  B2 at time 213.5364720628606
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B2
+Peer 7 recvs from 3 B2 at time 213.72293303231723
+Peer 3 sends to   4  B2 at time 213.72293303231723
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent B2
+Peer 9 recvs from 4 B2 at time 213.81468948935253
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B2
+Peer 9 recvs from 2 B2 at time 213.82662762987906
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B2
+Peer 6 recvs from 9 B2 at time 213.96789143517708
+Peer 9 sends to   8  B2 at time 213.96789143517708
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B2
+Peer 9 recvs from 6 B2 at time 213.97727360519488
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B2
+Peer 2 recvs from 1 B2 at time 214.0300606762987
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B2
+Peer 4 recvs from 3 B2 at time 214.17689940653085
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B2
+Peer 8 recvs from 9 B2 at time 214.37611481637288
+B2 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent B2
+Peer 6 Tree =>  3 <- 2 <- 1
+Peer 6 forms/ mines / adds to tree B3 at time 218.08397384507344
+B3 has already been sent by set()
+Peer 6 sends to neighbours [1, 2, 4, 5, 9]
+Peer 6 sends to   1  B3 at time 218.08397384507344
+Peer 1 recvs from 6 B3 at time 218.50223871119007
+ISVALID True 3
+Traversing and adding block 3 to peer 1
+Peer 1 adds B3 to tree at time 218.50223871119007
+Peer 1 Whole Tree =>  Peer 1 Tree =>  3 <- 2 <- 1
+Peer 1 starts to mine at time 218.50223871119007
+Peer 6 sends to   2  B3 at time 218.50223871119007
+Mining block
+will wait for 296.2709519972005 seconds
+B3 has already been sent by {6}
+Peer 1 sends to neighbours [0, 9, 3, 6, 2, 5]
+Peer 1 sends to   0  B3 at time 218.50223871119007
+Peer 2 recvs from 6 B3 at time 218.6950355041827
+ISVALID True 3
+Traversing and adding block 3 to peer 2
+Peer 2 adds B3 to tree at time 218.6950355041827
+Peer 2 Whole Tree =>  Peer 2 Tree =>  3 <- 2 <- 1
+Peer 2 starts to mine at time 218.6950355041827
+Peer 6 sends to   4  B3 at time 218.6950355041827
+Mining block
+will wait for 104.33264512434326 seconds
+B3 has already been sent by {1, 6}
+Peer 2 sends to neighbours [1, 6, 5, 3, 4, 9]
+Peer 2 sends to   1  B3 at time 218.6950355041827
+Peer 0 recvs from 1 B3 at time 218.8133721419709
+ISVALID True 3
+Traversing and adding block 3 to peer 0
+Peer 0 adds B3 to tree at time 218.8133721419709
+Peer 0 Whole Tree =>  Peer 0 Tree =>  3 <- 2 <- 1
+Peer 0 starts to mine at time 218.8133721419709
+Peer 1 sends to   9  B3 at time 218.8133721419709
+Mining block
+will wait for 12.432889557508457 seconds
+B3 has already been sent by {1, 2, 6}
+Peer 0 sends to neighbours [8, 3, 5, 1, 7, 9]
+Peer 0 sends to   8  B3 at time 218.8133721419709
+Peer 4 recvs from 6 B3 at time 219.00029038783262
+ISVALID True 3
+Traversing and adding block 3 to peer 4
+Peer 4 adds B3 to tree at time 219.00029038783262
+Peer 4 Whole Tree =>  Peer 4 Tree =>  3 <- 2 <- 1
+Peer 4 starts to mine at time 219.00029038783262
+Peer 6 sends to   5  B3 at time 219.00029038783262
+Mining block
+will wait for 90.19162433107101 seconds
+B3 has already been sent by {0, 1, 2, 6}
+Peer 4 sends to neighbours [2, 3, 8, 6, 7, 9]
+Peer 4 sends to   2  B3 at time 219.00029038783262
+Peer 1 recvs from 2 B3 at time 219.19011063625535
+Peer 2 sends to   5  B3 at time 219.19011063625535
+B3 has already been sent by {0, 1, 2, 4, 6}
+Peer 1 already sent B3
+Peer 8 recvs from 0 B3 at time 219.2785544026654
+ISVALID True 3
+Traversing and adding block 3 to peer 8
+Peer 8 adds B3 to tree at time 219.2785544026654
+Peer 8 Whole Tree =>  Peer 8 Tree =>  3 <- 2 <- 1
+Peer 8 starts to mine at time 219.2785544026654
+Peer 0 sends to   3  B3 at time 219.2785544026654
+Mining block
+will wait for 8.694489436152168 seconds
+B3 has already been sent by {0, 1, 2, 4, 6}
+Peer 8 sends to neighbours [0, 4, 5, 9]
+Peer 8 sends to   4  B3 at time 219.2785544026654
+Peer 9 recvs from 1 B3 at time 219.2851999824508
+ISVALID True 3
+Traversing and adding block 3 to peer 9
+Peer 9 adds B3 to tree at time 219.2851999824508
+Peer 9 Whole Tree =>  Peer 9 Tree =>  3 <- 2 <- 1
+Peer 9 starts to mine at time 219.2851999824508
+Peer 1 sends to   3  B3 at time 219.2851999824508
+Mining block
+will wait for 3.608974228273433 seconds
+B3 has already been sent by {0, 1, 2, 4, 6, 8}
+Peer 9 sends to neighbours [0, 1, 2, 4, 6, 8]
+Peer 9 sends to   0  B3 at time 219.2851999824508
+Peer 5 recvs from 6 B3 at time 219.31815453644228
+ISVALID True 3
+Traversing and adding block 3 to peer 5
+Peer 5 adds B3 to tree at time 219.31815453644228
+Peer 5 Whole Tree =>  Peer 5 Tree =>  3 <- 2 <- 1
+Peer 5 starts to mine at time 219.31815453644228
+Peer 6 sends to   9  B3 at time 219.31815453644228
+Mining block
+will wait for 38.41177843680436 seconds
+B3 has already been sent by {0, 1, 2, 4, 6, 8, 9}
+Peer 5 sends to neighbours [0, 1, 2, 3, 6, 8]
+Peer 5 sends to   0  B3 at time 219.31815453644228
+Peer 2 recvs from 4 B3 at time 219.37642338201084
+Peer 4 sends to   3  B3 at time 219.37642338201084
+B3 has already been sent by {0, 1, 2, 4, 5, 6, 8, 9}
+Peer 2 already sent B3
+Peer 0 recvs from 9 B3 at time 219.47165826188856
+Peer 9 sends to   2  B3 at time 219.47165826188856
+B3 has already been sent by {0, 1, 2, 4, 5, 6, 8, 9}
+Peer 0 already sent B3
+Peer 0 recvs from 5 B3 at time 219.49023691532582
+Peer 5 sends to   1  B3 at time 219.49023691532582
+B3 has already been sent by {0, 1, 2, 4, 5, 6, 8, 9}
+Peer 0 already sent B3
+Peer 5 recvs from 2 B3 at time 219.5628952785248
+Peer 2 sends to   3  B3 at time 219.5628952785248
+B3 has already been sent by {0, 1, 2, 4, 5, 6, 8, 9}
+Peer 5 already sent B3
+Peer 4 recvs from 8 B3 at time 219.570991402371
+Peer 8 sends to   5  B3 at time 219.570991402371
+B3 has already been sent by {0, 1, 2, 4, 5, 6, 8, 9}
+Peer 4 already sent B3
+Peer 3 recvs from 1 B3 at time 219.7153602802773
+ISVALID True 3
+Traversing and adding block 3 to peer 3
+Peer 3 adds B3 to tree at time 219.7153602802773
+Peer 3 Whole Tree =>  Peer 3 Tree =>  3 <- 2 <- 1
+Peer 3 starts to mine at time 219.7153602802773
+Peer 1 sends to   2  B3 at time 219.7153602802773
+Mining block
+will wait for 155.24675965521425 seconds
+B3 has already been sent by {0, 1, 2, 4, 5, 6, 8, 9}
+Peer 3 sends to neighbours [0, 1, 2, 7, 4, 5]
+Peer 3 sends to   0  B3 at time 219.7153602802773
+Peer 5 recvs from 8 B3 at time 219.73278273327696
+Peer 8 sends to   9  B3 at time 219.73278273327696
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 5 already sent B3
+Peer 3 recvs from 0 B3 at time 219.73828708085597
+Peer 0 sends to   5  B3 at time 219.73828708085597
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 3 already sent B3
+Peer 9 recvs from 6 B3 at time 219.746008853432
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 9 already sent B3
+Peer 2 recvs from 9 B3 at time 219.7669531613235
+Peer 9 sends to   4  B3 at time 219.7669531613235
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 2 already sent B3
+Peer 3 recvs from 2 B3 at time 219.7940530399507
+Peer 2 sends to   4  B3 at time 219.7940530399507
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 3 already sent B3
+Peer 3 recvs from 4 B3 at time 219.82918142667614
+Peer 4 sends to   8  B3 at time 219.82918142667614
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 3 already sent B3
+Peer 1 recvs from 5 B3 at time 219.90467936698687
+Peer 5 sends to   2  B3 at time 219.90467936698687
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 1 already sent B3
+Peer 5 recvs from 0 B3 at time 219.91119386916654
+Peer 0 sends to   7  B3 at time 219.91119386916654
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 5 already sent B3
+Peer 7 recvs from 0 B3 at time 220.03120251410266
+ISVALID True 3
+Traversing and adding block 3 to peer 7
+Peer 7 adds B3 to tree at time 220.03120251410266
+Peer 7 Whole Tree =>  Peer 7 Tree =>  3 <- 2 <- 1
+Peer 7 starts to mine at time 220.03120251410266
+Peer 0 sends to   9  B3 at time 220.03120251410266
+Mining block
+will wait for 104.76397530371656 seconds
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 7 sends to neighbours [0, 3, 4]
+Peer 7 sends to   3  B3 at time 220.03120251410266
+Peer 8 recvs from 4 B3 at time 220.12049058520404
+Peer 4 sends to   7  B3 at time 220.12049058520404
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent B3
+Peer 9 recvs from 8 B3 at time 220.14091089306362
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B3
+Peer 4 recvs from 2 B3 at time 220.17453670112053
+Peer 2 sends to   9  B3 at time 220.17453670112053
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B3
+Peer 0 recvs from 3 B3 at time 220.17480105846673
+Peer 3 sends to   2  B3 at time 220.17480105846673
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 0 already sent B3
+Peer 4 recvs from 9 B3 at time 220.17541859294383
+Peer 9 sends to   6  B3 at time 220.17541859294383
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B3
+Peer 7 recvs from 4 B3 at time 220.20343323700422
+Peer 4 sends to   9  B3 at time 220.20343323700422
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent B3
+Peer 2 recvs from 1 B3 at time 220.20952980019263
+Peer 1 sends to   5  B3 at time 220.20952980019263
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B3
+Peer 9 recvs from 0 B3 at time 220.21678479968955
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B3
+Peer 2 recvs from 5 B3 at time 220.27781892113566
+Peer 5 sends to   3  B3 at time 220.27781892113566
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B3
+Peer 3 recvs from 5 B3 at time 220.33608861898006
+Peer 5 sends to   8  B3 at time 220.33608861898006
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B3
+Peer 3 recvs from 7 B3 at time 220.34289882107694
+Peer 7 sends to   4  B3 at time 220.34289882107694
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B3
+Peer 2 recvs from 3 B3 at time 220.40394386650203
+Peer 3 sends to   7  B3 at time 220.40394386650203
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B3
+Peer 4 recvs from 7 B3 at time 220.42548967573296
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B3
+Peer 9 recvs from 2 B3 at time 220.47017899868928
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B3
+Peer 8 recvs from 5 B3 at time 220.49972117674432
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent B3
+Peer 9 recvs from 4 B3 at time 220.60770065856784
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B3
+Peer 6 recvs from 9 B3 at time 220.62189002598964
+Peer 9 sends to   8  B3 at time 220.62189002598964
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B3
+Peer 5 recvs from 1 B3 at time 220.62264998074593
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent B3
+Peer 7 recvs from 3 B3 at time 220.71546437039206
+Peer 3 sends to   4  B3 at time 220.71546437039206
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent B3
+Peer 8 recvs from 9 B3 at time 221.03067455530297
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent B3
+Peer 4 recvs from 3 B3 at time 221.16862830625223
+Peer 3 sends to   5  B3 at time 221.16862830625223
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B3
+Peer 5 recvs from 3 B3 at time 221.22732384885845
+B3 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent B3
+Peer 9 Tree =>  4 <- 3 <- 2 <- 1
+Peer 9 forms/ mines / adds to tree B4 at time 222.89417421072423
+B4 has already been sent by set()
+Peer 9 sends to neighbours [0, 1, 2, 4, 6, 8]
+Peer 9 sends to   0  B4 at time 222.89417421072423
+Peer 0 recvs from 9 B4 at time 223.08016930830664
+ISVALID True 4
+Traversing and adding block 4 to peer 0
+Peer 0 adds B4 to tree at time 223.08016930830664
+Peer 0 Whole Tree =>  Peer 0 Tree =>  4 <- 3 <- 2 <- 1
+Peer 0 starts to mine at time 223.08016930830664
+Peer 9 sends to   1  B4 at time 223.08016930830664
+Mining block
+will wait for 63.35683496568464 seconds
+B4 has already been sent by {9}
+Peer 0 sends to neighbours [8, 3, 5, 1, 7, 9]
+Peer 0 sends to   8  B4 at time 223.08016930830664
+Peer 8 recvs from 0 B4 at time 223.54588513211507
+ISVALID True 4
+Traversing and adding block 4 to peer 8
+Peer 8 adds B4 to tree at time 223.54588513211507
+Peer 8 Whole Tree =>  Peer 8 Tree =>  4 <- 3 <- 2 <- 1
+Peer 8 starts to mine at time 223.54588513211507
+Peer 0 sends to   3  B4 at time 223.54588513211507
+Mining block
+will wait for 64.70109606746475 seconds
+B4 has already been sent by {0, 9}
+Peer 8 sends to neighbours [0, 4, 5, 9]
+Peer 8 sends to   4  B4 at time 223.54588513211507
+Peer 1 recvs from 9 B4 at time 223.55212728588074
+ISVALID True 4
+Traversing and adding block 4 to peer 1
+Peer 1 adds B4 to tree at time 223.55212728588074
+Peer 1 Whole Tree =>  Peer 1 Tree =>  4 <- 3 <- 2 <- 1
+Peer 1 starts to mine at time 223.55212728588074
+Peer 9 sends to   2  B4 at time 223.55212728588074
+Mining block
+will wait for 169.76725709080597 seconds
+B4 has already been sent by {0, 9, 8}
+Peer 1 sends to neighbours [0, 9, 3, 6, 2, 5]
+Peer 1 sends to   0  B4 at time 223.55212728588074
+Peer 4 recvs from 8 B4 at time 223.83842821295173
+ISVALID True 4
+Traversing and adding block 4 to peer 4
+Peer 4 adds B4 to tree at time 223.83842821295173
+Peer 4 Whole Tree =>  Peer 4 Tree =>  4 <- 3 <- 2 <- 1
+Peer 4 starts to mine at time 223.83842821295173
+Peer 8 sends to   5  B4 at time 223.83842821295173
+Mining block
+will wait for 79.07521719035596 seconds
+B4 has already been sent by {0, 9, 8, 1}
+Peer 4 sends to neighbours [2, 3, 8, 6, 7, 9]
+Peer 4 sends to   2  B4 at time 223.83842821295173
+Peer 2 recvs from 9 B4 at time 223.8487892970082
+ISVALID True 4
+Traversing and adding block 4 to peer 2
+Peer 2 adds B4 to tree at time 223.8487892970082
+Peer 2 Whole Tree =>  Peer 2 Tree =>  4 <- 3 <- 2 <- 1
+Peer 2 starts to mine at time 223.8487892970082
+Peer 9 sends to   4  B4 at time 223.8487892970082
+Mining block
+will wait for 5.566610743881545 seconds
+B4 has already been sent by {0, 1, 4, 8, 9}
+Peer 2 sends to neighbours [1, 6, 5, 3, 4, 9]
+Peer 2 sends to   1  B4 at time 223.8487892970082
+Peer 0 recvs from 1 B4 at time 223.86414727406338
+Peer 1 sends to   3  B4 at time 223.86414727406338
+B4 has already been sent by {0, 1, 2, 4, 8, 9}
+Peer 0 already sent B4
+Peer 5 recvs from 8 B4 at time 223.99958576123439
+ISVALID True 4
+Traversing and adding block 4 to peer 5
+Peer 5 adds B4 to tree at time 223.99958576123439
+Peer 5 Whole Tree =>  Peer 5 Tree =>  4 <- 3 <- 2 <- 1
+Peer 5 starts to mine at time 223.99958576123439
+Peer 8 sends to   9  B4 at time 223.99958576123439
+Mining block
+will wait for 684.7635562191722 seconds
+B4 has already been sent by {0, 1, 2, 4, 8, 9}
+Peer 5 sends to neighbours [0, 1, 2, 3, 6, 8]
+Peer 5 sends to   0  B4 at time 223.99958576123439
+Peer 3 recvs from 0 B4 at time 224.00601733808278
+ISVALID True 4
+Traversing and adding block 4 to peer 3
+Peer 3 adds B4 to tree at time 224.00601733808278
+Peer 3 Whole Tree =>  Peer 3 Tree =>  4 <- 3 <- 2 <- 1
+Peer 3 starts to mine at time 224.00601733808278
+Peer 0 sends to   5  B4 at time 224.00601733808278
+Mining block
+will wait for 265.9223641275876 seconds
+B4 has already been sent by {0, 1, 2, 4, 5, 8, 9}
+Peer 3 sends to neighbours [0, 1, 2, 7, 4, 5]
+Peer 3 sends to   1  B4 at time 224.00601733808278
+Peer 0 recvs from 5 B4 at time 224.17276599843788
+Peer 5 sends to   1  B4 at time 224.17276599843788
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 0 already sent B4
+Peer 5 recvs from 0 B4 at time 224.17916399626057
+Peer 0 sends to   1  B4 at time 224.17916399626057
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 5 already sent B4
+Peer 2 recvs from 4 B4 at time 224.2147244094204
+Peer 4 sends to   3  B4 at time 224.2147244094204
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 2 already sent B4
+Peer 4 recvs from 9 B4 at time 224.25289284760518
+Peer 9 sends to   6  B4 at time 224.25289284760518
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 4 already sent B4
+Peer 3 recvs from 1 B4 at time 224.2973159746724
+Peer 1 sends to   6  B4 at time 224.2973159746724
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 3 already sent B4
+Peer 1 recvs from 2 B4 at time 224.34347491908065
+Peer 2 sends to   6  B4 at time 224.34347491908065
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 1 already sent B4
+Peer 9 recvs from 8 B4 at time 224.40842537039342
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 9 already sent B4
+Peer 1 recvs from 3 B4 at time 224.43656760539818
+Peer 3 sends to   2  B4 at time 224.43656760539818
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 1 already sent B4
+Peer 1 recvs from 0 B4 at time 224.49120470300164
+Peer 0 sends to   7  B4 at time 224.49120470300164
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 1 already sent B4
+Peer 6 recvs from 2 B4 at time 224.5376835813057
+ISVALID True 4
+Traversing and adding block 4 to peer 6
+Peer 6 adds B4 to tree at time 224.5376835813057
+Peer 6 Whole Tree =>  Peer 6 Tree =>  4 <- 3 <- 2 <- 1
+Peer 6 starts to mine at time 224.5376835813057
+Peer 2 sends to   5  B4 at time 224.5376835813057
+Mining block
+will wait for 54.59240801306608 seconds
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 8, 9}
+Peer 6 sends to neighbours [1, 2, 4, 5, 9]
+Peer 6 sends to   1  B4 at time 224.5376835813057
+Peer 1 recvs from 5 B4 at time 224.58620029323905
+Peer 5 sends to   2  B4 at time 224.58620029323905
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 1 already sent B4
+Peer 7 recvs from 0 B4 at time 224.61610863428973
+ISVALID True 4
+Traversing and adding block 4 to peer 7
+Peer 7 adds B4 to tree at time 224.61610863428973
+Peer 7 Whole Tree =>  Peer 7 Tree =>  4 <- 3 <- 2 <- 1
+Peer 7 starts to mine at time 224.61610863428973
+Mining block
+will wait for 56.870062126569316 seconds
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 8, 9}
+Peer 7 sends to neighbours [0, 3, 4]
+Peer 7 sends to   3  B4 at time 224.61610863428973
+Peer 2 recvs from 3 B4 at time 224.6664102488155
+Peer 3 sends to   7  B4 at time 224.6664102488155
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B4
+Peer 3 recvs from 4 B4 at time 224.66684614227134
+Peer 4 sends to   6  B4 at time 224.66684614227134
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B4
+Peer 6 recvs from 1 B4 at time 224.70687559491154
+Peer 1 sends to   2  B4 at time 224.70687559491154
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B4
+Peer 6 recvs from 9 B4 at time 224.72303533991973
+Peer 9 sends to   8  B4 at time 224.72303533991973
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B4
+Peer 5 recvs from 2 B4 at time 224.909875584285
+Peer 2 sends to   3  B4 at time 224.909875584285
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent B4
+Peer 3 recvs from 7 B4 at time 224.92832787221755
+Peer 7 sends to   4  B4 at time 224.92832787221755
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B4
+Peer 2 recvs from 5 B4 at time 224.95759700936947
+Peer 5 sends to   3  B4 at time 224.95759700936947
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B4
+Peer 1 recvs from 6 B4 at time 224.96142624394466
+Peer 6 sends to   4  B4 at time 224.96142624394466
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 1 already sent B4
+Peer 6 recvs from 4 B4 at time 224.9735511436446
+Peer 4 sends to   7  B4 at time 224.9735511436446
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B4
+Peer 7 recvs from 3 B4 at time 224.97753082606772
+Peer 3 sends to   4  B4 at time 224.97753082606772
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent B4
+Peer 4 recvs from 7 B4 at time 225.01162119811036
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B4
+Peer 3 recvs from 5 B4 at time 225.01587981743316
+Peer 5 sends to   6  B4 at time 225.01587981743316
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B4
+Peer 7 recvs from 4 B4 at time 225.05598561596895
+Peer 4 sends to   9  B4 at time 225.05598561596895
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent B4
+Peer 8 recvs from 9 B4 at time 225.13401947355194
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent B4
+Peer 3 recvs from 2 B4 at time 225.13964006395426
+Peer 2 sends to   4  B4 at time 225.13964006395426
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent B4
+Peer 2 recvs from 1 B4 at time 225.2019635256902
+Peer 1 sends to   5  B4 at time 225.2019635256902
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent B4
+Peer 4 recvs from 6 B4 at time 225.28442722524704
+Peer 6 sends to   5  B4 at time 225.28442722524704
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B4
+Peer 6 recvs from 5 B4 at time 225.33531766550337
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent B4
+Peer 4 recvs from 3 B4 at time 225.42984890520913
+Peer 3 sends to   5  B4 at time 225.42984890520913
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B4
+Peer 9 recvs from 4 B4 at time 225.46112781769315
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B4
+Peer 5 recvs from 3 B4 at time 225.48873353681375
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent B4
+Peer 4 recvs from 2 B4 at time 225.5160845439406
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent B4
+Peer 5 recvs from 1 B4 at time 225.6154587195986
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent B4
+Peer 5 recvs from 6 B4 at time 225.6408354893069
+Peer 6 sends to   9  B4 at time 225.6408354893069
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent B4
+Peer 9 recvs from 6 B4 at time 226.09117349530715
+B4 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent B4

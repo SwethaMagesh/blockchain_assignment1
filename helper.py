@@ -39,14 +39,16 @@ def create_random_transaction(num_of_peers, initial_state = False):
     payer = random.randint(0, num_of_peers - 1)
     payee = random.randint(0, num_of_peers - 1)
     if initial_state:
-        coins = random.randint(0,1)
-    coins = random.randint(1, 10)
+        coins = 0
+    else:
+        coins = random.randint(1, 10)
     return payer, payee, coins
 
 
 def generate_Tk(peer, interval = 600):
         mean = interval / peer.hashpower
-        Tk = random.expovariate(1 / mean)
+        Tk = random.expovariate(1/mean)
+        print(f"will wait for {Tk} seconds")
         return Tk
 
 def validate_block(block):
@@ -67,14 +69,13 @@ def traverse_and_add(peer, block):
             break
     if found:
         should_form = peer.add_block_to_tail(block, tail)
-    
-        # else:
-        #     # if not, traverse the tree and add
-        #     while tail.prevNode != None :
-        #         if tail.prevNode.block.id == block.prevblockid:
-        #             should_form = peer.add_block_to_tail(block, tail.prevNode)
-        #             break
-        #         tail = tail.prevNode
+    else:
+        print(f"Block {block.id} is not a tail block")
+        for tail in peer.taillist:
+            if tail.prevNode != None:
+                if tail.prevNode.block.id == block.prevblockid:
+                    peer.add_block_to_nontail(block, tail.prevNode)
+                    break
     return should_form
             
             

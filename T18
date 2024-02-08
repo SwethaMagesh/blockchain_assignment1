@@ -1,0 +1,158 @@
+Created T18 at time 11.232806187261401
+Peer 1 recvs from 1 T18 at time 11.232806187261401
+T18 has already been sent by set()
+Peer 1 sends to   0  T18 at time 11.232806187261401
+Peer 0 recvs from 1 T18 at time 11.5010364704166
+Peer 1 sends to   8  T18 at time 11.5010364704166
+T18 has already been sent by {1}
+Peer 0 sends to   4  T18 at time 11.5010364704166
+Peer 4 recvs from 0 T18 at time 11.535879891983312
+Peer 0 sends to   6  T18 at time 11.535879891983312
+T18 has already been sent by {0, 1}
+Peer 4 sends to   9  T18 at time 11.535879891983312
+Peer 8 recvs from 1 T18 at time 11.563807551951719
+Peer 1 sends to   7  T18 at time 11.563807551951719
+T18 has already been sent by {0, 1, 4}
+Peer 8 sends to   2  T18 at time 11.563807551951719
+Peer 7 recvs from 1 T18 at time 11.615785537615356
+Peer 1 sends to   2  T18 at time 11.615785537615356
+T18 has already been sent by {0, 1, 4, 8}
+Peer 7 sends to   3  T18 at time 11.615785537615356
+Peer 2 recvs from 1 T18 at time 11.701890194231245
+Peer 1 sends to   5  T18 at time 11.701890194231245
+T18 has already been sent by {0, 1, 4, 7, 8}
+Peer 2 sends to   0  T18 at time 11.701890194231245
+Peer 6 recvs from 0 T18 at time 11.863362293422323
+Peer 0 sends to   2  T18 at time 11.863362293422323
+T18 has already been sent by {0, 1, 2, 4, 7, 8}
+Peer 6 sends to   2  T18 at time 11.863362293422323
+Peer 0 recvs from 2 T18 at time 11.929149843031059
+Peer 2 sends to   8  T18 at time 11.929149843031059
+T18 has already been sent by {0, 1, 2, 4, 6, 7, 8}
+Peer 0 already sent T18
+Peer 2 recvs from 6 T18 at time 11.973355559093354
+Peer 6 sends to   3  T18 at time 11.973355559093354
+T18 has already been sent by {0, 1, 2, 4, 6, 7, 8}
+Peer 2 already sent T18
+Peer 2 recvs from 8 T18 at time 12.001278792323086
+Peer 8 sends to   3  T18 at time 12.001278792323086
+T18 has already been sent by {0, 1, 2, 4, 6, 7, 8}
+Peer 2 already sent T18
+Peer 9 recvs from 4 T18 at time 12.015188786151453
+Peer 4 sends to   7  T18 at time 12.015188786151453
+T18 has already been sent by {0, 1, 2, 4, 6, 7, 8}
+Peer 9 sends to   3  T18 at time 12.015188786151453
+Peer 3 recvs from 9 T18 at time 12.049459185743167
+Peer 9 sends to   5  T18 at time 12.049459185743167
+T18 has already been sent by {0, 1, 2, 4, 6, 7, 8, 9}
+Peer 3 sends to   0  T18 at time 12.049459185743167
+Peer 2 recvs from 0 T18 at time 12.090377091090886
+Peer 0 sends to   3  T18 at time 12.090377091090886
+T18 has already been sent by {0, 1, 2, 3, 4, 6, 7, 8, 9}
+Peer 2 already sent T18
+Peer 3 recvs from 7 T18 at time 12.094457615141149
+Peer 7 sends to   4  T18 at time 12.094457615141149
+T18 has already been sent by {0, 1, 2, 3, 4, 6, 7, 8, 9}
+Peer 3 already sent T18
+Peer 3 recvs from 6 T18 at time 12.162849341653049
+Peer 6 sends to   4  T18 at time 12.162849341653049
+T18 has already been sent by {0, 1, 2, 3, 4, 6, 7, 8, 9}
+Peer 3 already sent T18
+Peer 5 recvs from 1 T18 at time 12.190944436036023
+T18 has already been sent by {0, 1, 2, 3, 4, 6, 7, 8, 9}
+Peer 5 sends to   0  T18 at time 12.190944436036023
+Peer 7 recvs from 4 T18 at time 12.202597120991483
+Peer 4 sends to   6  T18 at time 12.202597120991483
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent T18
+Peer 4 recvs from 7 T18 at time 12.282177951717733
+Peer 7 sends to   6  T18 at time 12.282177951717733
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent T18
+Peer 8 recvs from 2 T18 at time 12.365267864994381
+Peer 2 sends to   6  T18 at time 12.365267864994381
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent T18
+Peer 0 recvs from 3 T18 at time 12.441225401336567
+Peer 3 sends to   2  T18 at time 12.441225401336567
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 0 already sent T18
+Peer 6 recvs from 2 T18 at time 12.473352301192756
+Peer 2 sends to   5  T18 at time 12.473352301192756
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent T18
+Peer 6 recvs from 7 T18 at time 12.478012719387843
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent T18
+Peer 3 recvs from 0 T18 at time 12.484088742535562
+Peer 0 sends to   5  T18 at time 12.484088742535562
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent T18
+Peer 3 recvs from 8 T18 at time 12.489778997711417
+Peer 8 sends to   5  T18 at time 12.489778997711417
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent T18
+Peer 5 recvs from 9 T18 at time 12.498912993590414
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent T18
+Peer 0 recvs from 5 T18 at time 12.50607496390772
+Peer 5 sends to   2  T18 at time 12.50607496390772
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 0 already sent T18
+Peer 4 recvs from 6 T18 at time 12.571872202049038
+Peer 6 sends to   8  T18 at time 12.571872202049038
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 4 already sent T18
+Peer 5 recvs from 2 T18 at time 12.586626758816525
+Peer 2 sends to   3  T18 at time 12.586626758816525
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent T18
+Peer 6 recvs from 4 T18 at time 12.61202306344994
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent T18
+Peer 8 recvs from 6 T18 at time 12.667196161933044
+Peer 6 sends to   7  T18 at time 12.667196161933044
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent T18
+Peer 2 recvs from 5 T18 at time 12.691195241118077
+Peer 5 sends to   9  T18 at time 12.691195241118077
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent T18
+Peer 5 recvs from 0 T18 at time 12.756308675055006
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent T18
+Peer 5 recvs from 8 T18 at time 12.781907692616914
+Peer 8 sends to   6  T18 at time 12.781907692616914
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 5 already sent T18
+Peer 2 recvs from 3 T18 at time 12.792663482183437
+Peer 3 sends to   7  T18 at time 12.792663482183437
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 2 already sent T18
+Peer 7 recvs from 6 T18 at time 12.862584746295532
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent T18
+Peer 6 recvs from 8 T18 at time 12.87754501362185
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent T18
+Peer 3 recvs from 2 T18 at time 12.939104125982018
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 3 already sent T18
+Peer 9 recvs from 5 T18 at time 13.167702366536089
+Peer 5 sends to   8  T18 at time 13.167702366536089
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 9 already sent T18
+Peer 7 recvs from 3 T18 at time 13.271413886128727
+Peer 3 sends to   6  T18 at time 13.271413886128727
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 7 already sent T18
+Peer 8 recvs from 5 T18 at time 13.444108416413092
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent T18
+Peer 6 recvs from 3 T18 at time 13.458615452099036
+Peer 3 sends to   8  T18 at time 13.458615452099036
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 6 already sent T18
+Peer 8 recvs from 3 T18 at time 13.946051740793244
+T18 has already been sent by {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Peer 8 already sent T18

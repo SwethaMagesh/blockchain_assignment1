@@ -7,7 +7,6 @@ class Peer:
         self.slowcpu = lowcpu
         self.hashpower = hashpower
         self.transactions_queue = []
-        self.tree = None
         self.blockids = []
         self.taillist = {}
         self.pending_blocks_queue = []
@@ -23,9 +22,27 @@ class Peer:
         del self.taillist[tail_node]
         longest_tail =  max(self.taillist, key=self.taillist.get)
         if longest_tail == node:
+            for txn in block.transactions:
+                if txn in self.transactions_queue:
+                    self.transactions_queue.remove(txn)
             return True
         else:
             return False
+    
+    def add_block_to_nontail(self, block, prev_node):
+        self.blockids.append(block.id)
+        node = TreeNode(block, prev_node)
+        self.taillist[node] = prev_node.count_tree() + 1
+        print("FORKED ",end=" ")
+        node.print_tree(self)
+        longest_tail =  max(self.taillist, key=self.taillist.get)
+        print("LONGEST TAIL ",end=" ")
+        longest_tail.print_tree(self)
+
+    def print_whole_tree(self):
+        print(f"Peer {self.id} Whole Tree => ", end=" ")
+        for node in self.taillist:
+            node.print_tree(self)
 
 
 class Link:
@@ -46,12 +63,15 @@ class Block:
         self.sent_peers = set()
         
     def form_block(self, peer):
+        if len(peer.transactions_queue) == 0:
+            return False
         no_of_txn = random.randint(1, 10)
         self.transactions = peer.transactions_queue[0:no_of_txn]
         peer.transactions_queue = peer.transactions_queue[no_of_txn:]
         tail_node = max(peer.taillist, key=peer.taillist.get)
         self.prevblockid = tail_node.block.id
         self.coinbase = Transaction(None, peer, 50)
+        return True
 
     def generate_qdelay(self, link):
         m_by_cij = 8/(link.cij*1024)
@@ -84,16 +104,26 @@ class TreeNode:
         self.block = block
         self.prevNode = prev
     
-    
-    
     def __str__(self):
         return str(self.block.id)
     
-    def print_tree(self):
+    def print_tree(self, peer):
         node = self
+        print(f"Peer {peer.id} Tree => ", end=" ")
         while node.prevNode != None:
             print(node.block.id, end=" <- ")
             node = node.prevNode
         print(node.block.id)
+    
+    def count_tree(self):
+        c = 0 
+        node = self
+        while node.prevNode != None:
+            node = node.prevNode
+            c+=1
+        return c
+
+    
+
     
 
