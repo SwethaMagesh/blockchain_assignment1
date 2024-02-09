@@ -33,7 +33,7 @@ Command line
 n, z, Ttx, Tk, edges,  invalid_txn_prob, invalid_block_prob, zeta, adv, alpha
 
 ---
-Doubts
-- Transaction generation - decide coins?
-- Loopless forwarding DS
+Sample block chain
+-  python3 main.py -n 10 --slow 0.5 --low 0.1 -Ttx 6 --blockinterval 6 > test
 - 
+![Alt text](Report/image.png)

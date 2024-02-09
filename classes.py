@@ -64,15 +64,15 @@ class Link:
         return str(self.i) + " " + str(self.j) + " " + str(self.cij) + " " + str(self.roij)
     
 class Block:
-    id = 0
+    id = 1
     def __init__(self): 
-        Block.id += 1
-        self.id = Block.id
         self.sent_peers = set()
         
     def form_block(self, peer):
         if len(peer.transactions_queue) == 0:
             return False
+        Block.id += 1
+        self.id = Block.id
         no_of_txn = random.randint(1, 10)
         self.transactions = peer.transactions_queue[0:no_of_txn]
         peer.transactions_queue = peer.transactions_queue[no_of_txn:]
