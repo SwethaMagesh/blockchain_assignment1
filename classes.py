@@ -1,8 +1,6 @@
 import random
 from helper import *
 
-
-
 class Peer:
     def __init__(self, peer, slow, lowcpu, hashpower):
         self.id = peer
@@ -26,7 +24,7 @@ class Peer:
         node = TreeNode(block, tail_node)
         self.taillist[node] = self.taillist[tail_node] + 1
         del self.taillist[tail_node]
-        longest_tail =  max(self.taillist, key=self.taillist.get)
+        longest_tail =  find_longest_tail(self.taillist)
         if longest_tail == node:
             for txn in block.transactions:
                 if txn in self.transactions_queue:
@@ -41,11 +39,11 @@ class Peer:
         self.blockids.append(block.id)
         node = TreeNode(block, prev_node)
         self.taillist[node] = prev_node.count_tree() + 1
-        print("FORKED ",end=" ")
-        node.print_tree(self)
-        longest_tail =  max(self.taillist, key=self.taillist.get)
-        print("LONGEST TAIL ",end=" ")
-        longest_tail.print_tree(self)
+        # print("FORKED ",end=" ")
+        # node.print_tree(self)
+        longest_tail =  find_longest_tail(self.taillist)
+        # print("LONGEST TAIL ",end=" ")
+        # longest_tail.print_tree(self)
 
     def print_whole_tree(self):
         print(f"Peer {self.id} Whole Tree => ", end=" ")
@@ -76,7 +74,7 @@ class Block:
         no_of_txn = random.randint(1, 10)
         self.transactions = peer.transactions_queue[0:no_of_txn]
         peer.transactions_queue = peer.transactions_queue[no_of_txn:]
-        tail_node = max(peer.taillist, key=peer.taillist.get)
+        tail_node = find_longest_tail(peer.taillist)
         self.prevblockid = tail_node.block.id
         self.coinbase = Transaction(None, peer, 50)
         return True
@@ -92,7 +90,7 @@ class Transaction:
     txn_id = 0
     def __init__(self, payer, payee, coins): 
         Transaction.txn_id += 1
-        self.txnid = Transaction.txn_id
+        self.id = Transaction.txn_id
         self.payer = payer
         self.payee = payee
         self.coins = coins

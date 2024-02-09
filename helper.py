@@ -22,12 +22,12 @@ def connectedComponents(G, n_peers):
             cluster.append(DFS(G, temp, v, visited))
     return cluster
 
-
-def visualize_graph(G):
+def visualize_graph(G, figure_no):
     pos = nx.spring_layout(G)
     nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
             font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
-    plt.show()
+    plt.savefig(f'fig{figure_no}.png')
+    plt.clf()
 
 def exponential_sample(mean):
     return random.expovariate(1 / mean)
@@ -44,23 +44,20 @@ def create_random_transaction(num_of_peers, initial_state = False):
         coins = random.randint(1, 10)
     return payer, payee, coins
 
-
 def generate_Tk(peer, interval = 600):
         mean = interval / peer.hashpower
-        Tk = random.expovariate(1/mean)
-        print(f"will wait for {Tk} seconds")
+        Tk = exponential_sample(mean)
+        # print(f"will wait for {Tk} seconds")
         return Tk
 
 def validate_block(block):
-    # every transaction of block should be valid
     for txn in block.transactions:
         if txn.payer.balance < txn.coins:
             return False
     return True
 
 def traverse_and_add(peer, block):
-    # if block.prevblockid is that of the taillist add
-    print(f"Traversing and adding block {block.id} to peer {peer.id}")
+    # print(f"Traversing and adding block {block.id} to peer {peer.id}")
     found = False
     should_form = False
     for tail in peer.taillist:
@@ -70,13 +67,13 @@ def traverse_and_add(peer, block):
     if found:
         should_form = peer.add_block_to_tail(block, tail)
     else:
-        print(f"Block {block.id} is not a tail block")
+        # print(f"Block {block.id} is not a tail block")
         for tail in peer.taillist:
             if tail.prevNode != None:
                 if tail.prevNode.block.id == block.prevblockid:
                     peer.add_block_to_nontail(block, tail.prevNode)
                     break
     return should_form
-            
-            
-    
+
+def find_longest_tail(taillist) :
+    return max(taillist, key=taillist.get)

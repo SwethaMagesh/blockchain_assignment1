@@ -1,11 +1,14 @@
 import argparse
 import networkx as nx
 import random
-from classes import *
 import simpy
 import time
+import logging
+from classes import *
 
-
+logging.basicConfig(filename="blockchain.log", format='%(message)s', filemode='w')
+logger=logging.getLogger('main.py')
+logger.setLevel(logging.DEBUG) 
 parser = argparse.ArgumentParser(description="command line argument parser")
 
 # number of peers in the network
@@ -38,7 +41,6 @@ print("fraction low CPU peers  = ", z1_low)
 print("transaction interval    = ", I_txn)
 print("block interval          = ", I_block)
 
-
 # Constants
 TRANSACTION_SIZE = 1  # in KB
 MAX_BLOCK_SIZE = 1024  # in KB
@@ -46,9 +48,10 @@ START_TIME = 0
 
 # generate a random graph with n peers and parameters
 G = nx.Graph()
-
+figure_no = 0
 
 def generate_random_graph(n_peers, z0_slow, z1_low):
+    # add all peers as nodes
     for peer in range(n_peers):
         G.add_node(peer)
     for node in G.nodes():
@@ -63,14 +66,12 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
 
     # make the graph connected
     clusters = connectedComponents(G, n_peers)
-    print(f"Clusters in the graph are {len(clusters)}")
     if len(clusters) != 1:
         for i in range(len(clusters)-1):
             node = random.choice(clusters[i])
             other_node = random.choice(clusters[i+1])
             G.add_edge(node, other_node)
     clusters = connectedComponents(G, n_peers)
-    print(f"Clusters in the graph are {len(clusters)}")
 
     # randomly allocate nodes as slow or lowcpu
     slow_peers = random.sample(range(n_peers), int(z0_slow * n_peers))
@@ -113,25 +114,27 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
             links[j] = {i: Link(j, i, speed, ro)}
 
     # local printing
-    print("Edges : ")
-    print(G.edges())
-    print("Nodes : ")
-    print(G.nodes())
-    print("Degree : ")
-    for node in G.nodes():
-        print(G.degree(node), end=" ")
-    print("\nSlow Peers : ")
-    print(slow_peers)
-    print("Low CPU Peers : ")
-    print(lowcpu_peers)
-    print("Peers : ")
-    for i in peers:
-        print(i)
-    print("Links : ")
-    for _, neighbor_link in links.items():
-        for _, link_obj in neighbor_link.items():
-            print(link_obj)
-
+    # print("Edges : ")
+    # print(G.edges())
+    # print("Nodes : ")
+    # print(G.nodes())
+    # print("Degree : ")
+    # for node in G.nodes():
+    #     print(G.degree(node), end=" ")
+    # print("\nSlow Peers : ")
+    # print(slow_peers)
+    # print("Low CPU Peers : ")
+    # print(lowcpu_peers)
+    # print("Peers : ")
+    # for i in peers:
+    #     print(i)
+    # print("Links : ")
+    # for _, neighbor_link in links.items():
+    #     for _, link_obj in neighbor_link.items():
+    #         print(link_obj)
+    global figure_no
+    figure_no += 1
+    visualize_graph(G, figure_no)
     return peers, links
 
 
@@ -142,7 +145,7 @@ def handle_transaction(env):
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
     peers[s].balance -= c
     peers[r].balance += c
-    print(f"Created T{txn.txnid} at time {env.now}")
+    logger.debug(f"{env.now} \t T{txn.id} is created")
     payer = peers[s]
     receive_transaction(payer, payer, txn, env)
     env.process(forward_transaction(txn, payer, payer, env))
@@ -150,15 +153,15 @@ def handle_transaction(env):
 
 # receive transaction from peers
 def receive_transaction(peer, hears_from, transaction, env):
-    # print(f"Peer {peer.id} recvs from {hears_from.id} T{transaction.txnid} at time {env.now}")
-    if transaction.txnid not in [txn.txnid for txn in peer.transactions_queue]:
+    # print(f"Peer {peer.id} recvs from {hears_from.id} T{transaction.id} at time {env.now}")
+    if transaction.id not in [txn.id for txn in peer.transactions_queue]:
         peer.transactions_queue.append(transaction)
 
 
 def forward_transaction(transaction, curr_peer, prev_peer, env):
-    # print(f"T{transaction.txnid} has already been sent by {transaction.sent_peers}")
+    # print(f"T{transaction.id} has already been sent by {transaction.sent_peers}")
     if curr_peer.id in transaction.sent_peers:
-        # print(f"Peer {curr_peer.id} already sent T{transaction.txnid}")
+        # print(f"Peer {curr_peer.id} already sent T{transaction.id}")
         return
     else:
         transaction.sent_peers.add(curr_peer.id)
@@ -167,7 +170,7 @@ def forward_transaction(transaction, curr_peer, prev_peer, env):
 
         for neighbour in neighbours:
             if (neighbour != prev_peer.id):
-                # print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.txnid} at time {env.now}")
+                # print(f"Peer {curr_peer.id} sends to   {neighbour}  T{transaction.id} at time {env.now}")
                 link = links[curr_peer.id][neighbour]
                 yield env.timeout(transaction.generate_qdelay(link))
                 receive_transaction(
@@ -201,36 +204,31 @@ def receive_block(peer, hears_from, block, env):
     if block.id not in peer.blockids:
         isvalid = validate_block(block)
         should_form = False
-        print(f"ISVALID {isvalid} {block.id}")
+        logger.debug(f"{env.now} \t B{block.id} is validated")
         if isvalid:
             if block.prevblockid in peer.blockids:
                 should_form = traverse_and_add(peer, block)
-                print(
-                    f"Peer {peer.id} adds B{block.id} to tree at time {env.now}")
-                peer.print_whole_tree()
+                logger.debug(f"{env.now} \t P{peer.id} adds B{block.id} to its tree")
+                # peer.print_whole_tree()
             else:
-                print(
-                    f"Peer {peer.id} adds B{block.id} to pending queue at time {env.now}")
+                logger.debug(f"{env.now} \t P{peer.id} adds B{block.id} to its pending queue")
                 peer.pending_blocks_queue.append(block)
             if should_form:
-                print(f"Peer {peer.id} starts to mine at time {env.now}")
                 env.process(mine_block(peer, env))
                 # cancel mine of previous
 
 
 def mine_block(peer, env):
-    print("Mining block")
-    longest_tail = max(peer.taillist, key=peer.taillist.get)
+    longest_tail = find_longest_tail(peer.taillist)
     yield env.timeout(generate_Tk(peer, I_block))
-    longest_tail_new = max(peer.taillist, key=peer.taillist.get)
+    longest_tail_new = find_longest_tail(peer.taillist)
     if longest_tail_new == longest_tail:
         block = Block()
         if block.form_block(peer):
             peer.add_block_to_tail(block, longest_tail)
-            longest_tail = max(peer.taillist, key=peer.taillist.get)
-            longest_tail.print_tree(peer)
-            print(
-                f"Peer {peer.id} forms/ mines / adds to tree B{block.id} at time {env.now}")
+            longest_tail = find_longest_tail(peer.taillist)
+            # longest_tail.print_tree(peer)
+            logger.debug(f"{env.now} \t P{peer.id} forms/mines/adds B{block.id} to its tree")
             peer.balance += 50
             env.process(forward_block(block, peer, peer, env))
 
@@ -260,5 +258,7 @@ env.process(mine_block(peers[5], env))
 
 env.run(until=SIM_TIME)
 
-visualize_graph(peers[5].blockchain)
-# visualize_graph(peers[8].blockchain)
+figure_no+=1
+visualize_graph(peers[5].blockchain, figure_no)
+figure_no+=1
+visualize_graph(peers[8].blockchain, figure_no)
