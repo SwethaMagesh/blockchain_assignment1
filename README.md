@@ -28,6 +28,10 @@ visualisation
     - 12 marks
     - insight - 8 marks
 
+Comments of code - 4marks
+Design document - 8marks
+Readme file 2marks
+
 ---
 Command line
 n, z, Ttx, Tk, edges,  invalid_txn_prob, invalid_block_prob, zeta, adv, alpha
@@ -37,3 +41,17 @@ Sample block chain
 -  python3 main.py -n 10 --slow 0.5 --low 0.1 -Ttx 6 --blockinterval 6 > test
 - 
 ![Alt text](Report/image.png)
+
+
+----
+TODO: 
+1. Visualise and tabulate 
+1a) left out - add check 1023 transaction in block?
+1b) validation of transaction when??
+2. Theory questions in report
+3. Code and challenges (very small description for each module)
+4. DESIGN DOCUMENT
+5. comments, readme for instructs - mention where chatgpt is used
+6. analyse our latency in order to make the report & also check the graph which comes out (as line please!)
+7. look at documentation for event queue simulator
+8. 
