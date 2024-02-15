@@ -6,9 +6,10 @@ import time
 import logging
 from classes import *
 
-logging.basicConfig(filename="blockchain.log", format='%(message)s', filemode='w')
-logger=logging.getLogger('main.py')
-logger.setLevel(logging.DEBUG) 
+logging.basicConfig(filename="blockchain.log",
+                    format='%(message)s', filemode='w')
+logger = logging.getLogger('main.py')
+logger.setLevel(logging.DEBUG)
 parser = argparse.ArgumentParser(description="command line argument parser")
 
 # number of peers in the network
@@ -50,6 +51,7 @@ START_TIME = 0
 G = nx.Graph()
 figure_no = 0
 
+
 def generate_random_graph(n_peers, z0_slow, z1_low):
     # add all peers as nodes
     for peer in range(n_peers):
@@ -58,7 +60,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
         degree = random.randint(3, 6)
         while G.degree(node) < degree:
             possible_nodes = [other_node for other_node in G.nodes()
-                               if other_node != node and G.degree(other_node) < 6]
+                              if other_node != node and G.degree(other_node) < 6]
             if len(possible_nodes) == 0:
                 break
             other_node = random.choice(possible_nodes)
@@ -78,29 +80,30 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     lowcpu_peers = random.sample(range(n_peers), int(z1_low * n_peers))
 
     # calculate hashpower of slow and fast nodes
-    slow_hashpower = 1 / (10 - 9*z1_low)
+    slow_hashpower = 1 / ((10 - 9*z1_low)*n_peers)
     fast_hashpower = 10 * slow_hashpower
 
     # populate peers with their parameters
     peers = []
     for peer in range(n_peers):
         if peer in slow_peers:
-            slow = True
+            is_slow = True
         else:
-            slow = False
+            is_slow = False
         if peer in lowcpu_peers:
-            lowcpu = True
+            is_lowcpu = True
             hashpower = slow_hashpower
         else:
-            lowcpu = False
+            is_lowcpu = False
             hashpower = fast_hashpower
-        peers.append(Peer(peer, slow=slow, lowcpu=lowcpu, hashpower=hashpower))
+        peers.append(
+            Peer(peer, slow=is_slow, lowcpu=is_lowcpu, hashpower=hashpower))
 
     # populate links with their parameters
     links = {}
     for i, j in G.edges():
         ro = random.randrange(10, 500)
-        if peers[i].slow or peers[j].slow:
+        if peers[i].is_slow or peers[j].is_slow:
             speed = 5
         else:
             speed = 100
@@ -145,9 +148,10 @@ def handle_transaction(env):
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
     peers[s].balance -= c
     peers[r].balance += c
-    logger.debug(f"{env.now} \t T{txn.id} is created")
+    # logger.debug(f"{env.now} \t T{txn.id} is created")
     payer = peers[s]
     receive_transaction(payer, payer, txn, env)
+    # payer creates a transaction and starts forwarding it
     env.process(forward_transaction(txn, payer, payer, env))
 
 
@@ -200,18 +204,20 @@ def forward_block(block, curr_peer, prev_peer, env):
 
 
 def receive_block(peer, hears_from, block, env):
-    # print(f"Peer {peer.id} recvs from {hears_from.id} B{block.id} at time {env.now}")
+    logger.debug(f"{env.now} \t P{peer.id} recvs B{block.id} from P{hears_from.id} ")
     if block.id not in peer.blockids:
         isvalid = validate_block(block)
         should_form = False
-        logger.debug(f"{env.now} \t B{block.id} is validated")
+        # logger.debug(f"{env.now} \t B{block.id} is {isvalid}")
         if isvalid:
             if block.prevblockid in peer.blockids:
                 should_form = traverse_and_add(peer, block)
-                logger.debug(f"{env.now} \t P{peer.id} adds B{block.id} to its tree")
+                logger.debug(
+                    f"{env.now} \t P{peer.id} adds B{block.id} to its tree")
                 # peer.print_whole_tree()
             else:
-                logger.debug(f"{env.now} \t P{peer.id} adds B{block.id} to its pending queue")
+                logger.debug(
+                    f"{env.now} \t P{peer.id} adds B{block.id} to its pending queue")
                 peer.pending_blocks_queue.append(block)
             if should_form:
                 env.process(mine_block(peer, env))
@@ -220,7 +226,9 @@ def receive_block(peer, hears_from, block, env):
 
 def mine_block(peer, env):
     longest_tail = find_longest_tail(peer.taillist)
-    yield env.timeout(generate_Tk(peer, I_block))
+    mining_time = generate_Tk(peer, I_block)
+    logger.debug(f"{env.now} \t P{peer.id} mines for {mining_time} seconds")
+    yield env.timeout(mining_time)
     longest_tail_new = find_longest_tail(peer.taillist)
     if longest_tail_new == longest_tail:
         block = Block()
@@ -228,16 +236,18 @@ def mine_block(peer, env):
             peer.add_block_to_tail(block, longest_tail)
             longest_tail = find_longest_tail(peer.taillist)
             # longest_tail.print_tree(peer)
-            logger.debug(f"{env.now} \t P{peer.id} forms/mines/adds B{block.id} to its tree")
+            logger.debug(
+                f"{env.now} \t P{peer.id} mines B{block.id}")
             peer.balance += 50
             env.process(forward_block(block, peer, peer, env))
+
 
 
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 1000
+SIM_TIME = 600
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
@@ -249,16 +259,20 @@ for i in range(n_peers):
     peers[i].blockids.append(genesis.id)
     peers[i].taillist[genesis_node] = 0
 
-
-for i in range(20):
+for i in range(int(SIM_TIME//I_txn)):
     env.process(handle_transaction(env))
 
-env.process(mine_block(peers[5], env))
+
+for i in range(n_peers):
+    env.process(mine_block(peers[i], env))
+
 
 
 env.run(until=SIM_TIME)
 
-figure_no+=1
+figure_no += 1
 visualize_graph(peers[5].blockchain, figure_no)
-figure_no+=1
+figure_no += 1
 visualize_graph(peers[8].blockchain, figure_no)
+for i in range(n_peers):
+    print(f"Number of blocks in peer {i} 's blockchain: ", len(peers[i].blockids))

@@ -4,8 +4,8 @@ from helper import *
 class Peer:
     def __init__(self, peer, slow, lowcpu, hashpower):
         self.id = peer
-        self.slow = slow
-        self.slowcpu = lowcpu
+        self.is_slow = slow
+        self.is_lowcpu = lowcpu
         self.hashpower = hashpower
         self.transactions_queue = []
         self.blockids = []
@@ -15,7 +15,7 @@ class Peer:
         self.blockchain = nx.Graph()
     
     def __str__(self):
-        return str(self.id) + " " + str(self.slow) + " " + str(self.slowcpu)+ " " + str(self.hashpower)
+        return str(self.id) + " " + str(self.is_slow) + " " + str(self.is_lowcpu)+ " " + str(self.hashpower)
     
     def add_block_to_tail(self, block, tail_node):
         self.blockchain.add_node(block.id)
@@ -68,7 +68,8 @@ class Block:
         
     def form_block(self, peer):
         if len(peer.transactions_queue) == 0:
-            return False
+            print(f"Peer {peer.id} creating empty block")
+            # return False
         Block.id += 1
         self.id = Block.id
         no_of_txn = random.randint(1, 10)
