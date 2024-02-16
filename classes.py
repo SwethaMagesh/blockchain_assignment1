@@ -51,6 +51,7 @@ class Peer:
         for node in self.taillist:
             node.print_tree(self)
 
+    def 
 
 class Link:
     def __init__(self, i, j, cij, roij):
@@ -117,12 +118,16 @@ class TreeNode:
         return str(self.block.id)
     
     def print_tree(self, peer):
+        c = 0
         node = self
-        print(f"Peer {peer.id} Tree => ", end=" ")
+        print(f"P{peer.id} => ", end=" ")
         while node.prevNode != None:
             print(node.block.id, end=" <- ")
+            c+=1
             node = node.prevNode
-        print(node.block.id)
+        c+=1
+        print(node.block.id, " L= ",c)
+        return c
     
     def count_tree(self):
         c = 0 

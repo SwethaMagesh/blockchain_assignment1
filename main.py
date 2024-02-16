@@ -36,12 +36,12 @@ z1_low = args.low
 I_txn = args.txninterval
 I_block = args.blockinterval
 
-# local printing
-print("peers in network        = ", n_peers)
-print("fraction slow peers     = ", z0_slow)
-print("fraction low CPU peers  = ", z1_low)
-print("transaction interval    = ", I_txn)
-print("block interval          = ", I_block)
+# # local printing
+# print("peers in network        = ", n_peers)
+# print("fraction slow peers     = ", z0_slow)
+# print("fraction low CPU peers  = ", z1_low)
+# print("transaction interval    = ", I_txn)
+# print("block interval          = ", I_block)
 
 # Constants
 TRANSACTION_SIZE = 1  # in KB
@@ -238,7 +238,7 @@ def mine_block(peer, env):
             peer.add_block_to_tail(block, longest_tail)
             peer.created_blocks += 1
             longest_tail = find_longest_tail(peer.taillist)
-            longest_tail.print_tree(peer)
+            # c = longest_tail.print_tree(peer)
             logger.debug(
                 f"{env.now} P{peer.id} mines B{block.id}")
             peer.balance += 50
@@ -250,7 +250,7 @@ def mine_block(peer, env):
 peers, links, slowpeers, lowcpu_peers = generate_random_graph(n_peers, z0_slow, z1_low)
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 60
+SIM_TIME = 6000
 
 random.seed(42)
 env = simpy.Environment()
@@ -276,9 +276,39 @@ env.run(until=SIM_TIME)
 figure_no += 1
 visualize_graph(peers[5].blockchain, figure_no)
 figure_no += 1
-visualize_graph(peers[8].blockchain, figure_no)
-for i in range(n_peers):
-    print(f"Number of blocks in peer {i} 's blockchain: ", len(peers[i].blockids))
+visualize_graph(peers[n_peers-1].blockchain, figure_no)
+# print("LOW CPU", lowcpu_peers)
+# print("SLOW", slowpeers)
+fast = set(range(n_peers)).difference(set(slowpeers))
+high = set(range(n_peers)).difference(set(lowcpu_peers))
+slow_low = set(slowpeers).intersection(set(lowcpu_peers))
+slow_high = set(slowpeers).intersection(set(high))
+fast_low = set(fast).intersection(set(lowcpu_peers))
+fast_high = set(fast).intersection(set(high))
+
+# print(len(slow_low), len(slow_high), len(fast_low), len(fast_high))
+#  sum of the 4 categories
+# print(len(slow_low)+len(slow_high)+len(fast_low)+len(fast_high))
+print("---------------------------------")
+# blocks created vs category
+
+longest_chain_len = 0
+generated_blocks = 0
+generated_blocks = max([peers[i].created_blocks for i in range(n_peers)])
+longest_chain_len = max([(find_longest_tail(peers[i].taillist)).print_tree() for i in range(n_peers)])
+
+
+print("Longest chain length: ", longest_chain_len)
+print("Blocks created: ", generated_blocks)
+print("Blocks created vs category")
+print("Slow LowCPU\t", sum([peers[i].created_blocks for i in slow_low]))
+print("Slow HighCPU\t", sum([peers[i].created_blocks for i in slow_high]))
+print("Fast LowCPU\t", sum([peers[i].created_blocks for i in fast_low]))
+print("Fast HighCPU\t", sum([peers[i].created_blocks for i in fast_high]))
+
+# for i in range(n_peers):
+#     print(f"P{i}: ", len(peers[i].blockids), peers[i].created_blocks)
 
 # run subprocess bash
-subprocess.run(["bash", "extractlog.sh", str(n_peers)])
+# subprocess.run(["bash", "extractlog.sh", str(n_peers)])
+    
