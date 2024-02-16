@@ -53,3 +53,7 @@ TODO:
 6. analyse our latency in order to make the report & also check the graph which comes out (as line please!)
 7. look at documentation for event queue simulator
 8. 
+---
+python3 main.py -n 100 --slow 1 --low 0.5 -Ttx 0.01 --blockinterval 0.1 => forks beautiful
+- 4 categories
+- parameters 

@@ -139,7 +139,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     global figure_no
     figure_no += 1
     visualize_graph(G, figure_no)
-    return peers, links
+    return peers, links, slow_peers, lowcpu_peers
 
 
 def handle_transaction(env):
@@ -236,8 +236,9 @@ def mine_block(peer, env):
         block = Block()
         if block.form_block(peer):
             peer.add_block_to_tail(block, longest_tail)
+            peer.created_blocks += 1
             longest_tail = find_longest_tail(peer.taillist)
-            # longest_tail.print_tree(peer)
+            longest_tail.print_tree(peer)
             logger.debug(
                 f"{env.now} P{peer.id} mines B{block.id}")
             peer.balance += 50
@@ -246,12 +247,12 @@ def mine_block(peer, env):
 
 
 # generate random graph
-peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
+peers, links, slowpeers, lowcpu_peers = generate_random_graph(n_peers, z0_slow, z1_low)
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 600
+SIM_TIME = 60
 
-random.seed(RANDOM_SEED)
+random.seed(42)
 env = simpy.Environment()
 genesis = Block()
 genesis.id = 1

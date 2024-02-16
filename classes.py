@@ -13,6 +13,7 @@ class Peer:
         self.pending_blocks_queue = []
         self.balance = 0
         self.blockchain = nx.Graph()
+        self.created_blocks = 0
     
     def __str__(self):
         return str(self.id) + " " + str(self.is_slow) + " " + str(self.is_lowcpu)+ " " + str(self.hashpower)
