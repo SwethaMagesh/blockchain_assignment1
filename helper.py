@@ -1,6 +1,7 @@
 import random
 import networkx as nx
 import matplotlib.pyplot as plt
+from networkx.drawing.nx_pydot import graphviz_layout
 
 def DFS(G, temp, v, visited):
     visited[v] = True
@@ -24,6 +25,7 @@ def connectedComponents(G, n_peers):
 
 def visualize_graph(G, figure_no):
     pos = nx.spring_layout(G)
+    # pos = {i: (i, 0) for i in G.nodes()}
     nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
             font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
     plt.savefig(f'fig{figure_no}.png')

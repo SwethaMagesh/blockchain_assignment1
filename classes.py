@@ -67,8 +67,8 @@ class Block:
         self.sent_peers = set()
         
     def form_block(self, peer):
-        if len(peer.transactions_queue) == 0:
-            print(f"Peer {peer.id} creating empty block")
+        # if len(peer.transactions_queue) == 0:
+            # print(f"Peer {peer.id} creating empty block")
             # return False
         Block.id += 1
         self.id = Block.id

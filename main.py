@@ -1,3 +1,4 @@
+import subprocess
 import argparse
 import networkx as nx
 import random
@@ -148,7 +149,7 @@ def handle_transaction(env):
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
     peers[s].balance -= c
     peers[r].balance += c
-    # logger.debug(f"{env.now} \t T{txn.id} is created")
+    logger.debug(f"{env.now} P{peers[s].id} creates T{txn.id}")
     payer = peers[s]
     receive_transaction(payer, payer, txn, env)
     # payer creates a transaction and starts forwarding it
@@ -204,20 +205,20 @@ def forward_block(block, curr_peer, prev_peer, env):
 
 
 def receive_block(peer, hears_from, block, env):
-    logger.debug(f"{env.now} \t P{peer.id} recvs B{block.id} from P{hears_from.id} ")
+    logger.debug(f"{env.now} P{peer.id} recvs B{block.id} from P{hears_from.id} ")
     if block.id not in peer.blockids:
         isvalid = validate_block(block)
         should_form = False
-        # logger.debug(f"{env.now} \t B{block.id} is {isvalid}")
+        # logger.debug(f"{env.now} B{block.id} is {isvalid}")
         if isvalid:
             if block.prevblockid in peer.blockids:
                 should_form = traverse_and_add(peer, block)
                 logger.debug(
-                    f"{env.now} \t P{peer.id} adds B{block.id} to its tree")
+                    f"{env.now} P{peer.id} adds B{block.id} to its tree")
                 # peer.print_whole_tree()
             else:
                 logger.debug(
-                    f"{env.now} \t P{peer.id} adds B{block.id} to its pending queue")
+                    f"{env.now} P{peer.id} adds B{block.id} to its pending queue")
                 peer.pending_blocks_queue.append(block)
             if should_form:
                 env.process(mine_block(peer, env))
@@ -227,7 +228,7 @@ def receive_block(peer, hears_from, block, env):
 def mine_block(peer, env):
     longest_tail = find_longest_tail(peer.taillist)
     mining_time = generate_Tk(peer, I_block)
-    logger.debug(f"{env.now} \t P{peer.id} mines for {mining_time} seconds")
+    logger.debug(f"{env.now} P{peer.id} mines for {mining_time} seconds")
     yield env.timeout(mining_time)
     longest_tail_new = find_longest_tail(peer.taillist)
     if longest_tail_new == longest_tail:
@@ -237,7 +238,7 @@ def mine_block(peer, env):
             longest_tail = find_longest_tail(peer.taillist)
             # longest_tail.print_tree(peer)
             logger.debug(
-                f"{env.now} \t P{peer.id} mines B{block.id}")
+                f"{env.now} P{peer.id} mines B{block.id}")
             peer.balance += 50
             env.process(forward_block(block, peer, peer, env))
 
@@ -276,3 +277,6 @@ figure_no += 1
 visualize_graph(peers[8].blockchain, figure_no)
 for i in range(n_peers):
     print(f"Number of blocks in peer {i} 's blockchain: ", len(peers[i].blockids))
+
+# run subprocess bash
+subprocess.run(["bash", "extractlog.sh", str(n_peers)])

@@ -46,8 +46,6 @@ Sample block chain
 ----
 TODO: 
 1. Visualise and tabulate 
-1a) left out - add check 1023 transaction in block?
-1b) validation of transaction when??
 2. Theory questions in report
 3. Code and challenges (very small description for each module)
 4. DESIGN DOCUMENT
