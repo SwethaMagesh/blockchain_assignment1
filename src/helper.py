@@ -1,0 +1,85 @@
+import random
+import networkx as nx
+import matplotlib.pyplot as plt
+from networkx.drawing.nx_pydot import graphviz_layout
+
+# DFS traversal of any graph
+def DFS(G, temp, v, visited):
+    visited[v] = True
+    temp.append(v)
+    neighbours = list(G.neighbors(v))
+    for neighbour in neighbours:
+        if visited[neighbour] == False:
+            temp = DFS(G, temp, neighbour, visited)
+    return temp
+
+# find clusters in a graph
+def connectedComponents(G, n_peers):
+    visited = []
+    cluster = []
+    for _ in range(n_peers):
+        visited.append(False)
+    for v in range(n_peers):
+        if visited[v] == False:
+            temp= []
+            cluster.append(DFS(G, temp, v, visited))
+    return cluster
+
+# visualize the graph
+def visualize_graph(G, figure_no):
+    pos = nx.spring_layout(G)
+    nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
+            font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
+    plt.savefig(f'../figs/fig{figure_no}.png')
+    plt.clf()
+
+# return value from an exponential sample
+def exponential_sample(mean):
+    return random.expovariate(1 / mean)
+# return value from an uniform sample
+def uniform_sample(low, high):
+    return random.uniform(low, high)
+
+# create an empty or non empty transaction based on initial state
+def create_random_transaction(num_of_peers, initial_state = False):
+    payer = random.randint(0, num_of_peers - 1)
+    payee = random.randint(0, num_of_peers - 1)
+    if initial_state:
+        coins = 0
+    else:
+        coins = random.randint(1, 10)
+    return payer, payee, coins
+
+# generate mining time for any peer
+def generate_Tk(peer, interval = 600):
+        mean = interval / peer.hashpower
+        Tk = exponential_sample(mean)
+        return Tk
+
+# validate the block based on balance 
+def validate_block(block):
+    for txn in block.transactions:
+        if txn.payer.balance < txn.coins:
+            return False
+    return True
+
+# traverse the tree and add block to tail or non tail
+def traverse_and_add(peer, block):
+    found = False
+    should_form = False
+    for tail in peer.taillist:
+        if tail.block.id == block.prevblockid:
+            found = True
+            break
+    if found:
+        should_form = peer.add_block_to_tail(block, tail)
+    else:
+        for tail in peer.taillist:
+            if tail.prevNode != None:
+                if tail.prevNode.block.id == block.prevblockid:
+                    peer.add_block_to_nontail(block, tail.prevNode)
+                    break
+    return should_form
+
+def find_longest_tail(taillist) :
+    return max(taillist, key=taillist.get)
