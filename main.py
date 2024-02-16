@@ -29,12 +29,16 @@ parser.add_argument("--txninterval", "-Ttx", type=float, default=5,
 parser.add_argument("--blockinterval", "-I", type=float, default=10,
                     required=True, help="enter the inter arrival time of blocks")
 
+parser.add_argument("--simtime", "-T", type=float, default=6000,help="enter the simulation time")
+
 args = parser.parse_args()
 n_peers = args.peers
 z0_slow = args.slow
 z1_low = args.low
 I_txn = args.txninterval
 I_block = args.blockinterval
+SIM_TIME = args.simtime
+
 
 # # local printing
 # print("peers in network        = ", n_peers)
@@ -144,7 +148,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
 
 def handle_transaction(env):
     yield env.timeout(exponential_sample(I_txn))
-    initial_state = True if env.now < 100 else False
+    initial_state = True if env.now < 2*I_block else False
     s, r, c = create_random_transaction(n_peers, initial_state=initial_state)
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
     peers[s].balance -= c
@@ -210,7 +214,8 @@ def receive_block(peer, hears_from, block, env):
     if block.id not in peer.blockids:
         isvalid = validate_block(block)
         should_form = False
-        # logger.debug(f"{env.now} B{block.id} is {isvalid}")
+        if not isvalid:
+            logger.debug(f"{env.now} B{block.id} is {isvalid}")
         if isvalid:
             if block.prevblockid in peer.blockids:
                 should_form = traverse_and_add(peer, block)
@@ -236,7 +241,7 @@ def mine_block(peer, env):
         block = Block()
         if block.form_block(peer):
             peer.add_block_to_tail(block, longest_tail)
-            peer.created_blocks += 1
+            peer.created_blocks += [block.id]
             longest_tail = find_longest_tail(peer.taillist)
             # c = longest_tail.print_tree(peer)
             logger.debug(
@@ -250,7 +255,7 @@ def mine_block(peer, env):
 peers, links, slowpeers, lowcpu_peers = generate_random_graph(n_peers, z0_slow, z1_low)
 
 RANDOM_SEED = int(time.time())
-SIM_TIME = 6000
+# SIM_TIME = 6000
 
 random.seed(42)
 env = simpy.Environment()
@@ -286,28 +291,91 @@ slow_high = set(slowpeers).intersection(set(high))
 fast_low = set(fast).intersection(set(lowcpu_peers))
 fast_high = set(fast).intersection(set(high))
 
-# print(len(slow_low), len(slow_high), len(fast_low), len(fast_high))
-#  sum of the 4 categories
-# print(len(slow_low)+len(slow_high)+len(fast_low)+len(fast_high))
 print("---------------------------------")
 # blocks created vs category
 
 longest_chain_len = 0
 generated_blocks = 0
-generated_blocks = max([peers[i].created_blocks for i in range(n_peers)])
-longest_chain_len = max([(find_longest_tail(peers[i].taillist)).print_tree() for i in range(n_peers)])
+generated_blocks = sum([len(peers[i].created_blocks) for i in range(n_peers)])
+longest_chain_len = max([peers[i].longest_chain_length() for i in range(n_peers)])
+# print([peers[i].longest_chain_length() for i in range(n_peers)])
+print(f"Block interval: {I_block}, Transaction interval: {I_txn}, Peers: {n_peers}, Slow: {z0_slow}, LowCPU: {z1_low}")
+print("#Blocks created: ", generated_blocks)
 
+# peer_created block list intersects peer_longest_chain
+made_it_to_longest_chain = lambda peer:list(set(peer.created_blocks).intersection(peer.longest_chain()))
+made_it_list = [list(made_it_to_longest_chain(peers[i])) for i in range(n_peers)]
+created_list = [peers[i].created_blocks for i in range(n_peers)]
+
+slow_low=list(slow_low)
+slow_high=list(slow_high)
+fast_low=list(fast_low)
+fast_high=list(fast_high)
+
+
+madeit = 0
+for i in range(n_peers):
+    madeit += len(made_it_list[i])
+fraction_in_longest = [len(made_it_list[i])/len(created_list[i]) if len(created_list[i]) > 0 else 0 for i in range(n_peers)]
+
+
+slow_low_pts = []
+slow_high_pts = []
+fast_low_pts = []
+fast_high_pts = []
+for i in range(n_peers):
+    if i in slow_low:
+        slow_low_pts.append(fraction_in_longest[i])
+    if i in slow_high:
+        slow_high_pts.append(fraction_in_longest[i])
+    if i in fast_low:
+        fast_low_pts.append(fraction_in_longest[i])
+    if i in fast_high:
+        fast_high_pts.append(fraction_in_longest[i])
+colors = ['red', 'pink', 'blue', 'green']
+plt.scatter(slow_low, slow_low_pts, c=colors[0], label="Slow LowCPU")
+plt.scatter(slow_high, slow_high_pts, c=colors[1], label="Slow HighCPU")
+plt.scatter(fast_low, fast_low_pts, c=colors[2], label="Fast LowCPU")
+plt.scatter(fast_high, fast_high_pts, c=colors[3], label="Fast HighCPU")
+
+# Add legend with specified labels and colors
+plt.legend()
+plt.xticks(range(n_peers))
+plt.xlabel("Peer ID")
+plt.ylabel("Fraction of blocks in longest chain")
+plt.title("Fraction of blocks in longest chain")
+plt.savefig(f'scatter.png')
+plt.clf()
+
+
+            
+
+print("#Blocks not in longest chain ",generated_blocks-madeit)
 
 print("Longest chain length: ", longest_chain_len)
-print("Blocks created: ", generated_blocks)
-print("Blocks created vs category")
-print("Slow LowCPU\t", sum([peers[i].created_blocks for i in slow_low]))
-print("Slow HighCPU\t", sum([peers[i].created_blocks for i in slow_high]))
-print("Fast LowCPU\t", sum([peers[i].created_blocks for i in fast_low]))
-print("Fast HighCPU\t", sum([peers[i].created_blocks for i in fast_high]))
+# print("Longest chain is ", peers[n_peers-1].longest_chain())
+print("---------------------------------")
+print("Fraction of blocks created")
+print("Slow LowCPU \t", sum([len(peers[i].created_blocks) for i in slow_low])/generated_blocks)
+print("Fast LowCPU \t", sum([len(peers[i].created_blocks) for i in fast_low])/generated_blocks)
+print("Slow HighCPU\t", sum([len(peers[i].created_blocks) for i in slow_high])/generated_blocks)
+print("Fast HighCPU\t", sum([len(peers[i].created_blocks) for i in fast_high])/generated_blocks)
 
-# for i in range(n_peers):
-#     print(f"P{i}: ", len(peers[i].blockids), peers[i].created_blocks)
+# plot a graph with the above values
+# x axis categories, y axis fraction of blocks created
+# bar plot
+plt.bar(["Slow LowCPU", "Fast LowCPU", "Slow HighCPU", "Fast HighCPU"], [sum([len(peers[i].created_blocks) for i in slow_low])/generated_blocks, sum([len(peers[i].created_blocks) for i in fast_low])/generated_blocks, sum([len(peers[i].created_blocks) for i in slow_high])/generated_blocks, sum([len(peers[i].created_blocks) for i in fast_high])/generated_blocks], color=colors)
+plt.xlabel("Category")
+plt.ylabel("Fraction of blocks created")
+plt.title("Fraction of blocks created")
+plt.savefig(f'bar.png')
+plt.clf()
+
+
+print("---------------------------------")
+print(f"Fraction of blocks generated in the longest chain {longest_chain_len/generated_blocks}")
+
+
 
 # run subprocess bash
 # subprocess.run(["bash", "extractlog.sh", str(n_peers)])

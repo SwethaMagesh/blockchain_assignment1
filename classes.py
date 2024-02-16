@@ -13,7 +13,7 @@ class Peer:
         self.pending_blocks_queue = []
         self.balance = 0
         self.blockchain = nx.Graph()
-        self.created_blocks = 0
+        self.created_blocks = []
     
     def __str__(self):
         return str(self.id) + " " + str(self.is_slow) + " " + str(self.is_lowcpu)+ " " + str(self.hashpower)
@@ -51,7 +51,19 @@ class Peer:
         for node in self.taillist:
             node.print_tree(self)
 
-    def 
+    def longest_chain_length(self):
+        longest_tail = find_longest_tail(self.taillist)
+        return longest_tail.count_tree()
+    
+    def longest_chain(self):
+        longest_tail = find_longest_tail(self.taillist)
+        node = longest_tail
+        list = []
+        while node.prevNode != None:
+            list.append(node.block.id)
+            node = node.prevNode
+        list.append(node.block.id)
+        return list
 
 class Link:
     def __init__(self, i, j, cij, roij):
@@ -75,7 +87,9 @@ class Block:
         Block.id += 1
         self.id = Block.id
         no_of_txn = random.randint(1, 10)
-        self.transactions = peer.transactions_queue[0:no_of_txn]
+        transactions = peer.transactions_queue[0:no_of_txn]
+        transactions = list(filter(lambda txn: txn.payer.balance >= txn.coins, transactions))
+        self.transactions = transactions
         peer.transactions_queue = peer.transactions_queue[no_of_txn:]
         tail_node = find_longest_tail(peer.taillist)
         self.prevblockid = tail_node.block.id
@@ -107,6 +121,9 @@ class Transaction:
         dij = exponential_sample(mean)
         return (roij +  dij + m_by_cij)
     
+    def __str__(self) -> str:
+        return f"Txn {self.id} {self.payer.id} -> {self.payee.id} {self.coins}"
+    
 
 class TreeNode:
 # simulate a Tree in a blockchain p2p network
@@ -118,7 +135,7 @@ class TreeNode:
         return str(self.block.id)
     
     def print_tree(self, peer):
-        c = 0
+        c = 1
         node = self
         print(f"P{peer.id} => ", end=" ")
         while node.prevNode != None:
