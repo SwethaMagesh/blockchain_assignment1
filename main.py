@@ -103,7 +103,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     # populate links with their parameters
     links = {}
     for i, j in G.edges():
-        ro = random.randrange(10, 500)
+        ro = uniform_sample(10/1000,500/1000)
         if peers[i].is_slow or peers[j].is_slow:
             speed = 5
         else:
@@ -198,7 +198,8 @@ def forward_block(block, curr_peer, prev_peer, env):
             if (neighbour != prev_peer.id):
                 # print(f"Peer {curr_peer.id} sends to   {neighbour}  B{block.id} at time {env.now}")
                 link = links[curr_peer.id][neighbour]
-                yield env.timeout(block.generate_qdelay(link))
+                delay = block.generate_qdelay(link)
+                yield env.timeout(delay)
                 receive_block(peers[neighbour], curr_peer, block, env)
                 env.process(forward_block(
                     block, peers[neighbour], curr_peer, env))

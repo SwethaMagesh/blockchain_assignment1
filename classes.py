@@ -81,7 +81,8 @@ class Block:
         return True
 
     def generate_qdelay(self, link):
-        m_by_cij = 8/(link.cij*1024)
+        n = len(self.transactions)+1
+        m_by_cij = n*8/(link.cij*1024)
         roij = link.roij/1000
         mean = 96 / (link.cij * 1024)
         dij = exponential_sample(mean)
