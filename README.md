@@ -37,3 +37,9 @@ n, z, Ttx, Tk, edges,  invalid_txn_prob, invalid_block_prob, zeta, adv, alpha
 - exponential  - latency
 - Tk
 - tree maintain
+
+---
+Run Simulation : 
+```
+bash runsimulation.sh -n 10 -z0 0.3 -z1 0.4 -Ttx 2 -I 60
+```
