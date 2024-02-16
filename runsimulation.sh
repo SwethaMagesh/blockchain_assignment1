@@ -1,5 +1,4 @@
 #!/bin/bash
-cd ..
 mkdir -p figs
 mkdir -p logs
 rm -rf ./figs/*
