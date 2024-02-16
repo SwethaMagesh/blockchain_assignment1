@@ -1,7 +1,22 @@
+'''
+This file contains helper functions for the simulation
+Functions are:
+    - DFS: Depth First Search traversal of any graph
+    - connectedComponents: find clusters in a graph
+    - visualize_graph: visualize the graph
+    - exponential_sample: return value from an exponential sample
+    - uniform_sample: return value from an uniform sample
+    - create_random_transaction: create an empty or non empty transaction based on initial state
+    - generate_Tk: generate mining time for any peer
+    - validate_block: validate the block based on balance 
+    - traverse_and_add: traverse the tree and add block to tail or non tail
+    - find_longest_tail: find the longest tail in the tail list
+
+'''
 import random
 import networkx as nx
 import matplotlib.pyplot as plt
-from networkx.drawing.nx_pydot import graphviz_layout
+
 
 # DFS traversal of any graph
 def DFS(G, temp, v, visited):
@@ -36,6 +51,7 @@ def visualize_graph(G, figure_no):
 # return value from an exponential sample
 def exponential_sample(mean):
     return random.expovariate(1 / mean)
+
 # return value from an uniform sample
 def uniform_sample(low, high):
     return random.uniform(low, high)

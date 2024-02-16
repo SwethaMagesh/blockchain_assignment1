@@ -1,3 +1,10 @@
+'''
+Flow of simulation is as follows:
+    - Generate a random graph with n peers and parameters
+    - Create and forward transactions
+    - Create, forward and receive blocks
+    - Visualize trees for any 5 peers
+'''
 import subprocess
 import argparse
 import networkx as nx
@@ -246,8 +253,7 @@ showpeers = random.sample(peerids, 5)
 for peer in showpeers:
     visualize_graph(peers[peer].blockchain, peer)
 
-for i in range(n_peers):
-    print(f"Number of blocks in peer {i} 's blockchain: ", len(peers[i].blockids))
+print(f"Number of blocks in peer {i} 's blockchain: ", len(peers[i].blockids))
 
 # run subprocess bash
 subprocess.run(["bash", "extractlog.sh", str(n_peers)])
