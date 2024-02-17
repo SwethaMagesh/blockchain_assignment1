@@ -1,5 +1,4 @@
 /__pycache__/
 example_sim.py
 /logs/*.log
-/backup/
 /figs/

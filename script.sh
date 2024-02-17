@@ -1,9 +1,9 @@
-peers=200
-slow=0.7
+peers=50
+slow=0.5
 low=0.5
-Ttx=600
-blockinterval=600
-simtime=12000
+Ttx=0.02
+blockinterval=0.02
+simtime=1
 
 python3 main.py -n $peers --slow $slow --low $low -Ttx $Ttx --blockinterval $blockinterval -T $simtime > ./backup/out.txt
 mv scatter.png ./backup/scatter1.png
@@ -26,13 +26,13 @@ mv fig2.png ./backup/fig2.png
 # checking Ttx
 # low & high to 10 and 100 remaining same
 
-# python3 main.py -n $peers --slow $slow --low $low -Ttx 10 --blockinterval $blockinterval -T $simtime > ./backup/out_Ttxlow.txt
+# python3 main.py -n $peers --slow $slow --low $low -Ttx 0.1 --blockinterval $blockinterval -T $simtime > ./backup/out_Ttxlow.txt
 # mv scatter.png ./backup/scatter_Ttxlow.png
 # mv bar.png ./backup/bar2_Ttxlow.png
 # mv fig2.png ./backup/fig2_Ttxlow.png
 # mv fig3.png ./backup/fig3_Ttxlow.png
 
-# python3 main.py -n $peers --slow $slow --low $low -Ttx 100 --blockinterval $blockinterval -T $simtime > ./backup/out_Ttxhigh.txt
+# python3 main.py -n $peers --slow $slow --low $low -Ttx 10 --blockinterval $blockinterval -T $simtime > ./backup/out_Ttxhigh.txt
 # mv scatter.png ./backup/scatter_Ttxhigh.png
 # mv bar.png ./backup/bar2_Ttxhigh.png
 # mv fig2.png ./backup/fig2_Ttxhigh.png
