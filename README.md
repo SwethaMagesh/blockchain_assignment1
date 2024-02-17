@@ -15,7 +15,7 @@ A discrete-event simulator maintains an ”event-queue” from which the earlies
 bash runsimulation.sh -n 10 -z0 0.3 -z1 0.4 -Ttx 2 -I 60
 
 ```
-
+Output: Chain visualisations are found in fig folder while logs of arrival and creation of blocks, transactions are in the logs folder.
 **NOTE: Networkx libraries for generation of graph gets stuck sometimes. If the script takes more time, just rerun the command again.**
 
 **Requirements:**
