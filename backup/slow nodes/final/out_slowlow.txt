@@ -1,0 +1,13 @@
+---------------------------------
+Block interval: 0.2, Transaction interval: 0.02, Peers: 50, Slow: 0.1, LowCPU: 0.5
+#Blocks created:  13
+#Blocks not in longest chain  2
+Longest chain length:  11
+---------------------------------
+Fraction of blocks created
+Slow LowCPU 	 0.0
+Fast LowCPU 	 0.15384615384615385
+Slow HighCPU	 0.07692307692307693
+Fast HighCPU	 0.7692307692307693
+---------------------------------
+Fraction of blocks generated in the longest chain 0.8461538461538461
