@@ -120,8 +120,12 @@ class Block:
 
     def generate_qdelay(self, link):
         n = len(self.transactions)+1
+        # 1KB / c Mbps => since message is in bits factor of 8 steps in
+        # after simplification, 8/(cij*1024) is the factor
         m_by_cij = n*8/(link.cij*1024)
+        # milliseconds to seconds
         roij = link.roij/1000
+        # mean = 96 / (cij * 1024) => 96Kbps / cij Mbps
         mean = 96 / (link.cij * 1024)
         dij = exponential_sample(mean)
         return (roij + dij + m_by_cij)
@@ -139,8 +143,12 @@ class Transaction:
         self.sent_peers = set()
 
     def generate_qdelay(self, link):
+        # 1KB / c Mbps => since message is in bits factor of 8 steps in
+        # after simplification, 8/(cij*1024) is the factor
         m_by_cij = 8/(link.cij*1024)
+        # milliseconds to seconds
         roij = link.roij/1000
+        # mean = 96 / (cij * 1024) => 96Kbps / cij Mbps
         mean = 96 / (link.cij * 1024)
         dij = exponential_sample(mean)
         return (roij + dij + m_by_cij)

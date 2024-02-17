@@ -105,7 +105,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     # populate links with their parameters
     links = {}
     for i, j in G.edges():
-        ro = uniform_sample(10/1000,500/1000)
+        ro = uniform_sample(10,500)
         if peers[i].is_slow or peers[j].is_slow:
             speed = 5
         else:
