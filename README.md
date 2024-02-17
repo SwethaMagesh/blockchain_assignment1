@@ -16,7 +16,7 @@ bash runsimulation.sh -n 10 -z0 0.3 -z1 0.4 -Ttx 2 -I 60
 
 ```
 
-**NOTE: Networkx libraries for generation of graph takes more time. If the script takes more time, just rerun the command again.**
+**NOTE: Networkx libraries for generation of graph gets stuck sometimes. If the script takes more time, just rerun the command again.**
 
 **Requirements:**
 Install the following python dependencies
