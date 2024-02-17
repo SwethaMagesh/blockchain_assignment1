@@ -8,9 +8,19 @@ Parameters Help
  --peers PEERS --slow SLOW --low LOW --txninterval TXNINTERVAL --blockinterval BLOCKINTERVAL
  OR
  --n PEERS --z0 SLOW --z1 LOW --Ttx TXNINTERVAL --I BLOCKINTERVAL
- 
+ RUN THE FOLLOWING CMD AND ALTER PARAMETERS ACCORDING TO THE ABOVE
 ```
 bash runsimulation.sh -n 10 -z0 0.3 -z1 0.4 -Ttx 2 -I 60
+```
+
+**NOTE: Networkx libraries for generation of graph takes more time. If the script takes more time, just rerun the command again.**
+
+**Requirements:**
+Install the following python dependencies
+```
+simpy
+networkx
+matplotlib
 ```
 
 ---
