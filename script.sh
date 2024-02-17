@@ -1,9 +1,9 @@
-peers=50
+peers=5
 slow=0.5
 low=0.5
 Ttx=0.02
-blockinterval=0.02
-simtime=1
+blockinterval=0.2
+simtime=3
 
 python3 main.py -n $peers --slow $slow --low $low -Ttx $Ttx --blockinterval $blockinterval -T $simtime > ./backup/out.txt
 mv scatter.png ./backup/scatter1.png
@@ -62,17 +62,17 @@ mv fig2.png ./backup/fig2.png
 
 # checking slow 
 # low & high to 0.1 and 0.9 with simtime 20 and 2000
-# python3 main.py -n $peers --slow 0.1 --low $low -Ttx $Ttx --blockinterval $blockinterval -T $simtime > ./backup/out_slowlow.txt
-# mv scatter.png ./backup/scatter_slowlow.png
-# mv bar.png ./backup/bar2_slowlow.png
-# mv fig2.png ./backup/fig2_slowlow.png
-# mv fig3.png ./backup/fig3_slowlow.png
+python3 main.py -n $peers --slow 0.1 --low $low -Ttx $Ttx --blockinterval $blockinterval -T $simtime > ./backup/out_slowlow.txt
+mv scatter.png ./backup/scatter_slowlow.png
+mv bar.png ./backup/bar2_slowlow.png
+mv fig2.png ./backup/fig2_slowlow.png
+mv fig3.png ./backup/fig3_slowlow.png
 
-# python3 main.py -n $peers --slow 0.9 --low $low -Ttx $Ttx --blockinterval $blockinterval -T $simtime > ./backup/out_slowhigh.txt
-# mv scatter.png ./backup/scatter_slowhigh.png
-# mv bar.png ./backup/bar2_slowhigh.png
-# mv fig2.png ./backup/fig2_slowhigh.png
-# mv fig3.png ./backup/fig3_slowhigh.png
+python3 main.py -n $peers --slow 0.9 --low $low -Ttx $Ttx --blockinterval $blockinterval -T $simtime > ./backup/out_slowhigh.txt
+mv scatter.png ./backup/scatter_slowhigh.png
+mv bar.png ./backup/bar2_slowhigh.png
+mv fig2.png ./backup/fig2_slowhigh.png
+mv fig3.png ./backup/fig3_slowhigh.png
 
 
 # checking cpu 
