@@ -19,6 +19,7 @@ logging.basicConfig(filename="../logs/blockchain.log", format='%(message)s', fil
 logger = logging.getLogger('main.py')
 logger.setLevel(logging.DEBUG)
 
+# Courtesy: https://docs.python.org/3/library/argparse.html
 # parse command line arguments n, z0, z1, Ttx, I
 parser = argparse.ArgumentParser(description="command line argument parser")
 # number of peers in the network
@@ -252,8 +253,9 @@ showpeers = random.sample(peerids, 5)
 #print(showpeers)
 for peer in showpeers:
     visualize_graph(peers[peer].blockchain, peer)
+    print(f"Number of blocks in peer {peer} 's blockchain: ", len(peers[peer].blockids))
 
-print(f"Number of blocks in peer {i} 's blockchain: ", len(peers[i].blockids))
+
 
 # run subprocess bash
 subprocess.run(["bash", "extractlog.sh", str(n_peers)])

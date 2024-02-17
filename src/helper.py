@@ -17,7 +17,7 @@ import random
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
+# Courtesy: https://www.geeksforgeeks.org
 # DFS traversal of any graph
 def DFS(G, temp, v, visited):
     visited[v] = True
@@ -28,6 +28,7 @@ def DFS(G, temp, v, visited):
             temp = DFS(G, temp, neighbour, visited)
     return temp
 
+# Courtesy: https://www.geeksforgeeks.org
 # find clusters in a graph
 def connectedComponents(G, n_peers):
     visited = []
@@ -40,6 +41,7 @@ def connectedComponents(G, n_peers):
             cluster.append(DFS(G, temp, v, visited))
     return cluster
 
+# Courtesy: Documentation of NetworkX drawing
 # visualize the graph
 def visualize_graph(G, figure_no):
     pos = nx.spring_layout(G)
@@ -48,6 +50,7 @@ def visualize_graph(G, figure_no):
     plt.savefig(f'../figs/fig{figure_no}.png')
     plt.clf()
 
+# Courtesy: Generative AI
 # return value from an exponential sample
 def exponential_sample(mean):
     return random.expovariate(1 / mean)
