@@ -32,6 +32,10 @@ parser.add_argument("--low", "-z1", type=float, default=0.3, required=True,help=
 parser.add_argument("--txninterval", "-Ttx", type=float, default=5,required=True, help="enter the inter arrival time of transactions")
 #  inter arrival time of blocks
 parser.add_argument("--blockinterval", "-I", type=float, default=10,required=True, help="enter the inter arrival time of blocks")
+#  hashing power of selfish miner 1
+parser.add_argument("--zeta1", "-a1", type=float, default=10,required=True, help="enter the hashing power of selfish miner 1")
+#  hashing power of selfish miner 2
+parser.add_argument("--zeta2", "-a2", type=float, default=10,required=True, help="enter the hashing power of selfish miner 1")
 
 args = parser.parse_args()
 n_peers = args.peers
