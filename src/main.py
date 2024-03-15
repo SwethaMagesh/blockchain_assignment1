@@ -43,6 +43,8 @@ z0_slow = args.slow
 z1_low = args.low
 I_txn = args.txninterval
 I_block = args.blockinterval
+zeta1 = args.zeta1
+zeta2 = args.zeta2
 
 # local printing
 print("peers in network        = ", n_peers)
@@ -84,16 +86,18 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     clusters = connectedComponents(G, n_peers)
 
     # randomly allocate nodes as slow or lowcpu
-    slow_peers = random.sample(range(n_peers), int(z0_slow * n_peers))
-    lowcpu_peers = random.sample(range(n_peers), int(z1_low * n_peers))
+    slow_peers = random.sample(range(2,n_peers), int(z0_slow * n_peers))
+    lowcpu_peers = random.sample(range(2,n_peers), int(z1_low * n_peers))
 
     # calculate hashpower of slow and fast nodes
-    slow_hashpower = 1 / ((10 - 9*z1_low)*n_peers)
+    slow_hashpower = (1-zeta1-zeta2) / ((10 - 9*z1_low)*n_peers)
     fast_hashpower = 10 * slow_hashpower
 
     # populate peers with their parameters
     peers = []
-    for peer in range(n_peers):
+    peers.append(Peer(0, slow=False, lowcpu=False, hashpower=zeta1))
+    peers.append(Peer(1, slow=False, lowcpu=False, hashpower=zeta2))
+    for peer in range(2,n_peers):
         if peer in slow_peers:
             is_slow = True
         else:
@@ -251,6 +255,7 @@ env.run(until=SIM_TIME)
 # visualize trees for any 5 peers
 peerids=[]
 for i in range(n_peers):
+    print("hashpower ",peers[i].hashpower)
     peerids.append(i)
 #print (peerids)
 showpeers = random.sample(peerids, 5)
