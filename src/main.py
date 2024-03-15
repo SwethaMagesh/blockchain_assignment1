@@ -86,8 +86,8 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
     clusters = connectedComponents(G, n_peers)
 
     # randomly allocate nodes as slow or lowcpu
-    slow_peers = random.sample(range(2,n_peers), int(z0_slow * n_peers))
-    lowcpu_peers = random.sample(range(2,n_peers), int(z1_low * n_peers))
+    slow_peers = random.sample(range(2,n_peers), int(z0_slow * (n_peers-2)))
+    lowcpu_peers = random.sample(range(2,n_peers), int(z1_low * (n_peers-2)))
 
     # calculate hashpower of slow and fast nodes
     slow_hashpower = (1-zeta1-zeta2) / ((10 - 9*z1_low)*n_peers)
