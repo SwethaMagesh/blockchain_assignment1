@@ -71,7 +71,10 @@ def create_random_transaction(num_of_peers, initial_state = False):
 
 # generate mining time for any peer
 def generate_Tk(peer, interval = 600):
-        mean = interval / peer.hashpower
+        if peer.hashpower == 0 : 
+            mean = interval / 1e-9
+        else:
+            mean = interval / peer.hashpower
         Tk = exponential_sample(mean)
         return Tk
 
@@ -84,6 +87,7 @@ def validate_block(block):
 
 # traverse the tree and add block to tail or non tail
 def traverse_and_add(peer, block):
+    print(f"debug prev={block.prevblockid}, peer={peer.id}, block-{block.id}")
     found = False
     should_form = False
     for tail in peer.taillist:
@@ -92,13 +96,22 @@ def traverse_and_add(peer, block):
             break
     if found:
         should_form = peer.add_block_to_tail(block, tail)
+        print(f"added to tail{block.id}")
     else:
         for tail in peer.taillist:
             if tail.prevNode != None:
                 if tail.prevNode.block.id == block.prevblockid:
                     peer.add_block_to_nontail(block, tail.prevNode)
                     break
+        print(f"added to non-tail{block.id}")
+    print(peer.print_whole_tree())
+    
     return should_form
 
 def find_longest_tail(taillist) :
     return max(taillist, key=taillist.get)
+
+def is_selfish(peer):
+    if peer.id in [0,1]:
+        return True
+    return False

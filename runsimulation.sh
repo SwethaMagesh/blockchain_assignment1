@@ -17,4 +17,4 @@ while [[ "$#" -gt 0 ]]
 done
 
 cd src
-python3 main.py -n $n -z0 $z0 -z1 $z1 -Ttx $Ttx -I $I
+python3 main.py -n $n -z0 $z0 -z1 $z1 -Ttx $Ttx -I $I -a1 0.3 -a2 0.3
