@@ -42,7 +42,20 @@ class Peer:
         self.pending_blocks_queue = []
         self.balance = 0
         self.blockchain = nx.Graph()
+        self.created_blocks = []
 
+    def form_block(self, blockid):
+        Block.id += 1
+        block = Block()
+        block.id = Block.id
+        no_of_txn = random.randint(1, 10)
+        block.transactions = self.transactions_queue[0:no_of_txn]
+        self.transactions_queue = self.transactions_queue[no_of_txn:]
+        # tail_node = find_longest_tail(self.taillist)
+        block.prevblockid = blockid
+        block.coinbase = Transaction(None, self, 50)
+        return block
+    
     def __str__(self):
         return str(self.id) + " " + str(self.is_slow) + " " + str(self.is_lowcpu) + " " + str(self.hashpower)
 
@@ -68,7 +81,7 @@ class Peer:
         self.blockids.append(block.id)
         node = TreeNode(block, prev_node)
         self.taillist[node] = prev_node.count_tree() + 1
-        longest_tail = find_longest_tail(self.taillist)
+        # longest_tail = find_longest_tail(self.taillist)
 
     def print_whole_tree(self):
         print(f"Peer {self.id} Whole Tree => ", end=" ")
@@ -89,6 +102,37 @@ class Peer:
         list.append(node.block.id)
         return list
 
+class SelfishPeer(Peer):
+    def __init__(self, peer, slow, lowcpu, hashpower):
+        super().__init__(peer, slow, lowcpu, hashpower)
+        self.is_selfish = True
+        self.private_chain = []
+
+    def form_block(self, blockid):
+        Block.id += 1
+        block = Block()
+        block.id = Block.id
+        no_of_txn = random.randint(1, 10)
+        block.transactions = self.transactions_queue[0:no_of_txn]
+        self.transactions_queue = self.transactions_queue[no_of_txn:]
+        if len(self.private_chain) == 0:
+            block.prevblockid = blockid
+        else:
+            block.prevblockid = self.private_chain[-1].id
+        block.coinbase = Transaction(None, self, 50)
+        return block
+    
+    def add_to_private_chain(self, block):
+        self.private_chain.append(block)
+    
+    def release_blocks(self, num):
+        to_release =  self.private_chain[:num]
+        self.private_chain = self.private_chain[num:]
+        return to_release
+    
+    def discard_private(self):
+        self.private_chain = []
+
 
 class Link:
     def __init__(self, i, j, cij, roij):
@@ -107,16 +151,6 @@ class Block:
     def __init__(self):
         self.sent_peers = set()
 
-    def form_block(self, peer):
-        Block.id += 1
-        self.id = Block.id
-        no_of_txn = random.randint(1, 10)
-        self.transactions = peer.transactions_queue[0:no_of_txn]
-        peer.transactions_queue = peer.transactions_queue[no_of_txn:]
-        tail_node = find_longest_tail(peer.taillist)
-        self.prevblockid = tail_node.block.id
-        self.coinbase = Transaction(None, peer, 50)
-        return True
 
     def generate_qdelay(self, link):
         n = len(self.transactions)+1
