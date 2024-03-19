@@ -98,11 +98,16 @@ def traverse_and_add(peer, block):
         should_form = peer.add_block_to_tail(block, tail)
         print(f"added to tail{block.id}")
     else:
-        for tail in peer.taillist:
-            if tail.prevNode != None:
+        current_tails = peer.taillist
+        parent = None
+        for tail in current_tails:
+            while tail.prevNode != None:
                 if tail.prevNode.block.id == block.prevblockid:
-                    peer.add_block_to_nontail(block, tail.prevNode)
+                    parent = tail.prevNode
                     break
+                else:
+                    tail = tail.prevNode
+        peer.add_block_to_nontail(block, parent)
         print(f"added to non-tail{block.id}")
     print(peer.print_whole_tree())
     

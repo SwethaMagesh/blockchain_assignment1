@@ -230,7 +230,7 @@ def receive_block(peer, hears_from, block, env):
             # start mining a new block if current block is added to the longest chain
         if not is_selfish(peer) and should_form:
             env.process(mine_block(peer, env))
-        elif is_selfish(peer) and block.id not in peer.created_blocks:
+        elif is_selfish(peer):
             lead = len(peer.private_chain)
             # what should the selfish guy do?
             if lead in [1, 2]:
@@ -238,7 +238,7 @@ def receive_block(peer, hears_from, block, env):
                 released_blocks = peer.release_blocks(lead)
                 peer.balance += 50*lead
                 for block in released_blocks:
-                    print("DEBUG: Forwarding block", block.id)
+                    logger.debug(f"{env.now} P{peer.id} makes B{block.id} public")
                     env.process(forward_block(block, peer, peer, env))
 
             elif lead > 2:
@@ -261,7 +261,7 @@ def mine_block(peer, env):
         logger.debug(
             f"{env.now} P{peer.id} selfishly mines for {mining_time} seconds")
         logger.debug(
-            f"{env.now} P{peer.id} private chain now {len(peer.private_chain)} and {peer.private_chain}")
+            f"{env.now} P{peer.id} private chain length = {len(peer.private_chain)}")
         yield env.timeout(mining_time)
         longest_tail_new = find_longest_tail(peer.taillist)
         if longest_tail_new == longest_tail:
