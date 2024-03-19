@@ -150,7 +150,7 @@ def generate_random_graph(n_peers, z0_slow, z1_low):
 def handle_transaction(env):
     yield env.timeout(exponential_sample(I_txn))
     # set the initial state to False ONLY after a few blocks have been mined
-    initial_state = True if env.now < 100 else False
+    initial_state = True if env.now < 2*I_block else False
     s, r, c = create_random_transaction(n_peers, initial_state=initial_state)
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
     peers[s].balance -= c
