@@ -204,6 +204,10 @@ def receive_block(peer, hears_from, block, env):
             # start mining a new block if current block is added to the longest chain
             if should_form:
                 env.process(mine_block(peer, env))
+    for pendingblock in peer.pending_blocks_queue : 
+        if pendingblock.prevblockid == block.id :
+            traverse_and_add(pendingblock)
+            logger.debug(f"{env.now} P{peer.id} add B{block.id} from PendingQueue")
 
 # mining process of a new block
 def mine_block(peer, env):
