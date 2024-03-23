@@ -93,11 +93,16 @@ def traverse_and_add(peer, block):
     if found:
         should_form = peer.add_block_to_tail(block, tail)
     else:
-        for tail in peer.taillist:
-            if tail.prevNode != None:
+        current_tails = peer.taillist
+        parent = None
+        for tail in current_tails:
+            while tail.prevNode != None:
                 if tail.prevNode.block.id == block.prevblockid:
-                    peer.add_block_to_nontail(block, tail.prevNode)
+                    parent = tail.prevNode
                     break
+                else:
+                    tail = tail.prevNode
+        peer.add_block_to_nontail(block, parent)
     return should_form
 
 def find_longest_tail(taillist) :

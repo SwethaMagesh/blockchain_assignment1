@@ -196,7 +196,10 @@ def receive_block(peer, hears_from, block, env):
             # start mining a new block if current block is added to the longest chain
             if should_form:
                 env.process(mine_block(peer, env))
-
+    for pendingblock in peer.pending_blocks_queue : 
+        if pendingblock.prevblockid == block.id :
+            traverse_and_add(pendingblock)
+            logger.debug(f"{env.now} P{peer.id} add B{pendingblock.id} from PendingQueue")
 # mining process of a new block
 def mine_block(peer, env):
     longest_tail = find_longest_tail(peer.taillist)
@@ -220,7 +223,7 @@ def mine_block(peer, env):
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 RANDOM_SEED = int(time.time())
-SIM_TIME = 600
+SIM_TIME = 6
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
