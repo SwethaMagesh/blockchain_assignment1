@@ -13,6 +13,7 @@ A discrete-event simulator maintains an ”event-queue” from which the earlies
 
 ```
 bash runsimulation.sh -n 10 -z0 0.3 -z1 0.4 -Ttx 2 -I 60
+python3 main.py -n 10 -z0 0.5 -z1 0.5 -Ttx 10 -I 60 -a1 0.4 -a2 0.1 >
 
 ```
 Output: Chain visualisations are found in fig folder while logs of arrival and creation of blocks, transactions are in the logs folder.
