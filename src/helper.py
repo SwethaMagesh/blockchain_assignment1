@@ -45,7 +45,7 @@ def connectedComponents(G, n_peers):
 # visualize the graph
 def visualize_graph(G, figure_no):
     pos = nx.spring_layout(G)
-    nx.draw(G, pos, with_labels=True, node_size=100, node_color='skyblue', font_size=8,
+    nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", font_size=8,
             font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
     plt.savefig(f'../figs/fig{figure_no}.png')
     plt.clf()
@@ -97,7 +97,6 @@ def traverse_and_add(peer, block):
     if found:
         should_form = peer.add_block_to_tail(block, tail)
         print(f"added to tail{block.id}")
-        print(peer.print_whole_tree())
     else:
         current_tails = peer.taillist
         parent = None
@@ -108,11 +107,10 @@ def traverse_and_add(peer, block):
                     break
                 else:
                     tail = tail.prevNode
-
-        # if parent != None:
         peer.add_block_to_nontail(block, parent)
         print(f"added to non-tail{block.id}")
-        print(peer.print_whole_tree())
+    print(peer.print_whole_tree())
+    
     return should_form
 
 def find_longest_tail(taillist) :

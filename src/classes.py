@@ -60,13 +60,6 @@ class Peer:
         return str(self.id) + " " + str(self.is_slow) + " " + str(self.is_lowcpu) + " " + str(self.hashpower)
 
     def add_block_to_tail(self, block, tail_node):
-        
-        # if block.id in self.blockids:
-        #     return
-        # if block.id in self.created_blocks and is_selfish(self):
-        #     color = 'red'
-        # else:
-        #     color = 'blue'
         self.blockchain.add_node(block.id)
         self.blockchain.add_edge(block.id, tail_node.block.id)
         self.blockids.append(block.id)
@@ -83,13 +76,6 @@ class Peer:
             return False
 
     def add_block_to_nontail(self, block, prev_node):
-        # if block.id in self.blockids:
-        #     return
-        print("DEBUG: ",prev_node)
-        # if block.id in self.created_blocks and is_selfish(self):
-        #     color = 'red'
-        # else:
-        #     color = 'blue'
         self.blockchain.add_node(block.id)
         self.blockchain.add_edge(block.id, prev_node.block.id)
         self.blockids.append(block.id)
@@ -115,21 +101,12 @@ class Peer:
             node = node.prevNode
         list.append(node.block.id)
         return list
-    
-    def visualize_graph(self, G, figure_no):
-        colors = ['pink' if node in self.created_blocks else 'skyblue' for node in G.nodes()]
-        pos = nx.spring_layout(G)
-        nx.draw(G, pos, with_labels=True, node_size=150, node_color=colors, font_size=8,
-                font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
-        plt.savefig(f'../figs/fig{figure_no}.png')
-        plt.clf()
 
 class SelfishPeer(Peer):
     def __init__(self, peer, slow, lowcpu, hashpower):
         super().__init__(peer, slow, lowcpu, hashpower)
         self.is_selfish = True
         self.private_chain = []
-        self.longest_visible_length = 1
 
     def form_block(self, blockid):
         Block.id += 1
@@ -148,15 +125,6 @@ class SelfishPeer(Peer):
     def add_to_private_chain(self, block):
         self.private_chain.append(block)
     
-    def longest_chain_length_visible(self):
-        max_len  = 0
-        for tail in self.taillist:
-            if tail.block not in self.private_chain:
-                if tail.count_tree() > max_len:
-                    max_len = tail.count_tree()
-        return max_len
-    
-
     def release_blocks(self, num):
         to_release =  self.private_chain[:num]
         self.private_chain = self.private_chain[num:]
@@ -164,22 +132,6 @@ class SelfishPeer(Peer):
     
     def discard_private(self):
         self.private_chain = []
-
-    def visualize_graph(self, G, figure_no):
-        colors = []
-        ids = [block.id for block in  self.private_chain]
-        for node in G.nodes():
-            if node in ids:
-                colors.append('red')
-            elif node in self.created_blocks:
-                colors.append('pink')
-            else:
-                colors.append('skyblue')
-        pos = nx.spring_layout(G)
-        nx.draw(G, pos, with_labels=True, node_size=150, node_color=colors, font_size=8,
-                font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
-        plt.savefig(f'../figs/fig{figure_no}.png')
-        plt.clf()
 
 
 class Link:

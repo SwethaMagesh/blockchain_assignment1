@@ -29,6 +29,9 @@ parser.add_argument("--peers", "-n", type=int, default=10,
 # number of slow peers in the network
 parser.add_argument("--slow", "-z0", type=float, default=0.3,
                     required=True, help="enter the number of slow peers in the network")
+# number of lowCPU peers in the network
+parser.add_argument("--low", "-z1", type=float, default=0.3, required=True,
+                    help="enter the number of lowCPU peers in the network")
 #  inter arrival time of transactions
 parser.add_argument("--txninterval", "-Ttx", type=float, default=5,
                     required=True, help="enter the inter arrival time of transactions")
@@ -45,6 +48,7 @@ parser.add_argument("--zeta2", "-a2", type=float, default=10,
 args = parser.parse_args()
 n_peers = args.peers
 z0_slow = args.slow
+z1_low = args.low
 I_txn = args.txninterval
 I_block = args.blockinterval
 zeta1 = args.zeta1
@@ -53,6 +57,7 @@ zeta2 = args.zeta2
 # local printing
 print("peers in network        = ", n_peers)
 print("fraction slow peers     = ", z0_slow)
+print("fraction low CPU peers  = ", z1_low)
 print("transaction interval    = ", I_txn)
 print("block interval          = ", I_block)
 
@@ -66,7 +71,7 @@ G = nx.Graph()
 figure_no = 0
 
 
-def generate_random_graph(n_peers, z0_slow):
+def generate_random_graph(n_peers, z0_slow, z1_low):
     # add all peers as nodes
     for peer in range(n_peers):
         G.add_node(peer)
@@ -90,11 +95,13 @@ def generate_random_graph(n_peers, z0_slow):
             G.add_edge(node, other_node)
     clusters = connectedComponents(G, n_peers)
 
-    # randomly allocate nodes as slow 
+    # randomly allocate nodes as slow or lowcpu
     slow_peers = random.sample(range(2, n_peers), int(z0_slow * (n_peers-2)))
+    lowcpu_peers = random.sample(range(2, n_peers), int(z1_low * (n_peers-2)))
 
     # calculate hashpower of slow and fast nodes
-    hashpower = (1-zeta1-zeta2) / (n_peers - 2)
+    slow_hashpower = (1-zeta1-zeta2) / ((10 - 9*z1_low)*n_peers)
+    fast_hashpower = 10 * slow_hashpower
 
     # populate peers with their parameters
     peers = []
@@ -105,7 +112,12 @@ def generate_random_graph(n_peers, z0_slow):
             is_slow = True
         else:
             is_slow = False
-        is_lowcpu = True
+        if peer in lowcpu_peers:
+            is_lowcpu = True
+            hashpower = slow_hashpower
+        else:
+            is_lowcpu = False
+            hashpower = fast_hashpower
         peers.append(
             Peer(peer, slow=is_slow, lowcpu=is_lowcpu, hashpower=hashpower))
 
@@ -219,32 +231,31 @@ def receive_block(peer, hears_from, block, env):
             if should_form:
                 env.process(mine_block(peer, env))
     
-        if is_selfish(peer):
-            current_visible_length = peer.longest_chain_length_visible()
-            if peer.longest_visible_length < current_visible_length:
-                lead = len(peer.private_chain)
-                # what should the selfish guy do?
-                if lead in [1, 2]:
-                    # release all private blocks
-                    released_blocks = peer.release_blocks(lead)
-                    peer.balance += 50*lead
-                    for block in released_blocks:
-                        logger.debug(f"{env.now} P{peer.id} makes B{block.id} public")
-                        env.process(forward_block(block, peer, peer, env))
-
-                elif lead > 2:
-                    released_blocks = peer.release_blocks(1)
-                    peer.balance += 50
-                    # release 1 block
+        if not is_selfish(peer) and should_form:
+            env.process(mine_block(peer, env))
+        elif is_selfish(peer):
+            lead = len(peer.private_chain)
+            # what should the selfish guy do?
+            if lead in [1, 2]:
+                # release all private blocks
+                released_blocks = peer.release_blocks(lead)
+                peer.balance += 50*lead
+                for block in released_blocks:
                     logger.debug(f"{env.now} P{peer.id} makes B{block.id} public")
-                    env.process(forward_block(released_blocks[0], peer, peer, env))
-                else:
-                    # mine on new longest
-                    peer.discard_private()
-                env.process(mine_block(peer, env))
+                    env.process(forward_block(block, peer, peer, env))
+
+            elif lead > 2:
+                released_blocks = peer.release_blocks(1)
+                peer.balance += 50
+                # release 1 block
+                env.process(forward_block(released_blocks[0], peer, peer, env))
+            else:
+                # mine on new longest
+                peer.discard_private()
+            env.process(mine_block(peer, env))
     for pendingblock in peer.pending_blocks_queue : 
         if pendingblock.prevblockid == block.id :
-            traverse_and_add(peer, pendingblock)
+            traverse_and_add(pendingblock)
             logger.debug(f"{env.now} P{peer.id} add B{block.id} from PendingQueue")
 
 
@@ -292,7 +303,7 @@ def mine_block(peer, env):
 
 
 # generate random graph
-peers, links = generate_random_graph(n_peers, z0_slow)
+peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 RANDOM_SEED = int(time.time())
 SIM_TIME = 600
 
@@ -323,7 +334,7 @@ env.run(until=SIM_TIME)
 showpeers = [0, 1, n_peers-1, n_peers-2, 3]
 # print(showpeers)
 for peer in showpeers:
-    peers[peer].visualize_graph(peers[peer].blockchain, peer)
+    visualize_graph(peers[peer].blockchain, peer)
     print(f"Number of blocks in peer {peer} 's blockchain: ", len(
         peers[peer].blockids))
 
