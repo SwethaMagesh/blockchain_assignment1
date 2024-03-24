@@ -16,6 +16,6 @@ while [[ "$#" -gt 0 ]]
     esac
     shift
 done
-
 cd src
+
 python3 main.py -n $n -z0 $z0 -a1 $a1 -a2 $a2 -Ttx $Ttx -I $I
