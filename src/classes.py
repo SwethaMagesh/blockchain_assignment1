@@ -69,11 +69,12 @@ class Peer:
         #     color = 'blue'
         self.blockchain.add_node(block.id)
         self.blockchain.add_edge(block.id, tail_node.block.id)
-        self.blockids.append(block.id)
         node = TreeNode(block, tail_node)
         self.taillist[node] = self.taillist[tail_node] + 1
         del self.taillist[tail_node]
         longest_tail = find_longest_tail(self.taillist)
+        self.blockids.append(block.id)
+        self.add_pending_blocks(node)
         if longest_tail == node:
             for txn in block.transactions:
                 if txn in self.transactions_queue:
@@ -82,19 +83,27 @@ class Peer:
         else:
             return False
 
+    def add_pending_blocks(self, node):
+        for block in self.pending_blocks_queue:
+            if block.prevblockid == node.block.id:
+                self.pending_blocks_queue.remove(block)
+                self.add_block_to_tail(block, node)
+            
+
+
     def add_block_to_nontail(self, block, prev_node):
         # if block.id in self.blockids:
         #     return
-        print("DEBUG: ",prev_node)
         # if block.id in self.created_blocks and is_selfish(self):
         #     color = 'red'
         # else:
         #     color = 'blue'
         self.blockchain.add_node(block.id)
         self.blockchain.add_edge(block.id, prev_node.block.id)
-        self.blockids.append(block.id)
         node = TreeNode(block, prev_node)
         self.taillist[node] = prev_node.count_tree() + 1
+        self.blockids.append(block.id)
+        self.add_pending_blocks(node)
         # longest_tail = find_longest_tail(self.taillist)
 
     def print_whole_tree(self):

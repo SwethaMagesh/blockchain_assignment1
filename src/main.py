@@ -242,11 +242,7 @@ def receive_block(peer, hears_from, block, env):
                     # mine on new longest
                     peer.discard_private()
                 env.process(mine_block(peer, env))
-    for pendingblock in peer.pending_blocks_queue : 
-        if pendingblock.prevblockid == block.id :
-            traverse_and_add(peer, pendingblock)
-            logger.debug(f"{env.now} P{peer.id} add B{block.id} from PendingQueue")
-
+    
 
 # mining process of a new block
 def mine_block(peer, env):
@@ -326,6 +322,10 @@ for peer in showpeers:
     peers[peer].visualize_graph(peers[peer].blockchain, peer)
     print(f"Number of blocks in peer {peer} 's blockchain: ", len(
         peers[peer].blockids))
+    
+print('='*100)
+for peer in showpeers:
+    print(f"Number of blocks in peer {peer} 's created blocks: {len(peers[peer].created_blocks)}")
 
 # run subprocess bash
 subprocess.run(["bash", "extractlog.sh", str(n_peers)])
