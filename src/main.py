@@ -241,7 +241,6 @@ def receive_block(peer, hears_from, block, env):
                 else:
                     # mine on new longest
                     peer.discard_private()
-                env.process(mine_block(peer, env))
     
 
 # mining process of a new block
