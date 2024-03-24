@@ -198,7 +198,7 @@ def receive_block(peer, hears_from, block, env):
                 env.process(mine_block(peer, env))
     for pendingblock in peer.pending_blocks_queue : 
         if pendingblock.prevblockid == block.id :
-            traverse_and_add(pendingblock)
+            traverse_and_add(peer, pendingblock)
             logger.debug(f"{env.now} P{peer.id} add B{pendingblock.id} from PendingQueue")
 # mining process of a new block
 def mine_block(peer, env):
@@ -223,7 +223,7 @@ def mine_block(peer, env):
 # generate random graph
 peers, links = generate_random_graph(n_peers, z0_slow, z1_low)
 RANDOM_SEED = int(time.time())
-SIM_TIME = 6
+SIM_TIME = 60
 
 random.seed(RANDOM_SEED)
 env = simpy.Environment()
