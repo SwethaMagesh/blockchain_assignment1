@@ -6,7 +6,7 @@ Functions are:
     - visualize_graph: visualize the graph
     - exponential_sample: return value from an exponential sample
     - uniform_sample: return value from an uniform sample
-    - create_random_transaction: create an empty or non empty transaction based on initial state
+    - create_random_transaction: create an empty or non empty transaction
     - generate_Tk: generate mining time for any peer
     - validate_block: validate the block based on balance 
     - traverse_and_add: traverse the tree and add block to tail or non tail
@@ -59,14 +59,11 @@ def exponential_sample(mean):
 def uniform_sample(low, high):
     return random.uniform(low, high)
 
-# create an empty or non empty transaction based on initial state
-def create_random_transaction(num_of_peers, initial_state = False):
+# create an empty or non empty transaction 
+def create_random_transaction(num_of_peers, peers):
     payer = random.randint(0, num_of_peers - 1)
     payee = random.randint(0, num_of_peers - 1)
-    if initial_state:
-        coins = 0
-    else:
-        coins = random.randint(1, 10)
+    coins = random.randint(0, peers[payer].balance)
     return payer, payee, coins
 
 # generate mining time for any peer

@@ -48,7 +48,8 @@ class Peer:
         Block.id += 1
         block = Block()
         block.id = Block.id
-        no_of_txn = random.randint(1, 10)
+        MAXTRANSACTIONS = 10
+        no_of_txn = random.randint(1, MAXTRANSACTIONS)
         block.transactions = self.transactions_queue[0:no_of_txn]
         self.transactions_queue = self.transactions_queue[no_of_txn:]
         block.prevblockid = prevblockid
@@ -142,7 +143,7 @@ class SelfishPeer(Peer):
         Block.id += 1
         block = Block()
         block.id = Block.id
-        MAXTRANSACTIONS = 1023
+        MAXTRANSACTIONS = 10
         no_of_txn = random.randint(1, MAXTRANSACTIONS)
         block.transactions = self.transactions_queue[0:no_of_txn]
         self.transactions_queue = self.transactions_queue[no_of_txn:]

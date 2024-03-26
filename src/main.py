@@ -49,9 +49,10 @@ zeta2 = args.zeta2
 
 # local printing
 print("peers in network        = ", n_peers)
-print("fraction slow peers     = ", z0_slow)
 print("transaction interval    = ", I_txn)
 print("block interval          = ", I_block)
+print('attacker1 hpower        = ',zeta1)
+print('attacker2 hpower        = ',zeta2)
 
 # Constants
 TRANSACTION_SIZE = 1  # in KB
@@ -134,9 +135,7 @@ def generate_random_graph(n_peers, z0_slow):
 
 def handle_transaction(env):
     yield env.timeout(exponential_sample(I_txn))
-    # set the initial state to False ONLY after a few blocks have been mined
-    initial_state = True if env.now < 2*I_block else False
-    s, r, c = create_random_transaction(n_peers, initial_state=initial_state)
+    s, r, c = create_random_transaction(n_peers, peers)
     txn = Transaction(payer=peers[s], payee=peers[r], coins=c)
     peers[s].balance -= c
     peers[r].balance += c
@@ -221,7 +220,8 @@ def receive_block(peer, hears_from, block, env):
             # start mining a new block if current block is added to the longest chain
             if chainlen_changed:
                 env.process(mine_block(peer, env))
-    
+        else:
+            logger.debug(f"{env.now} P{peer.id} rejects invalid B{block.id}")
         if is_selfish(peer):
             # visible leng changed
             new_vis_length = peer.longest_chain_length_visible()
@@ -325,8 +325,8 @@ for i in range(n_peers):
 env.run(until=SIM_TIME)
 
 # visualize trees for any 5 peers
-# showpeers = random.sample(range(2,n_peers), 3)
-showpeers = [0, 1, n_peers-1, n_peers-2, 3]
+showpeers = random.sample(range(2,n_peers), 3)
+showpeers = [0, 1] + showpeers
 # print(showpeers)
 for peer in showpeers:
     peers[peer].visualize_graph(peers[peer].blockchain, peer)
@@ -336,8 +336,17 @@ for peer in showpeers:
 print('='*100)
 print(f"Number of blocks created in all: {sum([len(peers[peer].created_blocks) for peer in range(n_peers)])} created")
 print('='*100)
-for peer in showpeers:
+for peer in [0,1]:
     print(f"Number of blocks in peer {peer} 's created blocks: {len(peers[peer].created_blocks)}")
+print('='*100)
+
+
+# choose a honest node and get its longest chain 
+honest_peer = showpeers[-1]
+longest_chain = peers[honest_peer].longest_chain()
+print(f"Length of longest chain of honest peer {honest_peer} is {len(longest_chain)}")
+print(f"Longest chain is {longest_chain}")
+
 
 # run subprocess bash
 subprocess.run(["bash", "extractlog.sh", str(n_peers)])
