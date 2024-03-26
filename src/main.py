@@ -243,8 +243,8 @@ def receive_block(peer, hears_from, block, env):
                 elif lead > 2:
                     released_blocks = peer.release_blocks(1)
                     peer.balance += 50
+                    logger.debug(f"{env.now} P{peer.id} makes B{released_blocks[0].id} public")
                     # release 1 block
-                    logger.debug(f"{env.now} P{peer.id} makes B{block.id} public")
                     env.process(forward_block(released_blocks[0], peer, peer, env))
                 else:
                     # mine on new longest

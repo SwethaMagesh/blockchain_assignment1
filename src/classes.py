@@ -90,7 +90,6 @@ class Peer:
                 self.add_block_to_tail(block, node)
             
 
-
     def add_block_to_nontail(self, block, prev_node):
         # if block.id in self.blockids:
         #     return
