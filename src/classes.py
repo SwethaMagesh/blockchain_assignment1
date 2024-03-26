@@ -50,7 +50,9 @@ class Peer:
         block.id = Block.id
         MAXTRANSACTIONS = 10
         no_of_txn = random.randint(1, MAXTRANSACTIONS)
-        block.transactions = self.transactions_queue[0:no_of_txn]
+        transactions = self.transactions_queue[0:no_of_txn]
+        transactions = list(filter(lambda txn: txn.payer.balance >= txn.coins, transactions))
+        block.transactions = transactions
         self.transactions_queue = self.transactions_queue[no_of_txn:]
         block.prevblockid = prevblockid
         block.coinbase = Transaction(None, self, 50)
@@ -145,7 +147,9 @@ class SelfishPeer(Peer):
         block.id = Block.id
         MAXTRANSACTIONS = 10
         no_of_txn = random.randint(1, MAXTRANSACTIONS)
-        block.transactions = self.transactions_queue[0:no_of_txn]
+        transactions = self.transactions_queue[0:no_of_txn]
+        transactions = list(filter(lambda txn: txn.payer.balance >= txn.coins, transactions))
+        block.transactions = transactions
         self.transactions_queue = self.transactions_queue[no_of_txn:]
         if len(self.private_chain) == 0:
             block.prevblockid = blockid
