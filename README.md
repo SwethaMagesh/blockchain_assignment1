@@ -8,8 +8,11 @@ A discrete-event simulator maintains an ”event-queue” from which the earlies
 - We fix the fraction of hashing power of the selfish miners and assume that the remaining honest miners have equal fraction of hashing power, such that the sum of all is one.
 
 **Assumption**
+
 Peer 0 is adversary 1 
+
 Peer 1 is adversary 2
+
 Rest of n-2 peers are random honest peers
 
 ---
@@ -25,13 +28,15 @@ Rest of n-2 peers are random honest peers
 bash runsimulation.sh -n 10 -a1 0.3 -a2 0.4 -Ttx 2 -I 60
 
 ```
-Output: Chain visualisations are found in fig folder while logs of arrival and creation of blocks, transactions are in the logs folder.
+**Output**: Chain visualisations are found in fig folder while logs of arrival and creation of blocks, transactions are in the logs folder.
 
-Legend for fig folder:
-Green - Honest visible chain, 
-Pink  - Created by node and released
-Red   - Created by node and not yet released
-Blue  - Created by other nodes
+
+**Legend for fig folder:**
+- Green - Honest visible chain, 
+- Pink  - Created by node and released
+- Red   - Created by node and not yet released
+- Blue  - Created by other nodes
+
 ---
 
 **NOTE: Networkx libraries for generation of graph gets stuck sometimes. If the script takes more time, just rerun the command again.**
