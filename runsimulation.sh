@@ -8,7 +8,6 @@ while [[ "$#" -gt 0 ]]
   do
     case $1 in
       -n|--peers) n="$2"; shift;;
-      -z0|--slow) z0="$2"; shift;;
       -a1|--zeta1) a1="$2"; shift;;
       -a2|--zet2) a2="$2"; shift;;
       -Ttx|--txninterval) Ttx="$2"; shift;;
@@ -18,4 +17,4 @@ while [[ "$#" -gt 0 ]]
 done
 cd src
 
-python3 main.py -n $n -z0 $z0 -a1 $a1 -a2 $a2 -Ttx $Ttx -I $I
+python3 main.py -n $n -a1 $a1 -a2 $a2 -Ttx $Ttx -I $I

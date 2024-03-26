@@ -179,6 +179,9 @@ def forward_transaction(transaction, curr_peer, prev_peer, env):
 def forward_block(block, curr_peer, prev_peer, env):
     if curr_peer.id in block.sent_peers:
         return
+    if is_selfish(curr_peer) and not is_selfish(prev_peer):
+        logger.debug(f"{env.now} P{curr_peer.id} does not forward B{block.id}")
+        return
     else:
         block.sent_peers.add(curr_peer.id)
         neighbours = list(links[curr_peer.id].keys())
