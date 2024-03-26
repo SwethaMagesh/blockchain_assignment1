@@ -201,13 +201,16 @@ def receive_block(peer, hears_from, block, env):
     logger.debug(
         f"{env.now} P{peer.id} recvs B{block.id} from P{hears_from.id}")
     # if block is not already processed, validate it
+    if is_selfish(peer):
+        # calculate visible length before adding
+        visible_len = peer.longest_chain_length_visible()
     if block.id not in peer.blockids:
         isvalid = validate_block(block)
-        should_form = False
+        chainlen_changed = False
         if isvalid:
             # add to tree if parent block is found
             if block.prevblockid in peer.blockids:
-                should_form = traverse_and_add(peer, block)
+                chainlen_changed = traverse_and_add(peer, block)
                 logger.debug(
                     f"{env.now} P{peer.id} adds B{block.id} to its tree")
             # add to pending queue if parent block is not found
@@ -216,14 +219,19 @@ def receive_block(peer, hears_from, block, env):
                     f"{env.now} P{peer.id} adds B{block.id} to its pending queue")
                 peer.pending_blocks_queue.append(block)
             # start mining a new block if current block is added to the longest chain
-            if should_form:
+            if chainlen_changed:
                 env.process(mine_block(peer, env))
     
         if is_selfish(peer):
-            current_visible_length = peer.longest_chain_length_visible()
-            if peer.longest_visible_length < current_visible_length:
+            # visible leng changed
+            new_vis_length = peer.longest_chain_length_visible()
+            if new_vis_length > visible_len:
                 lead = len(peer.private_chain)
                 # what should the selfish guy do?
+                if lead == 1:
+                    peer.is_zero_dash_state = True
+                else:
+                    peer.is_zero_dash_state = False
                 if lead in [1, 2]:
                     # release all private blocks
                     released_blocks = peer.release_blocks(lead)
@@ -256,14 +264,16 @@ def mine_block(peer, env):
         yield env.timeout(mining_time)
         longest_tail_new = find_longest_tail(peer.taillist)
         if longest_tail_new == longest_tail:
-            block = peer.form_block(longest_tail.block.id)  # TODO find our id n put in prev block id
+            block = peer.form_block(longest_tail.block.id)  
             peer.created_blocks += [block.id]
-            # add to private chain
-            peer.add_to_private_chain(block)
-            # TODO if same leng: add to mine not the honest
+            logger.debug(f"{env.now} P{peer.id} selfishly mines B{block.id} on B{longest_tail.block.id}")
+            if not peer.is_zero_dash_state:
+                peer.add_to_private_chain(block)
+                logger.debug(f"{env.now} P{peer.id} adds B{block.id} to its private chain")
+            else:
+                env.process(forward_block(block, peer, peer, env))
+                logger.debug(f"{env.now} P{peer.id} makes B{block.id} public")
             traverse_and_add(peer, block)
-            logger.debug(f"{env.now} P{peer.id} selfishly mines B{block.id}")
-
         env.process(mine_block(peer, env))
 
     else:
@@ -276,11 +286,12 @@ def mine_block(peer, env):
         longest_tail_new = find_longest_tail(peer.taillist)
         # if the longest chain is the same, create a new block
         if longest_tail_new == longest_tail:
-            block = peer.form_block(longest_tail.block.id)
+            prevblockid = longest_tail.block.id
+            block = peer.form_block(prevblockid)
             peer.created_blocks += [block.id]
             peer.add_block_to_tail(block, longest_tail)
             longest_tail = find_longest_tail(peer.taillist)
-            logger.debug(f"{env.now} P{peer.id} mines B{block.id}")
+            logger.debug(f"{env.now} P{peer.id} mines B{block.id} on B{prevblockid}")
             # update peer balance and forward the block
             peer.balance += 50
             env.process(forward_block(block, peer, peer, env))

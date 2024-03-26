@@ -44,15 +44,14 @@ class Peer:
         self.blockchain = nx.Graph()
         self.created_blocks = []
 
-    def form_block(self, blockid):
+    def form_block(self, prevblockid):
         Block.id += 1
         block = Block()
         block.id = Block.id
         no_of_txn = random.randint(1, 10)
         block.transactions = self.transactions_queue[0:no_of_txn]
         self.transactions_queue = self.transactions_queue[no_of_txn:]
-        # tail_node = find_longest_tail(self.taillist)
-        block.prevblockid = blockid
+        block.prevblockid = prevblockid
         block.coinbase = Transaction(None, self, 50)
         return block
     
@@ -85,7 +84,8 @@ class Peer:
 
     def add_pending_blocks(self, node):
         for block in self.pending_blocks_queue:
-            if block.prevblockid == node.block.id:
+            if block.prevblockid == node.block.id and node in self.taillist:
+                # print(f"Adding pending block {block.id} to tail of peer P{self.id}")
                 self.pending_blocks_queue.remove(block)
                 self.add_block_to_tail(block, node)
             
@@ -104,7 +104,6 @@ class Peer:
         self.taillist[node] = prev_node.count_tree() + 1
         self.blockids.append(block.id)
         self.add_pending_blocks(node)
-        # longest_tail = find_longest_tail(self.taillist)
 
     def print_whole_tree(self):
         print(f"Peer {self.id} Whole Tree => ", end=" ")
@@ -113,7 +112,7 @@ class Peer:
 
     def longest_chain_length(self):
         longest_tail = find_longest_tail(self.taillist)
-        return longest_tail.count_tree()
+        return self.taillist[longest_tail]
 
     def longest_chain(self):
         longest_tail = find_longest_tail(self.taillist)
@@ -138,13 +137,14 @@ class SelfishPeer(Peer):
         super().__init__(peer, slow, lowcpu, hashpower)
         self.is_selfish = True
         self.private_chain = []
-        self.longest_visible_length = 1
+        self.is_zero_dash_state = False
 
     def form_block(self, blockid):
         Block.id += 1
         block = Block()
         block.id = Block.id
-        no_of_txn = random.randint(1, 10)
+        MAXTRANSACTIONS = 1023
+        no_of_txn = random.randint(1, MAXTRANSACTIONS)
         block.transactions = self.transactions_queue[0:no_of_txn]
         self.transactions_queue = self.transactions_queue[no_of_txn:]
         if len(self.private_chain) == 0:
@@ -161,8 +161,8 @@ class SelfishPeer(Peer):
         max_len  = 0
         for tail in self.taillist:
             if tail.block not in self.private_chain:
-                if tail.count_tree() > max_len:
-                    max_len = tail.count_tree()
+                if self.taillist[tail] > max_len:
+                    max_len = self.taillist[tail]
         return max_len
     
 

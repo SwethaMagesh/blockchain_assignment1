@@ -87,7 +87,6 @@ def validate_block(block):
 
 # traverse the tree and add block to tail or non tail
 def traverse_and_add(peer, block):
-    print(f"debug prev={block.prevblockid}, peer={peer.id}, block-{block.id}")
     found = False
     should_form = False
     for tail in peer.taillist:
@@ -96,8 +95,6 @@ def traverse_and_add(peer, block):
             break
     if found:
         should_form = peer.add_block_to_tail(block, tail)
-        print(f"added to tail{block.id}")
-        print(peer.print_whole_tree())
     else:
         current_tails = peer.taillist
         parent = None
@@ -111,12 +108,12 @@ def traverse_and_add(peer, block):
 
         # if parent != None:
         peer.add_block_to_nontail(block, parent)
-        print(f"added to non-tail{block.id}")
-        print(peer.print_whole_tree())
+        # print(peer.print_whole_tree())
     return should_form
 
 def find_longest_tail(taillist) :
-    return max(taillist, key=taillist.get)
+        return max(taillist, key=taillist.get)
+
 
 def is_selfish(peer):
     if peer.id in [0,1]:
