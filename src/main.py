@@ -335,7 +335,6 @@ for peer in showpeers:
     
 print('='*100)
 total_created = sum([len(peers[peer].created_blocks) for peer in range(n_peers)])
-print(f"Number of blocks created in all: {total_created} created")
 print('='*100)
 for peer in [0,1]:
     print(f"Number of blocks in peer {peer} 's created blocks: {len(peers[peer].created_blocks)}")
@@ -345,16 +344,18 @@ print('='*100)
 # choose a honest node and get its longest chain 
 honest_peer = showpeers[-1]
 longest_chain = peers[honest_peer].longest_chain()
-print(f"Length of longest chain of honest peer {honest_peer} is {len(longest_chain)}")
-print(f"Longest chain is {longest_chain}")
+print(f"Length of longest chain of P{honest_peer}   : {len(longest_chain)}")
+print(f"Number of blocks created        : {total_created}")
 
-MPU0 = set(peers[0].created_blocks).intersection(set(longest_chain))/len(longest_chain)
-MPU1 = set(peers[1].created_blocks).intersection(set(longest_chain))/len(longest_chain)
+# print(f"Longest chain is {longest_chain}")
+
+MPU0 = len(set(peers[0].created_blocks).intersection(set(longest_chain)))/len(longest_chain)
+MPU1 = len(set(peers[1].created_blocks).intersection(set(longest_chain)))/len(longest_chain)
 MPU_overall = len(longest_chain)/total_created
 
-print(f"MPU0        : {MPU0}")
-print(f"MPU1        : {MPU1}")
-print(f"MPU_overall : {MPU_overall}")
+print(f"MPU0        : {round(MPU0,4)}")
+print(f"MPU1        : {round(MPU1,4)}")
+print(f"MPU_overall : {round(MPU_overall,4)}")
 
 
 # run subprocess bash
