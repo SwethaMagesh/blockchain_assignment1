@@ -126,8 +126,9 @@ class Peer:
         list.append(node.block.id)
         return list
     
-    def visualize_graph(self, G, figure_no):
-        colors = ['pink' if node in self.created_blocks else 'skyblue' for node in G.nodes()]
+    def visualize_graph(self, G, figure_no, longest_chain):
+        # pink in created, palegreen longest chain and skyblue in rest
+        colors = ['pink' if node in self.created_blocks else 'palegreen' if node in longest_chain else 'skyblue' for node in G.nodes()]
         pos = nx.spring_layout(G)
         nx.draw(G, pos, with_labels=True, node_size=150, node_color=colors, font_size=8,
                 font_color="black", font_weight="bold", edge_color="gray", linewidths=0.5)
@@ -178,7 +179,7 @@ class SelfishPeer(Peer):
     def discard_private(self):
         self.private_chain = []
 
-    def visualize_graph(self, G, figure_no):
+    def visualize_graph(self, G, figure_no, longest_chain):
         colors = []
         ids = [block.id for block in  self.private_chain]
         for node in G.nodes():
@@ -186,6 +187,8 @@ class SelfishPeer(Peer):
                 colors.append('red')
             elif node in self.created_blocks:
                 colors.append('pink')
+            elif node in longest_chain:
+                colors.append('palegreen')
             else:
                 colors.append('skyblue')
         pos = nx.spring_layout(G)

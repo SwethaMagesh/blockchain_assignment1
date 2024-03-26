@@ -1,0 +1,19 @@
+peers in network        =  100
+transaction interval    =  10.0
+block interval          =  30.0
+attacker1 hpower        =  0.3
+attacker2 hpower        =  0.0
+Number of blocks in peer 0 's blockchain:  21
+Number of blocks in peer 1 's blockchain:  19
+Number of blocks in peer 80 's blockchain:  19
+Number of blocks in peer 27 's blockchain:  19
+Number of blocks in peer 95 's blockchain:  19
+====================================================================================================
+====================================================================================================
+Number of blocks in peer 0 's created blocks: 11
+Number of blocks in peer 1 's created blocks: 0
+Length of longest chain of P95   : 14
+Number of blocks created        : 20
+MPU0        : 0.4286
+MPU1        : 0.0
+MPU_overall : 0.7

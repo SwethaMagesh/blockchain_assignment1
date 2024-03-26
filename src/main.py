@@ -47,12 +47,12 @@ I_block = args.blockinterval
 zeta1 = args.zeta1
 zeta2 = args.zeta2
 
-# local printing
-print("peers in network        = ", n_peers)
-print("transaction interval    = ", I_txn)
-print("block interval          = ", I_block)
-print('attacker1 hpower        = ',zeta1)
-print('attacker2 hpower        = ',zeta2)
+# # local printing
+# print("peers in network        = ", n_peers)
+# print("transaction interval    = ", I_txn)
+# print("block interval          = ", I_block)
+# print('attacker1 hpower        = ',zeta1)
+# print('attacker2 hpower        = ',zeta2)
 
 # Constants
 TRANSACTION_SIZE = 1  # in KB
@@ -327,23 +327,23 @@ env.run(until=SIM_TIME)
 # visualize trees for any 5 peers
 showpeers = random.sample(range(2,n_peers), 3)
 showpeers = [0, 1] + showpeers
+# choose a honest node and get its longest chain 
+honest_peer = showpeers[-1]
+longest_chain = peers[honest_peer].longest_chain()
 # print(showpeers)
 for peer in showpeers:
-    peers[peer].visualize_graph(peers[peer].blockchain, peer)
-    print(f"Number of blocks in peer {peer} 's blockchain: ", len(
-        peers[peer].blockids))
+    peers[peer].visualize_graph(peers[peer].blockchain, peer, longest_chain)
+    # print(f"Number of blocks in peer {peer} 's blockchain: ", len(
+    #     peers[peer].blockids))
     
 print('='*100)
 total_created = sum([len(peers[peer].created_blocks) for peer in range(n_peers)])
 print('='*100)
 for peer in [0,1]:
     print(f"Number of blocks in peer {peer} 's created blocks: {len(peers[peer].created_blocks)}")
-print('='*100)
 
 
-# choose a honest node and get its longest chain 
-honest_peer = showpeers[-1]
-longest_chain = peers[honest_peer].longest_chain()
+
 print(f"Length of longest chain of P{honest_peer}   : {len(longest_chain)}")
 print(f"Number of blocks created        : {total_created}")
 
