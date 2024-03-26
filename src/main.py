@@ -26,9 +26,6 @@ parser = argparse.ArgumentParser(description="command line argument parser")
 # number of peers in the network
 parser.add_argument("--peers", "-n", type=int, default=10,
                     required=True, help="enter the number of peers in the network")
-# number of slow peers in the network
-parser.add_argument("--slow", "-z0", type=float, default=0.3,
-                    required=True, help="enter the number of slow peers in the network")
 #  inter arrival time of transactions
 parser.add_argument("--txninterval", "-Ttx", type=float, default=5,
                     required=True, help="enter the inter arrival time of transactions")
@@ -44,7 +41,7 @@ parser.add_argument("--zeta2", "-a2", type=float, default=10,
 
 args = parser.parse_args()
 n_peers = args.peers
-z0_slow = args.slow
+z0_slow = 0.5
 I_txn = args.txninterval
 I_block = args.blockinterval
 zeta1 = args.zeta1
@@ -322,6 +319,8 @@ for peer in showpeers:
     print(f"Number of blocks in peer {peer} 's blockchain: ", len(
         peers[peer].blockids))
     
+print('='*100)
+print(f"Number of blocks created in all: {sum([len(peers[peer].created_blocks) for peer in range(n_peers)])} created")
 print('='*100)
 for peer in showpeers:
     print(f"Number of blocks in peer {peer} 's created blocks: {len(peers[peer].created_blocks)}")
