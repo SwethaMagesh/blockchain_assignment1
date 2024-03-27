@@ -327,8 +327,11 @@ env.run(until=SIM_TIME)
 # visualize trees for any 5 peers
 showpeers = random.sample(range(2,n_peers), 3)
 showpeers = [0, 1] + showpeers
+# choose a honest node and get its longest chain 
+honest_peer = showpeers[-1]
+longest_chain = peers[honest_peer].longest_chain()
 for peer in showpeers:
-    peers[peer].visualize_graph(peers[peer].blockchain, peer)
+    peers[peer].visualize_graph(peers[peer].blockchain, peer, longest_chain)
     print(f"Number of blocks in peer {peer} 's blockchain: ", len(
         peers[peer].blockids))
     
@@ -340,9 +343,7 @@ for peer in [0,1]:
 print('='*100)
 
 
-# choose a honest node and get its longest chain 
-honest_peer = showpeers[-1]
-longest_chain = peers[honest_peer].longest_chain()
+
 print(f"Length of longest chain of P{honest_peer}   : {len(longest_chain)}")
 print(f"Number of blocks created        : {total_created}")
 

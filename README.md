@@ -26,6 +26,14 @@ bash runsimulation.sh -n 10 -a1 0.3 -a2 0.4 -Ttx 2 -I 60
 
 ```
 Output: Chain visualisations are found in fig folder while logs of arrival and creation of blocks, transactions are in the logs folder.
+
+Legend for fig folder:
+Green - Honest visible chain, 
+Pink  - Created by node and released
+Red   - Created by node and not yet released
+Blue  - Created by other nodes
+---
+
 **NOTE: Networkx libraries for generation of graph gets stuck sometimes. If the script takes more time, just rerun the command again.**
 
 **Requirements:**
