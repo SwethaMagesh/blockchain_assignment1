@@ -103,14 +103,11 @@ def traverse_and_add(peer, block):
                 else:
                     tail = tail.prevNode
 
-        # if parent != None:
         peer.add_block_to_nontail(block, parent)
-        # print(peer.print_whole_tree())
     return should_form
 
 def find_longest_tail(taillist) :
         return max(taillist, key=taillist.get)
-
 
 def is_selfish(peer):
     if peer.id in [0,1]:

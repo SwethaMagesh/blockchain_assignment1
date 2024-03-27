@@ -8,6 +8,10 @@ Main functionality of each class is as follows:
         - It can print the whole blockchain
         - It can return the length of the longest chain
         - It can return the longest chain
+    Selfish Peer (Inherits from Peer):
+        - It is a node in the network (adv 1 or adv 2)
+        - It has a list of transactions (mempool), a blockchain, and a private chain
+        - It overrides functions of Peer class - form block, add to private chain, release from private chain, discard private chain
     Link:
         - It is an edge in the network
         - It has a delay value stored
@@ -62,13 +66,6 @@ class Peer:
         return str(self.id) + " " + str(self.is_slow) + " " + str(self.is_lowcpu) + " " + str(self.hashpower)
 
     def add_block_to_tail(self, block, tail_node):
-        
-        # if block.id in self.blockids:
-        #     return
-        # if block.id in self.created_blocks and is_selfish(self):
-        #     color = 'red'
-        # else:
-        #     color = 'blue'
         self.blockchain.add_node(block.id)
         self.blockchain.add_edge(block.id, tail_node.block.id)
         node = TreeNode(block, tail_node)
@@ -88,18 +85,12 @@ class Peer:
     def add_pending_blocks(self, node):
         for block in self.pending_blocks_queue:
             if block.prevblockid == node.block.id and node in self.taillist:
-                # print(f"Adding pending block {block.id} to tail of peer P{self.id}")
+                # Adding pending block {block.id} to tail of peer P{self.id}
                 self.pending_blocks_queue.remove(block)
                 self.add_block_to_tail(block, node)
             
 
     def add_block_to_nontail(self, block, prev_node):
-        # if block.id in self.blockids:
-        #     return
-        # if block.id in self.created_blocks and is_selfish(self):
-        #     color = 'red'
-        # else:
-        #     color = 'blue'
         self.blockchain.add_node(block.id)
         self.blockchain.add_edge(block.id, prev_node.block.id)
         node = TreeNode(block, prev_node)

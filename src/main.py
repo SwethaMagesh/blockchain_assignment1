@@ -327,7 +327,6 @@ env.run(until=SIM_TIME)
 # visualize trees for any 5 peers
 showpeers = random.sample(range(2,n_peers), 3)
 showpeers = [0, 1] + showpeers
-# print(showpeers)
 for peer in showpeers:
     peers[peer].visualize_graph(peers[peer].blockchain, peer)
     print(f"Number of blocks in peer {peer} 's blockchain: ", len(
@@ -347,7 +346,6 @@ longest_chain = peers[honest_peer].longest_chain()
 print(f"Length of longest chain of P{honest_peer}   : {len(longest_chain)}")
 print(f"Number of blocks created        : {total_created}")
 
-# print(f"Longest chain is {longest_chain}")
 
 MPU0 = len(set(peers[0].created_blocks).intersection(set(longest_chain)))/len(longest_chain)
 MPU1 = len(set(peers[1].created_blocks).intersection(set(longest_chain)))/len(longest_chain)
