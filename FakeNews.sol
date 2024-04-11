@@ -16,7 +16,7 @@ contract FakeNews {
         uint count;
     }
 
-    mapping (address => uint) public deposit;
+    mapping(address => uint) public deposit;
     mapping(address => Checker) public checkers;
 
     News public news;
@@ -38,6 +38,8 @@ contract FakeNews {
 
     function vote(uint isreal) public {
         Checker storage sender = checkers[msg.sender];
+        // require deposit?
+        // require(condition, "Deposit is not enough.");
         require(sender.weight != 0, "Has no right to vote");
         require(!sender.voted, "Already voted.");
         require(isreal==1 || isreal==0, "Wrong Opinion.");

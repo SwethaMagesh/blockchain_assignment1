@@ -37,7 +37,7 @@ FAKE NEWS APP
 
 
 ### NOTES FROM ONLINE
-- Sybil attack methods
+- Sybil attack prevention methods
 Proof of Work (PoW): The most common method, PoW requires solving complex puzzles to mine blocks. This consumes computational power, making it costly to create many identities.
 Proof of Stake (PoS): Users stake their own cryptocurrency to participate in the network. The more coins staked, the more influence a user has. This discourages creating fake identities as losing staked coins becomes a penalty.
 Proof of Burn (PoB): Here, users destroy a certain amount of cryptocurrency to gain voting rights. Destroying valuable tokens discourages creating numerous fake identities.
