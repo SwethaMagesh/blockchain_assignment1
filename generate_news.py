@@ -1,3 +1,5 @@
+import random
+ITEMS=1000
 NITEMS = []
 for i in range(ITEMS):
     cat_rand = random.choices(['Finance', 'Technology', 'Fashion'])[0]

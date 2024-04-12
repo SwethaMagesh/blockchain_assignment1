@@ -1,11 +1,17 @@
 import random
 import json
+import matplotlib.pyplot as plt
+
+
 class Checker:
     def __init__(self, id, type, trustworthiness):
         self.id = id
         self.type = type
         self.vote = None
         self.trustworthiness = 1
+        self.wrong_votes = 0
+        self.deposit = 1000
+        self.balance = 0
         
 def everyone_votes():
     for checker in checkers:
@@ -23,21 +29,25 @@ def consensus():
     for checker in checkers:
         if checker.vote:
             total_votes += checker.trustworthiness
-    print(f"TOTAL VOTES {total_votes} SUM OF WEIGHTS {sum_of_weights}")
     return total_votes > sum_of_weights/2
 
-def update_trustworthiness():
+def update_trustworthiness(timer):
     for checker in checkers:
         if checker.vote != is_real:
-            checker.trustworthiness = max(0, checker.trustworthiness - PENALTY)
-    
+            # checker.trustworthiness = max(0, checker.trustworthiness - PENALTY)
+            checker.wrong_votes += 1
+            # checker.trustworthiness = max(0, checker.trustworthiness - (checker.trustworthiness-0.8)**2*.01 - 0.001*checker.wrong_votes)
+            checker.trustworthiness = max(0, checker.trustworthiness - (checker.trustworthiness - (1-checker.wrong_votes/(timer+1)))**2*.1 )
+            checker.deposit -= 1
+        else:
+            checker.balance += 1
+            
 
 
 N = 10
 q = 0.3
 p = 0.5
 
-PENALTY = 1/500
 
 malicious = random.choices(range(N), k=int(q*N))
 honest = [i for i in range(N) if i not in malicious]
@@ -53,6 +63,10 @@ wrong = 0
 wrong_index = []
 ITEMS = json.load(open('news.json', 'r'))
 NITEMS = len(ITEMS)
+# plot trustworthiness vs time
+mal=[]
+sh=[]
+wh=[]
 for i in range(len(ITEMS)):
     is_real = ITEMS[i]['is_real']
     cat = ITEMS[i]['cat']
@@ -61,13 +75,23 @@ for i in range(len(ITEMS)):
     if consensus_current != is_real:
         wrong += 1
         wrong_index.append(i)
-    update_trustworthiness()
+    update_trustworthiness(i)
+    mal.append(checkers[malicious[0]].trustworthiness)
+    sh.append(checkers[strong_honest[0]].trustworthiness)
+    wh.append(checkers[weak_honest[0]].trustworthiness)
+    if i==500:
+        for checker in checkers:
+            print(f"CHECKER {checker.id} TYPE {checker.type} TRUSTWORTHINESS {round(checker.trustworthiness,2)}")
     
+#  plot mal, sh, wh
+plt.plot(mal, label='malicious')
+plt.plot(sh, label='strong_honest')
+plt.plot(wh, label='weak_honest')
+plt.show()
 
-print(f"WRONG: {wrong}  ")
+print(f"No of WRONG consensus: {wrong}  ")
 for checker in checkers:
     print(f"CHECKER {checker.id} TYPE {checker.type} TRUSTWORTHINESS {round(checker.trustworthiness,2)}")
 
-print(f"WRONG INDICES {wrong_index}")
 
 
