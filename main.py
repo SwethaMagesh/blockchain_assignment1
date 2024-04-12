@@ -25,10 +25,14 @@ def everyone_votes():
 
 def consensus():
     sum_of_weights = sum([checker.trustworthiness for checker in checkers])
+    true_votes = 0
+    voters_count = 0
     total_votes = 0
     for checker in checkers:
         if checker.vote:
             total_votes += checker.trustworthiness
+            true_votes += 1
+        voters_count += 1
     return total_votes > sum_of_weights/2
 
 def update_trustworthiness(timer):
@@ -37,15 +41,16 @@ def update_trustworthiness(timer):
             # checker.trustworthiness = max(0, checker.trustworthiness - PENALTY)
             checker.wrong_votes += 1
             # checker.trustworthiness = max(0, checker.trustworthiness - (checker.trustworthiness-0.8)**2*.01 - 0.001*checker.wrong_votes)
-            checker.trustworthiness = max(0, checker.trustworthiness - (checker.trustworthiness - (1-checker.wrong_votes/(timer+1)))**2*.1 )
+            checker.trustworthiness = max(0, checker.trustworthiness - (checker.trustworthiness - (1-checker.wrong_votes/(timer+1)))**2*.01 )
             checker.deposit -= 1
         else:
             checker.balance += 1
+        
             
 
 
-N = 10
-q = 0.3
+N = 50
+q = 0.4
 p = 0.5
 
 
@@ -79,10 +84,7 @@ for i in range(len(ITEMS)):
     mal.append(checkers[malicious[0]].trustworthiness)
     sh.append(checkers[strong_honest[0]].trustworthiness)
     wh.append(checkers[weak_honest[0]].trustworthiness)
-    if i==500:
-        for checker in checkers:
-            print(f"CHECKER {checker.id} TYPE {checker.type} TRUSTWORTHINESS {round(checker.trustworthiness,2)}")
-    
+       
 #  plot mal, sh, wh
 plt.plot(mal, label='malicious')
 plt.plot(sh, label='strong_honest')
@@ -91,7 +93,7 @@ plt.show()
 
 print(f"No of WRONG consensus: {wrong}  ")
 for checker in checkers:
-    print(f"CHECKER {checker.id} TYPE {checker.type} TRUSTWORTHINESS {round(checker.trustworthiness,2)}")
+    print(f"CHECKER {checker.id} TRUSTWORTHINESS {round(checker.trustworthiness,2)}, BALANCE {checker.balance}, DEPOSIT {checker.deposit} TYPE {checker.type}")
 
-
+print(wrong_index)
 
