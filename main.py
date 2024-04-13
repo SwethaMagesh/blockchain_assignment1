@@ -49,7 +49,7 @@ def update_trustworthiness(timer, consensus_res, cat):
             # checker.trustworthiness = max(0, checker.trustworthiness - PENALTY)
             checker.wrong_votes += 1
             # checker.trustworthiness = max(0, checker.trustworthiness - (checker.trustworthiness-0.8)**2*.01 - 0.001*checker.wrong_votes)
-            checker.trustworthiness[cat] = max(0, checker.trustworthiness[cat] - (checker.trustworthiness[cat] - (1-checker.wrong_votes/(timer+1)))**2*.01 )
+            checker.trustworthiness[cat] = max(0, checker.trustworthiness[cat] - (checker.trustworthiness[cat] - (1-checker.wrong_votes/(timer+1)))**2*.1 )
             checker.deposit -= 1
         else:
             checker.balance += 1
@@ -71,6 +71,7 @@ def plot_graph(cat):
     plt.xlabel('Timer')
     plt.ylabel('Trustworthiness')
     plt.title(f'Trustworthiness for {cat}')
+    plt.legend()
     plt.show()  
 
 n_malicious = int(q*N)
